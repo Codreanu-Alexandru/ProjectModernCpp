@@ -127,12 +127,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Map.h" />
-    <ClInclude Include="Region.h" />
+    <ClCompile Include="MultipleChoiceQuestion.cpp" />
+    <ClCompile Include="Question.cpp" />
+    <ClCompile Include="SingleNumericQuestion.cpp" />
+    <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Map.cpp" />
-    <ClCompile Include="Region.cpp" />
+    <ClInclude Include="MultipleChoiceQuestion.h" />
+    <ClInclude Include="Question.h" />
+    <ClInclude Include="SingleNumericQuestion.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="qna.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
