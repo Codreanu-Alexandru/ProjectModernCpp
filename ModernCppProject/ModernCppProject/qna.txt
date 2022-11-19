@@ -80,7 +80,7 @@ _CA_
 1859
 
 _MCQ_
-Care este cel mai populat oras din Romania
+Care este cel mai populat oras din Romania?
 _END_
 _A_
 Constanta
@@ -158,3 +158,163 @@ In ce an a avut loc primul razboi mondial?
 _END_
 _CA_
 1918
+
+_MCQ_
+Cate universitati sunt in Romania?
+_END_
+_A_
+46
+61
+49
+_RA_
+57
+
+_SNQ_
+In ce an a avut loc al doilea razboi mondial?
+_END_
+_CA_
+1936
+
+_MCQ_
+Care a fost prima universitate a Romaniei?
+_END_
+_A_
+TUIASI
+UBB
+UB
+_RA_
+UAIC
+
+_SNQ_
+In ce an a avut loc Revolutia Romana?
+_END_
+_CA_
+1989
+
+_MCQ_
+Care este sportul national al Canadei?
+_END_
+_A_
+Bowling
+Hockey
+Fotbal
+_RA_
+Lacrosse
+
+_SNQ_
+Care este viteza luminii?
+_END_
+_CA_
+299792458
+
+_MCQ_
+Cate inele sunt pe steagul olimpic?
+_END_
+_A_
+7
+6
+4
+_RA_
+5
+
+_SNQ_
+Cate tari fac parte din UE?
+_END_
+_CA_
+27
+
+_MCQ_
+In ce an a fost semnata Declaratia de independenta a Statelor Unite?
+_END_
+_A_
+1678
+1677
+1775
+_RA_
+1776
+
+_SNQ_
+Cati oameni traiesc in orasul Tokyo?(2018)
+_END_
+_CA_
+13515271
+
+_MCQ_
+Care este cel mai populat oras din Lume?
+_END_
+_A_
+Dehli
+Shanhai
+SaoPaulo
+_RA_
+Tokyo
+
+_SNQ_
+Cate tari sunt in Europe?
+_END_
+_CA_
+44
+
+_MCQ_
+Cat a durat Razboiul de o suta de ani?
+_END_
+_A_
+100
+50
+101
+_RA_
+116
+
+_SNQ_
+Cate tari sunt in lume?
+_END_
+_CA_
+195
+
+_MCQ_
+Care este cea mai apropiata planeta de Soare?
+_END_
+_A_
+Venus
+Marte
+Pamant
+_RA_
+Mercur
+
+_SNQ_
+In ce an a fost primul premiu nobel?
+_END_
+_CA_
+1895
+
+_MCQ_
+Ce tip de acid este ADN-ul?
+_END_
+_A_
+duoxiribonucleic
+duoribonuclear
+dezoxiribonuclear
+_RA_
+dezoxiribonucleic
+
+_SNQ_
+In ce an a fost primul premiu nobel inmanat unui roman?
+_END_
+_CA_
+1974
+
+_MCQ_
+"K" este simbolul chimic pentru care element?
+_END_
+_A_
+Crom
+Titan
+Hidrogen
+_RA_
+Potasiu
+
+_SNQ_
+Cate premii nobel au fost castigate de romani?
+_END_
+_CA_
+5
