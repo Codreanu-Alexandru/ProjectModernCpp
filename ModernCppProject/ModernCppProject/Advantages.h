@@ -1,5 +1,7 @@
 #pragma once
 #include <iostream>
+#include "MultipleChoiceQuestion.h"
+#include "SingleNumericQuestion.h"
 
 class Advantages
 {
@@ -8,6 +10,8 @@ public:
 	void applyFiftyFifty();
 	void applyChooseAnswer();
 	void applySuggestAnswer();
+	void displayAdvantages(Question question);
+
 
 private:
 	bool m_fiftyFiftyAvailable;
