@@ -1,6 +1,160 @@
-_MAQ_
+﻿
+_MCQ_
+Care este animalul national al Scotiei?
+_END_
 _A_
+Cal
+Lup
+Vaca
 _RA_
+Unicornul
 
-_SAQ_
+_SNQ_
+In ce an a aderat romania la UE?
+_END_
+_CA_
+2007
+
+_MCQ_
+Care tara produce cea mai mare cafea din lume?
+_END_
+_A_
+Columbia
+Indonezia
+Vietnam
 _RA_
+Brazilia
+
+_SNQ_
+In ce an s-a scufundat Titanicul in Oceanul Atlantic?
+_END_
+_CA_
+1912
+
+_MCQ_
+Care a fost prima bauturu racoritoare dusa in spatiu?
+_END_
+_A_
+Pepsi
+Fanta
+Snapple
+_RA_
+CocaCola
+
+_SNQ_
+Cate ore sunt intr-o saptamana?
+_END_
+_CA_
+168
+
+_MCQ_
+Cine a scris poemul epic Paradisul pierdut?
+_END_
+_A_
+JohnSteinbeck
+JohnKeats
+HenryJames
+_RA_
+JohnMilton
+
+_SNQ_
+Care este suprafata romaniei in km patrati?
+_END_
+_CA_
+238397
+
+_MCQ_
+Pentru ce tara a jucat David Beckham?
+_END_
+_A_
+Spania
+Brazilia
+SUA
+_RA_
+Anglia
+
+_SNQ_
+In ce an a fost unificare Tarii romanesti cu Moldova?
+_END_
+_CA_
+1859
+
+_MCQ_
+Care este cel mai populat oras din Romania
+_END_
+_A_
+Constanta
+Cluj-Napoca
+Iasi
+_RA_
+Bucuresti
+
+_SNQ_
+Ce procent din suprafata Romaniei este apa?
+_END_
+_CA_
+3
+
+_MCQ_
+Care este cea mai vorbita limba din lume?
+_END_
+_A_
+Chineza
+Spaniola
+Araba
+_RA_
+Engleza
+
+_SNQ_
+Cati vorbitori de limba Romana sunt?(2016)
+_END_
+_CA_
+24000000
+
+_MCQ_
+In ce an a fost scrisa scrisoarea lui Neacsu?
+_END_
+_A_
+1876
+1778
+1465
+_RA_
+1521
+
+_SNQ_
+Cat face 6/2(1+2) ?
+_END_
+_CA_
+9
+
+_MCQ_
+In ce tara se afla Praga?
+_END_
+_A_
+Germania
+Austria
+Ungaria
+_RA_
+Cehia
+
+_SNQ_
+In ce an a aparut COVID-19?
+_END_
+_CA_
+2019
+
+_MCQ_
+Care serviciu de e-mail este detinut de Microsoft?
+_END_
+_A_
+YahooMail
+Gmail
+iCloudMail
+_RA_
+Outlook
+
+_SNQ_
+In ce an a avut loc primul razboi mondial?
+_END_
+_CA_
+1918

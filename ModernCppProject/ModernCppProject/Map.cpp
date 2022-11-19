@@ -24,4 +24,6 @@ Map::Map(uint8_t nrPlayers) {
 		setWidth(6);
 		setHeight(4);
 		break;
+
+	}
 }
