@@ -1,22 +1,26 @@
 #pragma once
 #include <iostream>
 #include <string>
-#include <regex>
+#include <cstdint>
 
 class Question
 {
 private:
 
 	std::string m_question;
+	bool m_isNumericQuestion;
 
 public:
 
-	Question(std::string question);
+	Question(const std::string& question, bool isNumericQuestion);
+
 	std::string GetQuestion();
-	void SetQuestion(std::string);
+	void SetQuestion(const std::string& newQuestion);
+
+	bool GetIsNumericQuestionBoolean();
 
 public:
 
-	virtual bool CheckAnswer(std::string answer);
+	virtual bool CheckAnswer(const std::string& answer);
 };
 

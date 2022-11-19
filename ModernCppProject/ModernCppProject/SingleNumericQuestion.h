@@ -9,7 +9,13 @@ private:
 
 public:
 
-    SingleNumericQuestion(std::string question, int answer);
-    bool CheckAnswer(std::string answer) override;
+    SingleNumericQuestion(const std::string& question, int answer);
+
+    void SetAnswer(int newAnswer);
+    int GetAnswer();
+
+public:
+
+    bool CheckAnswer(const std::string& answer) override;
 };
 
