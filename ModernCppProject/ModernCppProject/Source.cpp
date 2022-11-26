@@ -1,12 +1,13 @@
 #include "Game.h"
 #include "Map.h"
-#include "../TriviadorLogger/TriviadorLogger.h"
+#include "User.h"
+//#include "../TriviadorLogger/TriviadorLogger.h"
 
 
 int main()
 {
 	//Testing question
-	Game g;
+	/*Game g;
 	std::cout << g.m_questions.size() << std::endl;
 	for (int i = 0; i < g.m_questions.size(); i++)
 	{
@@ -29,5 +30,17 @@ int main()
 			std::cout << snq->GetAnswer() << std::endl;
 			std::cout << std::endl;
 		}
+	}*/
+
+	const std::string csvDataFile = "user_dataset.csv";
+
+	UserDB userDatabase;
+	if (!userDatabase.InitializeDB(csvDataFile)) {
+		std::cout << "Failed to initialize the database!";
+		return -1;
 	}
+
+	userDatabase.displayDatabase();
+
+	return 0;
 }
