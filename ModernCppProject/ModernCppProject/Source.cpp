@@ -31,7 +31,7 @@ int main()
 			std::cout << std::endl;
 		}
 	}*/
-
+	///////////
 	const std::string csvDataFile = "user_dataset.csv";
 
 	UserDB userDatabase;
@@ -39,6 +39,9 @@ int main()
 		std::cout << "Failed to initialize the database!";
 		return -1;
 	}
+
+	/*Map map(2);
+	map.showMap();*/
 
 	userDatabase.displayDatabase();
 

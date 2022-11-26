@@ -8,6 +8,10 @@ public:
 	Map(uint8_t nrPlayers);
 	void setWidth(size_t width);
 	void setHeight(size_t height);
+	void generateMap();
+	void showMap();
+
+
 
 private:
 	size_t kWidth;
