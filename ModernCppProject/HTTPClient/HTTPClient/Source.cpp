@@ -7,20 +7,30 @@
 #include <cpr/cpr.h>
 #include <crow.h>
 
-
-
-int  main()
+void showUsers(cpr::Response response)
 {
-    cpr::Response response = cpr::Get(cpr::Url{ "http://localhost:18080/users" });
-
     std::cout << "Here is the list of Users(just for now):\n";
 
     auto users = crow::json::load(response.text);
     for (const auto& user : users) {
         std::cout << user["id"] << ' '
-            << user["name"].s() << ' '
-            << user["price"] << '\n';
+            << user["username"].s() << ' '
+            << user["password"] << ' '
+            << user["matchHistory"] << '\n';
     }
+}
+
+void createUser()
+{
+
+}
+
+
+int  main()
+{
+    cpr::Response response = cpr::Get(cpr::Url{ "http://localhost:18080/users" });
+    showUsers(response);
+    
 
     std::cout << "Bye!";
 
