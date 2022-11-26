@@ -1,7 +1,7 @@
 #include "Question.h"
 
-Question::Question(const std::string& question, bool isNumericQuestion) :
-	m_question(question), m_isNumericQuestion(isNumericQuestion)
+Question::Question(const std::string& question, bool isNumericQuestion, int id = -1) :
+	m_question(question), m_isNumericQuestion(isNumericQuestion), m_id(id)
 {
 }
 

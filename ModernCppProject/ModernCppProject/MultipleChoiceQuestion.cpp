@@ -1,18 +1,22 @@
 #include "MultipleChoiceQuestion.h"
 
-MultipleChoiceQuestion::MultipleChoiceQuestion(const std::string& question, const std::string& answer, const std::vector<std::string>& wrongAnswers) :
-	Question(question, false), m_answer(answer), m_wrongAnswers(wrongAnswers)
+MultipleChoiceQuestion::MultipleChoiceQuestion(
+	const std::string& question,
+	const std::string& answer,
+	const std::vector<WrongAnswers>& wrongAnswers,
+	int id = -1) :
+	Question(question, false, id), m_answer(answer), m_wrongChoices(wrongAnswers), m_idMCQ(id)
 {
 }
 
-void MultipleChoiceQuestion::SetChoices(const std::vector<std::string>& choices)
+void MultipleChoiceQuestion::SetChoices(const std::vector<WrongAnswers>& choices)
 {
-	m_wrongAnswers = choices;
+	m_wrongChoices = choices;
 }
 
-std::vector<std::string> MultipleChoiceQuestion::GetChoices()
+std::vector<WrongAnswers> MultipleChoiceQuestion::GetChoices()
 {
-	return m_wrongAnswers;
+	return m_wrongChoices;
 }
 
 void MultipleChoiceQuestion::SetAnswer(std::string newAnswer)

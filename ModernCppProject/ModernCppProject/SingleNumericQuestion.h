@@ -3,13 +3,16 @@
 class SingleNumericQuestion :
     public Question
 {
-private:
+public:
 
+    int m_idSMQ;
     int m_answer;
 
 public:
 
-    SingleNumericQuestion(const std::string& question, int answer);
+    SingleNumericQuestion(const std::string& question,
+        int answer,
+        int id);
 
     void SetAnswer(int newAnswer);
     int GetAnswer();

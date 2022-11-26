@@ -5,14 +5,15 @@
 
 class Question
 {
-private:
+public:
 
+	int m_id;
 	std::string m_question;
 	bool m_isNumericQuestion;
 
 public:
 
-	Question(const std::string& question, bool isNumericQuestion);
+	Question(const std::string& question, bool isNumericQuestion, int id);
 
 	std::string GetQuestion();
 	void SetQuestion(const std::string& newQuestion);
