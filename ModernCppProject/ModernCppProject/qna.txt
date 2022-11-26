@@ -318,3 +318,83 @@ Cate premii nobel au fost castigate de romani?
 _END_
 _CA_
 5
+
+_MCQ_
+Din ce film este printul fermecator?
+_END_
+_A_
+Mica_Sirena
+Frumoasa_adormită
+Mulan
+_RA_
+Cenusareasa
+
+_SNQ_
+In ce an s-a lansat Google?
+_END_
+_CA_
+1997
+
+_MCQ_
+Ce aroma este Cointreau?
+_END_
+_A_
+vanilie
+lamaie
+busuioc
+_RA_
+portocale
+
+_SNQ_
+In cate limbi este disponibila Wikipedia?
+_END_
+_CA_
+329
+
+_MCQ_
+Cate oase au rechinii?
+_END_
+_A_
+1
+2
+5
+_RA_
+0
+
+_SNQ_
+Cate coarne avea un Triceratop?
+_END_
+_CA_
+3
+
+_MCQ_
+Care este cel mai rapid animal terestru?
+_END_
+_A_
+Leopard
+Leu
+Tigru
+_RA_
+Ghepard
+
+_SNQ_
+In ce an a fost asasinat presedintele american John F. Kennedy?
+_END_
+_CA_
+1963
+
+_MCQ_
+Ce pasare este asociata cu pacea?
+_END_
+_A_
+Paun
+Gaina
+Vultur
+_RA_
+Porumbel
+
+_SNQ_
+In ce an a fost impuscat Nicolae Ceausescu?
+_END_
+_CA_
+1989

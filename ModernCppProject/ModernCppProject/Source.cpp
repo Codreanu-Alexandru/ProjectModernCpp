@@ -16,10 +16,10 @@ int main()
 			MultipleChoiceQuestion* mcq = dynamic_cast<MultipleChoiceQuestion*>(g.m_questions[i]);
 			std::cout << mcq->GetQuestion() << std::endl;
 			std::cout << mcq->GetAnswer() << std::endl;
-			std::vector<std::string> wrong = mcq->GetChoices();
+			std::vector<WrongAnswers> wrong = mcq->GetChoices();
 			for (int i = 0; i < wrong.size(); i++)
 			{
-				std::cout << wrong[i] << std::endl;
+				std::cout << wrong[i].m_choise << std::endl;
 			}
 			std::cout << std::endl;
 		}
