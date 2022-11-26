@@ -5,24 +5,26 @@ Game::Game()
 	m_players={};
 	m_numberOfPlayers = 0;
 	m_numberOfRounds = 0;
-	InitQuestions();
-}
+	//TO DO: question database populating
+	m_questions = InitQuestions();
 
-void Game::InitQuestions()
+}
+std::vector<Question*> InitQuestions()
 {
 	std::ifstream input("qna.txt");
 	if (!input.is_open())
 	{
 		std::cerr << "Could not open file." << std::endl;
-		return;
+		return{};
 	}
 
 	std::regex stateRegex("[_][A-Z]+[_]");
 	std::string state;
 	std::string in;
 
+	std::vector<Question*> questions;
 	std::string auxQuestion;
-	std::vector<std::string> auxVector;
+	std::vector<WrongAnswers> auxVector;
 	std::string auxAnswer;
 
 	while (!input.eof())
@@ -46,17 +48,21 @@ void Game::InitQuestions()
 			}
 			else if (state == "_A_")
 			{
-				auxVector.push_back(in);
+				WrongAnswers wa;
+				wa.m_choise = in;
+				auxVector.push_back(wa);
 				input >> in;
-				auxVector.push_back(in);
+				wa.m_choise = in;
+				auxVector.push_back(wa);
 				input >> in;
-				auxVector.push_back(in);
+				wa.m_choise = in;
+				auxVector.push_back(wa);
 			}
 			else if (state == "_RA_")
 			{
 				auxAnswer = in;
-				Question* mcq = new MultipleChoiceQuestion(auxQuestion, auxAnswer, auxVector);
-				m_questions.push_back(mcq);
+				Question* mcq = new MultipleChoiceQuestion(auxQuestion, auxAnswer, auxVector,-1);
+				questions.push_back(mcq);
 				auxAnswer = {};
 				auxQuestion = {};
 				auxVector.clear();
@@ -73,12 +79,21 @@ void Game::InitQuestions()
 			else if (state == "_CA_")
 			{
 				auxAnswer = in;
-				Question* snq = new SingleNumericQuestion(auxQuestion, std::stoi(auxAnswer));
-				m_questions.push_back(snq);
+				Question* snq = new SingleNumericQuestion(auxQuestion, std::stoi(auxAnswer),-1);
+				questions.push_back(snq);
 				auxAnswer = {};
 				auxQuestion = {};
 				auxVector.clear();
 			}
 		}
 	}
+
+	return questions;
+}
+
+void populateStorage(Storage& storage)
+{
+	std::vector<Question*> questions = InitQuestions();
+	
+	//How tf do I populate multiple tables :(
 }
