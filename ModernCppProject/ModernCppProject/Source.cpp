@@ -60,8 +60,6 @@ int main()
 
 	CROW_ROUTE(app, "/users")([&userDB]() {
 		std::vector<crow::json::wvalue> users_json;
-
-		// auto users = db.get_all<User>();  // can take a long time and a lot of memory
 		for (const auto& user : userDB.iterate<User>())
 		{
 			users_json.push_back(crow::json::wvalue{
@@ -70,8 +68,6 @@ int main()
 				{"password", user.password},
 				{"matchHistory", user.matchHistory}
 				});
-
-			//std::string users_json = db.dump(user);			
 		}
 		return crow::json::wvalue{ users_json };
 	});
