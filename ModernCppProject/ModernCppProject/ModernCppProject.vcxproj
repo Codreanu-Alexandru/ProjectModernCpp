@@ -139,6 +139,7 @@
     <ClCompile Include="MultipleChoiceQuestion.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Question.cpp" />
+    <ClCompile Include="Region.cpp" />
     <ClCompile Include="SingleNumericQuestion.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="User.cpp" />
@@ -161,6 +162,9 @@
     <ProjectReference Include="..\TriviadorLogger\TriviadorLogger.vcxproj">
       <Project>{dfcf0094-1f11-4652-9d8a-d6ef97cf54c9}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="user_dataset.csv" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

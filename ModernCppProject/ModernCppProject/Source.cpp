@@ -1,3 +1,8 @@
+#include <filesystem>
+#include <iostream>
+#include <memory>
+#include <crow.h>
+
 #include "Game.h"
 #include "Map.h"
 #include "User.h"
@@ -44,6 +49,34 @@ int main()
 	map.showMap();*/
 
 	userDatabase.displayDatabase();
+
+	Database userDB = userDatabase.getUserDatabase();
+
+	crow::SimpleApp app;
+
+	CROW_ROUTE(app, "/")([]() {
+		return "Intial page for app server.";
+	});
+
+	CROW_ROUTE(app, "/users")([&userDB]() {
+		std::vector<crow::json::wvalue> users_json;
+
+		// auto users = db.get_all<User>();  // can take a long time and a lot of memory
+		for (const auto& user : userDB.iterate<User>())
+		{
+			users_json.push_back(crow::json::wvalue{
+				{"id", user.id},
+				{"username", user.username},
+				{"password", user.password},
+				{"matchHistory", user.matchHistory}
+				});
+
+			//std::string users_json = db.dump(user);			
+		}
+		return crow::json::wvalue{ users_json };
+	});
+
+	app.port(18080).multithreaded().run();
 
 	return 0;
 }
