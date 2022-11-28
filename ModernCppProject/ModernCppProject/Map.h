@@ -11,8 +11,6 @@ public:
 	void generateMap();
 	void showMap();
 
-
-
 private:
 	size_t kWidth;
 	size_t kHeight;

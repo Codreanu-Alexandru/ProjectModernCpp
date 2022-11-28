@@ -8,20 +8,20 @@ void Map::setHeight(size_t height) {
 	kHeight = height;
 }
 
-void Map::generateMap()
-{
-
-	for (int heightIndex = 0; heightIndex < kHeight; heightIndex++)
-	{
-		std::vector<Region> regionsRow;
-		for (int widthIndex = 0; widthIndex < kWidth; widthIndex++)
-		{
-			Region region;
-			regionsRow.push_back(region);
-		}
-		m_regions.push_back(regionsRow);
-	}
-}
+//void Map::generateMap()
+//{
+//
+//	for (int heightIndex = 0; heightIndex < kHeight; heightIndex++)
+//	{
+//		std::vector<Region> regionsRow;
+//		for (int widthIndex = 0; widthIndex < kWidth; widthIndex++)
+//		{
+//			Region region;
+//			regionsRow.push_back(region);
+//		}
+//		m_regions.push_back(regionsRow);
+//	}
+//}
 
 void Map::showMap()
 {
@@ -60,6 +60,6 @@ Map::Map(uint8_t nrPlayers) {
 	default:
 		kWidth = 0;
 		kHeight = 0;
-
+		break;
 	}
 }
