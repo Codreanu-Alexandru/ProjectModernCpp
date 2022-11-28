@@ -15,7 +15,7 @@ struct User {
 	std::string matchHistory;
 };
 
-inline auto createStorage(const std::string& filename) {
+inline auto createUserStorage(const std::string& filename) {
 	return sql::make_storage(
 		filename,
 		sql::make_table(
@@ -28,7 +28,7 @@ inline auto createStorage(const std::string& filename) {
 	);
 }
 
-using Database = decltype(createStorage(""));
+using Database = decltype(createUserStorage(""));
 
 class UserDB {
 
@@ -38,8 +38,9 @@ public:
 
 public:
 	void displayDatabase();
+	Database getUserDatabase();
 
 private:
 	void PopulateDatabase(const std::string& dataFilePath);
-	Database m_Database = createStorage(databaseFile);
+	Database m_Database = createUserStorage(databaseFile);
 };

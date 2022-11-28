@@ -40,6 +40,10 @@ void UserDB::displayDatabase() {
 	std::cout << "usersCount = " << usersCount << '\n';
 }
 
+Database UserDB::getUserDatabase() {
+	return m_Database;
+}
+
 void UserDB::PopulateDatabase(const std::string& dataFilePath) {
 
 	/*std::ifstream in(dataFilePath);
