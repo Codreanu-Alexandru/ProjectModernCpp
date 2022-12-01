@@ -5,26 +5,55 @@ Game::Game()
 	m_players={};
 	m_numberOfPlayers = 0;
 	m_numberOfRounds = 0;
-	//TO DO: question database populating
-	m_questions = InitQuestions();
+	InitQuestions();
+}
+
+Game::Game(std::vector<Player>& players)
+	:m_players(players)
+{
+	m_numberOfPlayers = players.size();
+
+	m_map = Map(m_numberOfPlayers);
+
+	switch (m_numberOfPlayers)
+	{
+	case 2:
+	{
+		m_numberOfRounds = 5;
+		break;
+	}
+	case 3:
+	{
+		m_numberOfRounds = 4;
+		break;
+	}
+	case 4:
+	{
+		m_numberOfRounds = 5;
+		break;
+	}
+	default:
+		break;
+	}
 
 }
-std::vector<Question*> InitQuestions()
+
+void Game::InitQuestions()
 {
 	std::ifstream input("qna.txt");
 	if (!input.is_open())
 	{
 		std::cerr << "Could not open file." << std::endl;
-		return{};
+		return;
 	}
 
 	std::regex stateRegex("[_][A-Z]+[_]");
 	std::string state;
 	std::string in;
 
-	std::vector<Question*> questions;
+	unsigned int idCounter = 0;
 	std::string auxQuestion;
-	std::vector<WrongAnswers> auxVector;
+	std::vector<std::string> auxVector;
 	std::string auxAnswer;
 
 	while (!input.eof())
@@ -48,21 +77,33 @@ std::vector<Question*> InitQuestions()
 			}
 			else if (state == "_A_")
 			{
-				WrongAnswers wa;
-				wa.m_choise = in;
-				auxVector.push_back(wa);
-				input >> in;
-				wa.m_choise = in;
-				auxVector.push_back(wa);
-				input >> in;
-				wa.m_choise = in;
-				auxVector.push_back(wa);
+				for (unsigned int i = 0; i < 3; i++)
+				{
+					std::string auxString = "";
+					while (in != "_END_")
+					{
+						auxString += in;
+						auxString += " ";
+						input >> in;
+					}
+					auxVector.push_back(auxString);
+					input >> in;
+				}
 			}
 			else if (state == "_RA_")
 			{
-				auxAnswer = in;
-				Question* mcq = new MultipleChoiceQuestion(auxQuestion, auxAnswer, auxVector,-1);
-				questions.push_back(mcq);
+				while (in != "_END_")
+				{
+					auxAnswer += in;
+					auxAnswer += "";
+					input >> in;
+				}
+
+				Question* mcq = new MultipleChoiceQuestion(auxQuestion, auxAnswer, auxVector,idCounter);
+
+				m_questions.push_back(mcq);
+
+				idCounter++;
 				auxAnswer = {};
 				auxQuestion = {};
 				auxVector.clear();
@@ -78,9 +119,18 @@ std::vector<Question*> InitQuestions()
 			}
 			else if (state == "_CA_")
 			{
-				auxAnswer = in;
-				Question* snq = new SingleNumericQuestion(auxQuestion, std::stoi(auxAnswer),-1);
-				questions.push_back(snq);
+				while (in != "_END_")
+				{
+					auxAnswer += in;
+					auxAnswer += "";
+					input >> in;
+				}
+
+				Question* snq = new SingleNumericQuestion(auxQuestion, std::stoi(auxAnswer),idCounter);
+
+				m_questions.push_back(snq);
+
+				idCounter++;
 				auxAnswer = {};
 				auxQuestion = {};
 				auxVector.clear();
@@ -88,12 +138,4 @@ std::vector<Question*> InitQuestions()
 		}
 	}
 
-	return questions;
-}
-
-void populateStorage(Storage& storage)
-{
-	std::vector<Question*> questions = InitQuestions();
-	
-	//How tf do I populate multiple tables :(
 }

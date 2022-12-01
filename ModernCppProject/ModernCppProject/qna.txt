@@ -4,10 +4,14 @@ Care este animalul national al Scotiei?
 _END_
 _A_
 Cal
+_END_
 Lup
+_END_
 Vaca
+_END_
 _RA_
 Unicornul
+_END_
 
 _SNQ_
 In ce an a aderat romania la UE?
@@ -20,10 +24,14 @@ Care tara produce cea mai mare cafea din lume?
 _END_
 _A_
 Columbia
+_END_
 Indonezia
+_END_
 Vietnam
+_END_
 _RA_
 Brazilia
+_END_
 
 _SNQ_
 In ce an s-a scufundat Titanicul in Oceanul Atlantic?
@@ -36,10 +44,14 @@ Care a fost prima bauturu racoritoare dusa in spatiu?
 _END_
 _A_
 Pepsi
+_END_
 Fanta
+_END_
 Snapple
+_END_
 _RA_
-CocaCola
+Coca Cola
+_END_
 
 _SNQ_
 Cate ore sunt intr-o saptamana?
@@ -51,11 +63,15 @@ _MCQ_
 Cine a scris poemul epic Paradisul pierdut?
 _END_
 _A_
-JohnSteinbeck
-JohnKeats
-HenryJames
+John Steinbeck
+_END_
+John Keats
+_END_
+Henry James
+_END_
 _RA_
-JohnMilton
+John Milton
+_END_
 
 _SNQ_
 Care este suprafata romaniei in km patrati?
@@ -68,10 +84,14 @@ Pentru ce tara a jucat David Beckham?
 _END_
 _A_
 Spania
+_END_
 Brazilia
+_END_
 SUA
+_END_
 _RA_
-Anglia
+Marea Britanie
+_END_
 
 _SNQ_
 In ce an a fost unificare Tarii romanesti cu Moldova?
@@ -84,10 +104,14 @@ Care este cel mai populat oras din Romania?
 _END_
 _A_
 Constanta
-Cluj-Napoca
+_END_
+Cluj Napoca
+_END_
 Iasi
+_END_
 _RA_
 Bucuresti
+_END_
 
 _SNQ_
 Ce procent din suprafata Romaniei este apa?
@@ -100,10 +124,14 @@ Care este cea mai vorbita limba din lume?
 _END_
 _A_
 Chineza
+_END_
 Spaniola
+_END_
 Araba
+_END_
 _RA_
 Engleza
+_END_
 
 _SNQ_
 Cati vorbitori de limba Romana sunt?(2016)
@@ -116,10 +144,14 @@ In ce an a fost scrisa scrisoarea lui Neacsu?
 _END_
 _A_
 1876
+_END_
 1778
+_END_
 1465
+_END_
 _RA_
 1521
+_END_
 
 _SNQ_
 Cat face 6/2(1+2) ?
@@ -132,10 +164,14 @@ In ce tara se afla Praga?
 _END_
 _A_
 Germania
+_END_
 Austria
+_END_
 Ungaria
+_END_
 _RA_
 Cehia
+_END_
 
 _SNQ_
 In ce an a aparut COVID-19?
@@ -147,11 +183,15 @@ _MCQ_
 Care serviciu de e-mail este detinut de Microsoft?
 _END_
 _A_
-YahooMail
+Yahoo Mail
+_END_
 Gmail
-iCloudMail
+_END_
+iCloud Mail
+_END_
 _RA_
 Outlook
+_END_
 
 _SNQ_
 In ce an a avut loc primul razboi mondial?
@@ -164,10 +204,14 @@ Cate universitati sunt in Romania?
 _END_
 _A_
 46
+_END_
 61
+_END_
 49
+_END_
 _RA_
 57
+_END_
 
 _SNQ_
 In ce an a avut loc al doilea razboi mondial?
@@ -180,10 +224,14 @@ Care a fost prima universitate a Romaniei?
 _END_
 _A_
 TUIASI
+_END_
 UBB
+_END_
 UB
+_END_
 _RA_
 UAIC
+_END_
 
 _SNQ_
 In ce an a avut loc Revolutia Romana?
@@ -196,10 +244,14 @@ Care este sportul national al Canadei?
 _END_
 _A_
 Bowling
+_END_
 Hockey
+_END_
 Fotbal
+_END_
 _RA_
 Lacrosse
+_END_
 
 _SNQ_
 Care este viteza luminii?
@@ -212,10 +264,14 @@ Cate inele sunt pe steagul olimpic?
 _END_
 _A_
 7
+_END_
 6
+_END_
 4
+_END_
 _RA_
 5
+_END_
 
 _SNQ_
 Cate tari fac parte din UE?
@@ -228,10 +284,14 @@ In ce an a fost semnata Declaratia de independenta a Statelor Unite?
 _END_
 _A_
 1678
+_END_
 1677
+_END_
 1775
+_END_
 _RA_
 1776
+_END_
 
 _SNQ_
 Cati oameni traiesc in orasul Tokyo?(2018)
@@ -244,10 +304,14 @@ Care este cel mai populat oras din Lume?
 _END_
 _A_
 Dehli
+_END_
 Shanhai
-SaoPaulo
+_END_
+Sao Paulo
+_END_
 _RA_
 Tokyo
+_END_
 
 _SNQ_
 Cate tari sunt in Europe?
@@ -260,10 +324,14 @@ Cat a durat Razboiul de o suta de ani?
 _END_
 _A_
 100
+_END_
 50
+_END_
 101
+_END_
 _RA_
 116
+_END_
 
 _SNQ_
 Cate tari sunt in lume?
@@ -276,10 +344,14 @@ Care este cea mai apropiata planeta de Soare?
 _END_
 _A_
 Venus
+_END_
 Marte
+_END_
 Pamant
+_END_
 _RA_
 Mercur
+_END_
 
 _SNQ_
 In ce an a fost primul premiu nobel?
@@ -292,10 +364,14 @@ Ce tip de acid este ADN-ul?
 _END_
 _A_
 duoxiribonucleic
+_END_
 duoribonuclear
+_END_
 dezoxiribonuclear
+_END_
 _RA_
 dezoxiribonucleic
+_END_
 
 _SNQ_
 In ce an a fost primul premiu nobel inmanat unui roman?
@@ -308,10 +384,14 @@ _MCQ_
 _END_
 _A_
 Crom
+_END_
 Titan
+_END_
 Hidrogen
+_END_
 _RA_
 Potasiu
+_END_
 
 _SNQ_
 Cate premii nobel au fost castigate de romani?
@@ -324,10 +404,14 @@ Din ce film este printul fermecator?
 _END_
 _A_
 Mica_Sirena
+_END_
 Frumoasa_adormită
+_END_
 Mulan
+_END_
 _RA_
 Cenusareasa
+_END_
 
 _SNQ_
 In ce an s-a lansat Google?
@@ -340,10 +424,14 @@ Ce aroma este Cointreau?
 _END_
 _A_
 vanilie
+_END_
 lamaie
+_END_
 busuioc
+_END_
 _RA_
 portocale
+_END_
 
 _SNQ_
 In cate limbi este disponibila Wikipedia?
@@ -356,10 +444,14 @@ Cate oase au rechinii?
 _END_
 _A_
 1
+_END_
 2
+_END_
 5
+_END_
 _RA_
 0
+_END_
 
 _SNQ_
 Cate coarne avea un Triceratop?
@@ -372,10 +464,14 @@ Care este cel mai rapid animal terestru?
 _END_
 _A_
 Leopard
+_END_
 Leu
+_END_
 Tigru
+_END_
 _RA_
 Ghepard
+_END_
 
 _SNQ_
 In ce an a fost asasinat presedintele american John F. Kennedy?
@@ -388,10 +484,14 @@ Ce pasare este asociata cu pacea?
 _END_
 _A_
 Paun
+_END_
 Gaina
+_END_
 Vultur
+_END_
 _RA_
 Porumbel
+_END_
 
 _SNQ_
 In ce an a fost impuscat Nicolae Ceausescu?

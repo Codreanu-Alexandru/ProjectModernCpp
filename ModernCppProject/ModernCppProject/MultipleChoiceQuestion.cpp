@@ -3,18 +3,18 @@
 MultipleChoiceQuestion::MultipleChoiceQuestion(
 	const std::string& question,
 	const std::string& answer,
-	const std::vector<WrongAnswers>& wrongAnswers,
-	int id = -1) :
-	Question(question, false, id), m_answer(answer), m_wrongChoices(wrongAnswers), m_idMCQ(id)
+	const std::vector<std::string>& wrongAnswers,
+	int id) :
+	Question(question, false, id), m_answer(answer), m_wrongChoices(wrongAnswers)
 {
 }
 
-void MultipleChoiceQuestion::SetChoices(const std::vector<WrongAnswers>& choices)
+void MultipleChoiceQuestion::SetChoices(const std::vector<std::string>& choices)
 {
 	m_wrongChoices = choices;
 }
 
-std::vector<WrongAnswers> MultipleChoiceQuestion::GetChoices()
+std::vector<std::string> MultipleChoiceQuestion::GetChoices()
 {
 	return m_wrongChoices;
 }

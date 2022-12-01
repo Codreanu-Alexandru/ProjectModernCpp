@@ -1,7 +1,7 @@
 #include "SingleNumericQuestion.h"
 
-SingleNumericQuestion::SingleNumericQuestion(const std::string& question, int answer, int id = -1) :
-	Question(question, true, id), m_answer(answer), m_idSMQ(id)
+SingleNumericQuestion::SingleNumericQuestion(const std::string& question, int answer, int id) :
+	Question(question, true, id), m_answer(answer)
 {
 }
 

@@ -5,7 +5,6 @@ class SingleNumericQuestion :
 {
 public:
 
-    int m_idSMQ;
     int m_answer;
 
 public:
