@@ -65,8 +65,9 @@ void Game::InitQuestions()
 		}
 		else
 		{
-			if (state == "_MCQ_")
+			if (!state.compare("_MCQ_"))
 			{
+				auxQuestion = "";
 				while (in != "_END_")
 				{
 					auxQuestion += in;
@@ -75,7 +76,7 @@ void Game::InitQuestions()
 				}
 
 			}
-			else if (state == "_A_")
+			else if (!state.compare("_A_"))
 			{
 				for (unsigned int i = 0; i < 3; i++)
 				{
@@ -87,10 +88,13 @@ void Game::InitQuestions()
 						input >> in;
 					}
 					auxVector.push_back(auxString);
-					input >> in;
+					if (i < 2)
+					{
+						input >> in;
+					}
 				}
 			}
-			else if (state == "_RA_")
+			else if (!state.compare("_RA_"))
 			{
 				while (in != "_END_")
 				{
@@ -108,8 +112,9 @@ void Game::InitQuestions()
 				auxQuestion = {};
 				auxVector.clear();
 			}
-			else if (state == "_SNQ_")
+			else if (!state.compare("_SNQ_"))
 			{
+				auxQuestion = "";
 				while (in != "_END_")
 				{
 					auxQuestion += in;
@@ -117,15 +122,9 @@ void Game::InitQuestions()
 					input >> in;
 				}
 			}
-			else if (state == "_CA_")
+			else if (!state.compare("_CA_"))
 			{
-				while (in != "_END_")
-				{
-					auxAnswer += in;
-					auxAnswer += "";
-					input >> in;
-				}
-
+				auxAnswer = in;
 				Question* snq = new SingleNumericQuestion(auxQuestion, std::stoi(auxAnswer),idCounter);
 
 				m_questions.push_back(snq);

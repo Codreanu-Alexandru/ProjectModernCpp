@@ -498,3 +498,303 @@ In ce an a fost impuscat Nicolae Ceausescu?
 _END_
 _CA_
 1989
+
+_MCQ_
+Cine a scris Luceafarul?
+_END_
+_A_
+Ion Creanga
+_END_
+Vasile Alecsandrii
+_END_
+George Bacovia
+_END_
+_RA_
+Mihai Eminescu
+_END_
+
+_SNQ_
+In ce an a fost infiintata trupa Queen?
+_END_
+_CA_
+1970
+
+_MCQ_
+Cine a scris Enigma Otiliei?
+_END_
+_A_
+Ion Luca Caragiale
+_END_
+Vasile Alecsandrii
+_END_
+Liviu Rebreanu
+_END_
+_RA_
+George Calinescu
+_END_
+
+_SNQ_
+In ce an a fost scris romanul Enigma Otiliei?
+_END_
+_CA_
+1938
+
+_MCQ_
+Cine a scris Das Kapital?
+_END_
+_A_
+Mihai Eminescu
+_END_
+Geo Bogza
+_END_
+Marin Preda
+_END_
+_RA_
+Karl Marx
+_END_
+
+_SNQ_
+In ce an a fost scris primul personaj explicit gay in literatura romana?
+_END_
+_CA_
+1924
+
+_MCQ_
+Cine a inventat modalitatea de a desena curbele prin intermediul unui calculator?
+_END_
+_A_
+Bell Labs
+_END_
+Linus Torvalds
+_END_
+Bjarne Stroustrup
+_END_
+_RA_
+Pierre Bezier
+_END_
+
+_SNQ_
+In ce an a fost revolutia Rusa?
+_END_
+_CA_
+1907
+
+_MCQ_
+Care a dezvoltat software-ul de zbor la bord pentru programul spațial Apollo?
+_END_
+_A_
+Bell Labs
+_END_
+Carl Sagan
+_END_
+Bjarne Stroustrup
+_END_
+_RA_
+Margaret Hamilton
+_END_
+
+_SNQ_
+Cand a fost scris primul algoritm?
+_END_
+_CA_
+1840
+
+_MCQ_
+Cine a inventat primul agoritm?
+_END_
+_A_
+Bill Gates
+_END_
+Linus Torvalds
+_END_
+Bjarne Stroustrup
+_END_
+_RA_
+Ada Lovelace
+_END_
+
+_SNQ_
+Cand a fost scris Luceafarul?
+_END_
+_CA_
+1883
+
+_MCQ_
+Ce limbaj de programare a inventat Bjarne Stroustrup?
+_END_
+_A_
+Python
+_END_
+Java
+_END_
+Rust
+_END_
+_RA_
+C++
+_END_
+
+_SNQ_
+In ce an a fost inventat limbajul C++?
+_END_
+_CA_
+1985
+
+_MCQ_
+Ce este Esperanto?
+_END_
+_A_
+Un cuvant in spaniola
+_END_
+Un nume de persoana
+_END_
+Un nume de fenomen
+_END_
+_RA_
+O limba construita
+_END_
+
+_SNQ_
+Cand a fost inventat primul joc video?
+_END_
+_CA_
+1972
+
+_MCQ_
+Care a fost primul joc video?
+_END_
+_A_
+Pacman
+_END_
+Bomberman
+_END_
+Space Invaders
+_END_
+_RA_
+Pong
+_END_
+
+_SNQ_
+Cate judete are Romania?
+_END_
+_CA_
+42
+
+_MCQ_
+Care este judetul cu cea mai mica populatie?
+_END_
+_A_
+Tulcea
+_END_
+Constanta
+_END_
+Bucuresti
+_END_
+_RA_
+Covasna
+_END_
+
+_SNQ_
+Cat de adanc (in metrii) a fost curemurul din 1977 din Romania?
+_END_
+_CA_
+85300
+
+_MCQ_
+Ce tare are cele mai multe curemure in fiecare an?
+_END_
+_A_
+Philipine
+_END_
+USA
+_END_
+Chile
+_END_
+_RA_
+Japan
+_END_
+
+_SNQ_
+Cat de adanc (in metrii) a fost curemurul din 1977 din Romania?
+_END_
+_CA_
+85300
+
+_MCQ_
+Ce element are numarul atomic 6?
+_END_
+_A_
+Azot
+_END_
+Oxigen
+_END_
+Bor
+_END_
+_RA_
+Carbon
+_END_
+
+_SNQ_
+Cati GB are un TB?
+_END_
+_CA_
+1024
+
+_MCQ_
+De la ce vine URL?
+_END_
+_A_
+Urgent Resource Label
+_END_
+Unread Resource Label
+_END_
+Unspecified Resource Locator
+_END_
+_RA_
+Uniform Resource Locator
+_END_
+
+_SNQ_
+Cate caractere chinezesti sunt?
+_END_
+_CA_
+50000
+
+_MCQ_
+Care e cel mai popular browser?
+_END_
+_A_
+Opera
+_END_
+Mozilla Firefox
+_END_
+Microsoft Edge
+_END_
+_RA_
+Google Chrome
+_END_
+
+_SNQ_
+Care limbaje vorbite exista acum?
+_END_
+_CA_
+7100
+
+_MCQ_
+Ce limbaj este cel mai aproape de Latina?
+_END_
+_A_
+Franceza
+_END_
+Italiana
+_END_
+Romana
+_END_
+_RA_
+Sarda
+_END_
+
+_SNQ_
+Cate culori se afla in curcubeu?
+_END_
+_CA_
+7
