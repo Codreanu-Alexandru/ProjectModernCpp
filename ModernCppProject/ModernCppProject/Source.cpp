@@ -37,42 +37,42 @@ int main()
 		}
 	}*/
 	///////////
-	//const std::string csvDataFile = "user_dataset.csv";
+	const std::string csvDataFile = "user_dataset.csv";
 
-	//UserDB userDatabase;
-	//if (!userDatabase.InitializeDB(csvDataFile)) {
-	//	std::cout << "Failed to initialize the database!";
-	//	return -1;
-	//}
+	UserDB userDatabase;
+	if (!userDatabase.InitializeDB(csvDataFile)) {
+		std::cout << "Failed to initialize the database!";
+		return -1;
+	}
 
-	///*Map map(2);
-	//map.showMap();*/
+	/*Map map(2);
+	map.showMap();*/
 
-	//userDatabase.displayDatabase();
+	userDatabase.displayDatabase();
 
-	//Database userDB = userDatabase.getUserDatabase();
+	Database userDB = userDatabase.getUserDatabase();
 
-	//crow::SimpleApp app;
+	crow::SimpleApp app;
 
-	//CROW_ROUTE(app, "/")([]() {
-	//	return "Intial page for app server.";
-	//});
+	CROW_ROUTE(app, "/")([]() {
+		return "Initial starting page for app server.";
+	});
 
-	//CROW_ROUTE(app, "/users")([&userDB]() {
-	//	std::vector<crow::json::wvalue> users_json;
-	//	for (const auto& user : userDB.iterate<User>())
-	//	{
-	//		users_json.push_back(crow::json::wvalue{
-	//			{"id", user.id},
-	//			{"username", user.username},
-	//			{"password", user.password},
-	//			{"matchHistory", user.matchHistory}
-	//			});
-	//	}
-	//	return crow::json::wvalue{ users_json };
-	//});
+	CROW_ROUTE(app, "/users")([&userDB]() {
+		std::vector<crow::json::wvalue> users_json;
+		for (const auto& user : userDB.iterate<User>())
+		{
+			users_json.push_back(crow::json::wvalue{
+				{"id", user.id},
+				{"username", user.username},
+				{"password", user.password},
+				{"matchHistory", user.matchHistory}
+				});
+		}
+		return crow::json::wvalue{ users_json };
+	});
 
-	//app.port(18080).multithreaded().run();
+	app.port(4960).multithreaded().run();
 
 	return 0;
 }
