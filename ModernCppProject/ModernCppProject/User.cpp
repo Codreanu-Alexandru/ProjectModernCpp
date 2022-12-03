@@ -46,7 +46,7 @@ Database UserDB::getUserDatabase() {
 
 void UserDB::PopulateDatabase(const std::string& dataFilePath) {
 
-	/*std::ifstream in(dataFilePath);
+	std::ifstream in(dataFilePath);
 	std::string str;
 
 	const std::string delim{ "," };
@@ -59,12 +59,11 @@ void UserDB::PopulateDatabase(const std::string& dataFilePath) {
 		users.emplace_back(User{ -1, result[1], result[2], result[3] });
 	}
 
-	m_Database.insert_range(users.begin(), users.end());*/
+	/*m_Database.insert_range(users.begin(), users.end());
 
-	std::vector<User> products = {
-		User{ -1, "Alin", "hohoho222", "" },
-		User{ -1, "Florin", "ahahah123", ""}
-	};
+	std::vector<User> users = {
+		
+	};*/
 
-	m_Database.insert_range(products.begin(), products.end());
+	m_Database.insert_range(users.begin(), users.end());
 }
