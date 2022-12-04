@@ -83,6 +83,7 @@ int  main()
         switch (option) {
             
         case 1:
+        {
             std::cout << "Username: ";
             std::cin >> username;
             std::cout << "Password: ";
@@ -96,19 +97,49 @@ int  main()
                 std::cout << "Password: ";
                 std::cin >> password;
             }
+            auto userResponse = cpr::Put(
+                cpr::Url{ "http://localhost:4960/sendExistingUserToServer" },
+                cpr::Payload{
+                    { "username", username },
+                    { "password", password }
+                }
+            );
 
-            std::cout << "Logged into your account.\n";
+            if (userResponse.status_code == 200 || userResponse.status_code == 201) {
+                std::cout << "Logged into your account. \n";
+            }
+            else {
+                std::cout << "There was a problem sending the user data to the server :(\n";
+            }
+            //std::cout << "Logged into your account.\n";
 
             break;
+        }
         case 2:
+        {
             std::cout << "Enter an username: ";
             std::cin >> username;
             std::cout << "Enter a password: ";
             std::cin >> password;
 
-            std::cout << "Created account.\n";
+            auto userResponse = cpr::Put(
+                cpr::Url{ "http://localhost:4960/sendNewUserToServer" },
+                cpr::Payload{
+                    { "username", username },
+                    { "password", password }
+                }
+            );
+
+            if (userResponse.status_code == 200 || userResponse.status_code == 201) {
+                std::cout << "Created account. \n";
+            }
+            else {
+                std::cout << "There was a problem sending the user data to the server :(\n";
+            }
+            //std::cout << "Created account.\n";
 
             break;
+        }
 
         default:
             std::cout << "Please enter a valid option.\n";
@@ -117,6 +148,7 @@ int  main()
         }
 
     } while (option != 0);
+    
 
     return 0;
 }
