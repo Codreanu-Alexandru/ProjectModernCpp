@@ -898,3 +898,117 @@ Care este numarul de fobii recunoscute?
 _END_
 _CA_
 400
+
+_MCQ_
+'Acrofobia' este teama de?
+_END_
+_A_
+persoane
+_END_
+aglomeratii
+_END_
+spatii stramte
+_END_
+_RA_
+inaltime
+_END_
+
+_SNQ_
+In ce an a fost lasat primul browser?
+_END_
+_CA_
+1990
+
+_MCQ_
+Care a fost primul browser?
+_END_
+_A_
+Google Chrome
+_END_
+Internet Explorer
+_END_
+Lynx
+_END_
+_RA_
+Nexus
+_END_
+
+_SNQ_
+Cati dinti are un adult?
+_END_
+_CA_
+32
+
+_MCQ_
+Care este cel mai popular browser?
+_END_
+_A_
+Microsoft Edge
+_END_
+Opera
+_END_
+Mozilla Firefox
+_END_
+_RA_
+Google Chrome
+_END_
+
+_SNQ_
+Cati romani mor anual din cauza sinuciderii?
+_END_
+_CA_
+3000
+
+_MCQ_
+Care este cel mai populat oras din Moldova?
+_END_
+_A_
+Bender
+_END_
+Tirapol
+_END_
+Balti
+_END_
+_RA_
+Chisinau
+_END_
+
+_SNQ_
+Cati moldoveni mor anual din cauza sinuciderii?
+_END_
+_CA_
+500
+
+_MCQ_
+Cum se numeste cea mai mare regiunea distinct culturala din Romania?
+_END_
+_A_
+Banat
+_END_
+Republica Moldova
+_END_
+Regiunea Dobrogea
+_END_
+_RA_
+Tinutul Secuiesc 
+_END_
+
+_SNQ_
+Cati romani am intrebat?
+_END_
+_CA_
+100
+
+_MCQ_
+Cum se numeste cea mai mare regiunea distinct culturala din Moldova?
+_END_
+_A_
+Buceag
+_END_
+Tinutul Herta
+_END_
+Gagauzia
+_END_
+_RA_
+Transnistria
+_END_
