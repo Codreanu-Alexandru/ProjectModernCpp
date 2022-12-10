@@ -98,7 +98,7 @@ int  main()
                 std::cin >> password;
             }
             auto userResponse = cpr::Put(
-                cpr::Url{ "http://localhost:4960/sendExistingUserToServer" },
+                cpr::Url{ "http://localhost:4960/sendUserToServer" },
                 cpr::Payload{
                     { "username", username },
                     { "password", password }
@@ -123,7 +123,7 @@ int  main()
             std::cin >> password;
 
             auto userResponse = cpr::Put(
-                cpr::Url{ "http://localhost:4960/sendNewUserToServer" },
+                cpr::Url{ "http://localhost:4960/sendUserToServer" },
                 cpr::Payload{
                     { "username", username },
                     { "password", password }
