@@ -798,3 +798,103 @@ Cate culori se afla in curcubeu?
 _END_
 _CA_
 7
+
+_MCQ_
+Ce sinonim i se potriveste cuvantului 'timoare'?
+_END_
+_A_
+tenacitate
+_END_
+temperament
+_END_
+tremurator
+_END_
+_RA_
+temere
+_END_
+
+_SNQ_
+Cate cuvinte sunt in limba romana?
+_END_
+_CA_
+62000
+
+_MCQ_
+Care este cea mai eficienta metoda de a comite sinucidere?
+_END_
+_A_
+Sufocarea
+_END_
+Supradoza de droguri
+_END_
+Cadere de la inaltime
+_END_
+_RA_
+Arme de foc
+_END_
+
+_SNQ_
+Cate persoane s-au sinucis in anul 2019?
+_END_
+_CA_
+703000
+
+_MCQ_
+Ce inseamna cuvantul 'cambist'?
+_END_
+_A_
+Persoana care combina obiecte
+_END_
+Cetatean din Cambodia
+_END_
+Calator biciclist
+_END_
+_RA_
+Functionar la banca
+_END_
+
+_SNQ_
+Care e rata de sinucidere per 10 de mii de oamni in Romania?
+_END_
+_CA_
+97
+
+_MCQ_
+'Glosobia' este teama de?
+_END_
+_A_
+persoane
+_END_
+sticla
+_END_
+a canta
+_END_
+_RA_
+a vorbii
+_END_
+
+_SNQ_
+In ce an s-a lansat jocul Minecraft?
+_END_
+_CA_
+2011
+
+_MCQ_
+'Agorafobia' este teama de?
+_END_
+_A_
+persoane
+_END_
+aglomeratii
+_END_
+inaltimi
+_END_
+_RA_
+abandonare
+_END_
+
+_SNQ_
+Care este numarul de fobii recunoscute?
+_END_
+_CA_
+400
