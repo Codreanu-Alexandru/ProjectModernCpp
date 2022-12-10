@@ -9,32 +9,28 @@
 #include "../TriviadorLogger/TriviadorLogger.h"
 
 
-std::vector<std::string> splitMain(const std::string& str, const std::string& delim)
-{
-	std::vector<std::string> result;
-	size_t startIndex = 0;
-
-	for (size_t found = str.find(delim); found != std::string::npos; found = str.find(delim, startIndex))
-	{
-		result.emplace_back(str.begin() + startIndex, str.begin() + found);
-		startIndex = found + delim.size();
-	}
-	if (startIndex != str.size())
-		result.emplace_back(str.begin() + startIndex, str.end());
-	return result;
-}
-
-crow::response getUserData(const crow::request& req) 
+crow::response getExistingUserData(const crow::request& req)
 {
 	auto bodyArgs = parseUrlArgs(req.body); //id=2&quantity=3&...
 	auto end = bodyArgs.end();
 	auto usernameIter = bodyArgs.find("username");
 	auto passwordIter = bodyArgs.find("password");
+
 	if (usernameIter != end && passwordIter != end)
 	{
-		std::cout << usernameIter->second;
+		std::cout << "User " << usernameIter->second << " has logged in.\n";
 
 	}
+
+	return crow::response(201);
+}
+
+crow::response getNewUserData(const crow::request& req) 
+{
+	auto bodyArgs = parseUrlArgs(req.body); //id=2&quantity=3&...
+	auto end = bodyArgs.end();
+	auto usernameIter = bodyArgs.find("username");
+	auto passwordIter = bodyArgs.find("password");
 
 	UserDB userDatabase;
 	auto usersCount = userDatabase.getUserDatabase().count<User>();
@@ -48,7 +44,7 @@ crow::response getUserData(const crow::request& req)
 	Database userDB = userDatabase.getUserDatabase();
 	userDB.insert(newUser);
 
-	std::cout << "new users_count = " << userDatabase.getUserDatabase().count<User>() << std::endl;
+	std::cout << "New users count = " << userDatabase.getUserDatabase().count<User>() << std::endl;
 
 	return crow::response(201);
 }
@@ -118,9 +114,13 @@ int main()
 	return crow::json::wvalue{ users_json };
 		});
 
-	auto& sendUserToServerPut = CROW_ROUTE(app, "/sendUserToServer")
+	auto& sendExistingUserToServerPut = CROW_ROUTE(app, "/sendExistingUserToServer")
 		.methods(crow::HTTPMethod::PUT); // https://stackoverflow.com/a/630475/12388382
-	sendUserToServerPut(getUserData);
+	sendExistingUserToServerPut(getExistingUserData);
+
+	auto& sendNewUserToServerPut = CROW_ROUTE(app, "/sendNewUserToServer")
+		.methods(crow::HTTPMethod::PUT); // https://stackoverflow.com/a/630475/12388382
+	sendNewUserToServerPut(getNewUserData);
 
 
 	app.port(4960).multithreaded().run();
