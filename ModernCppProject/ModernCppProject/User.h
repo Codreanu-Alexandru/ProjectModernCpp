@@ -4,6 +4,7 @@
 #include <iostream>
 #include <sqlite_orm/sqlite_orm.h>
 #include <crow.h>
+#include "utils.h"
 
 namespace sql = sqlite_orm;
 const std::string databaseFile = "users.sqlite";
