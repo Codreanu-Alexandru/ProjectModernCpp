@@ -24,21 +24,6 @@ std::vector<std::string> splitMain(const std::string& str, const std::string& de
 	return result;
 }
 
-std::unordered_map<std::string, std::string> parseUrlArgs(const std::string& urlArgs)
-{
-	if (urlArgs == "") {
-		return {};
-	}
-
-	std::unordered_map<std::string, std::string> result;
-	for (const auto& kvStr : splitMain(urlArgs, "&")) {
-		auto kvVector = splitMain(kvStr, "=");
-		if (kvVector.size() == 2)
-			result[kvVector[0]] = kvVector[1];
-	}
-	return result;
-}
-
 crow::response getUserData(const crow::request& req) 
 {
 	auto bodyArgs = parseUrlArgs(req.body); //id=2&quantity=3&...
@@ -50,6 +35,20 @@ crow::response getUserData(const crow::request& req)
 		std::cout << usernameIter->second;
 
 	}
+
+	UserDB userDatabase;
+	auto usersCount = userDatabase.getUserDatabase().count<User>();
+
+	User newUser;
+	newUser.id = usersCount + 1;
+	newUser.username = usernameIter->second;
+	newUser.password = usernameIter->second;
+	newUser.matchHistory = "0";
+
+	Database userDB = userDatabase.getUserDatabase();
+	userDB.insert(newUser);
+
+	std::cout << "new users_count = " << userDatabase.getUserDatabase().count<User>() << std::endl;
 
 	return crow::response(201);
 }
