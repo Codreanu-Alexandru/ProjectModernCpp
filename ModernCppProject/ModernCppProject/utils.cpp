@@ -11,8 +11,10 @@ std::vector<std::string> split(const std::string& str, const std::string& delim)
         result.emplace_back(str.begin() + startIndex, str.begin() + found);
         startIndex = found + delim.size();
     }
+
     if (startIndex != str.size())
         result.emplace_back(str.begin() + startIndex, str.end());
+
     return result;
 }
 
