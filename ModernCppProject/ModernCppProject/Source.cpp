@@ -1,14 +1,12 @@
 #include <filesystem>
 #include <iostream>
 #include <memory>
-#include <string>
 #include <crow.h>
 
 #include "Game.h"
 #include "Map.h"
 #include "User.h"
 #include "../TriviadorLogger/TriviadorLogger.h"
-#include "../PasswordEncoder/Encoder.h"
 
 
 crow::response getExistingUserData(const crow::request& req)
@@ -20,7 +18,7 @@ crow::response getExistingUserData(const crow::request& req)
 
 	if (usernameIter != end && passwordIter != end)
 	{
-		std::cout << "User " << usernameIter->second << " has logged in.\n";
+		std::cout << usernameIter->second;
 
 	}
 
@@ -54,23 +52,6 @@ crow::response getNewUserData(const crow::request& req)
 
 int main()
 {
-	////Testing Encoder
-	//Encoder encoder;
-
-	//std::string stringInput;
-	//std::string otherString;
-
-	//std::cout << "Your password: ";
-	//std::cin >> stringInput;
-
-	//otherString = encoder.Encode(stringInput, '\0');
-	//std::cout << "Is now: " << otherString << std::endl;
-
-	//std::cout << "Try password: ";
-	//std::string aux;
-	//std::cin >> aux;
-	//std::cout << (encoder.TryToMatch(aux, otherString) ? "Yes, it matches." : "No, it doesn't match.");
-
 	//Testing question
 	/*Game g;
 	std::cout << g.m_questions.size() << std::endl;
@@ -96,7 +77,7 @@ int main()
 			std::cout << std::endl;
 		}
 	}*/
-	/////////
+	///////////
 	const std::string csvDataFile = "user_dataset.csv";
 
 	UserDB userDatabase;
