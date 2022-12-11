@@ -14,10 +14,10 @@ private:
 	std::vector<Region> m_territory;
 	uint16_t m_score;
 	Advantages m_advantages;
-	User m_user;
+	//User m_user;
 
 public:
-	Player(User user);
+	//Player(User user);
 
 };
 
