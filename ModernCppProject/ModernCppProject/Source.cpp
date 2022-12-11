@@ -38,13 +38,37 @@ crow::response getNewUserData(const crow::request& req)
 	User newUser;
 	newUser.id = usersCount + 1;
 	newUser.username = usernameIter->second;
-	newUser.password = usernameIter->second;
+	newUser.password = passwordIter->second;
 	newUser.matchHistory = "0";
 
 	Database userDB = userDatabase.getUserDatabase();
 	userDB.insert(newUser);
 
 	std::cout << "New users count = " << userDatabase.getUserDatabase().count<User>() << std::endl;
+
+	return crow::response(201);
+}
+
+crow::response deleteUserData(const crow::request& req)
+{
+	auto bodyArgs = parseUrlArgs(req.body); //id=2&quantity=3&...
+	auto end = bodyArgs.end();
+	auto usernameIter = bodyArgs.find("username");
+
+	UserDB userDatabase;
+	Database userDB = userDatabase.getUserDatabase();
+
+	for (const auto& user : userDB.iterate<User>())
+	{	
+		if (usernameIter->second == user.username)
+		{
+			userDB.remove<User>(user.id);
+			break;
+		}
+	}
+
+	std::cout << "User " << usernameIter->second << " has been deleted. New users count = "
+		<< userDatabase.getUserDatabase().count<User>() << std::endl;
 
 	return crow::response(201);
 }
@@ -122,6 +146,9 @@ int main()
 		.methods(crow::HTTPMethod::PUT); // https://stackoverflow.com/a/630475/12388382
 	sendNewUserToServerPut(getNewUserData);
 
+	auto& deleteUserFromServerPut = CROW_ROUTE(app, "/deleteUserFromServer")
+		.methods(crow::HTTPMethod::PUT); // https://stackoverflow.com/a/630475/12388382
+	deleteUserFromServerPut(deleteUserData);
 
 	app.port(4960).multithreaded().run();
 
