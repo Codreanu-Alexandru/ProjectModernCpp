@@ -65,7 +65,7 @@ crow::response UserDB::getExistingUserData(const crow::request& req)
 
 	if (usernameIter != end && passwordIter != end)
 	{
-		Player player(findUserByUsername(usernameIter->second));//this to be added in the list of players in game class
+		//Player player(findUserByUsername(usernameIter->second));//this to be added in the list of players in game class
 		//the relation between player and user needs adjustments in order to save the match history at the end of the game
 	}
 
@@ -77,7 +77,10 @@ User UserDB::findUserByUsername(std::string username)
 	for (User user : m_databaseUsers)
 	{
 		if (user.username == username)
+		{
 			return user;
+		}
 	}
-	return ;
+
+	//return ;
 }

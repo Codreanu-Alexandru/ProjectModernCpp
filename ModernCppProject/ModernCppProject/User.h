@@ -48,6 +48,5 @@ public:
 
 private:
 	void PopulateDatabase(const std::string& dataFilePath);
-	
 	Database m_Database = createUserStorage(databaseFile);
 };
