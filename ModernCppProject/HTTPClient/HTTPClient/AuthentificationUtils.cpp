@@ -1,6 +1,6 @@
 #include "AuthentificationUtils.h"
 
-cpr::Response response = cpr::Get(cpr::Url{ "http://localhost:4960/users" });
+cpr::Response response = cpr::Get(cpr::Url{ "http://localhost:18080/users" });
 
 bool correctAuthentication(std::string username, std::string password) {
 
