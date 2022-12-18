@@ -13,7 +13,9 @@ public:
 
 private slots:
 	void on_signUp2Button_clicked();
+	void on_back2PushButton_clicked();
 
 private:
 	Ui::SignUpMenuClass ui;
+	QWidget* parentWindow;
 };

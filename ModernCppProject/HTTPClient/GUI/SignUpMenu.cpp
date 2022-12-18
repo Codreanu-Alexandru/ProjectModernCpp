@@ -3,6 +3,7 @@
 SignUpMenu::SignUpMenu(QWidget *parent)
 	: QMainWindow(parent)
 {
+	parentWindow = parent;
 	ui.setupUi(this);
 	QPixmap pix_left("./royal_design_left.png");
 	QPixmap pix_right("./royal_design_right.png");
@@ -31,4 +32,10 @@ void SignUpMenu::on_signUp2Button_clicked() {
 	else {
 		ui.signUpErrorLabel->setText("Username already taken. Try a different one.");
 	}
+}
+
+void SignUpMenu::on_back2PushButton_clicked() {
+
+	this->close();
+	parentWindow->show();
 }
