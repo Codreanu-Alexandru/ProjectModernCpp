@@ -4,6 +4,7 @@
 LogInMenu::LogInMenu(QWidget *parent)
 	: QMainWindow(parent)
 {
+	parentWindow = parent;
 	ui.setupUi(this);
 	QPixmap pix("./spartan_clipart.png");
 	int img_width = ui.LogInImage->width();
@@ -34,5 +35,6 @@ void LogInMenu::on_logIn2PushButton_clicked() {
 
 void LogInMenu::on_back1PushButton_clicked() {
 
-	hide();
+	this->close();
+	parentWindow->show();
 }

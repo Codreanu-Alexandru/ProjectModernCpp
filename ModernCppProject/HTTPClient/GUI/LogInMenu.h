@@ -19,6 +19,6 @@ private slots:
 	void on_back1PushButton_clicked();
 
 private:
-
 	Ui::LogInMenuClass ui;
+	QWidget* parentWindow;
 };
