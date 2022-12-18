@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31919.166
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HTTPClient", "HTTPClient\HTTPClient.vcxproj", "{401F3222-BA44-444D-9F50-A346FE7F233A}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GUI", "GUI\GUI.vcxproj", "{35FD5521-6EC6-41F8-829F-A165F4B9E939}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +23,14 @@ Global
 		{401F3222-BA44-444D-9F50-A346FE7F233A}.Release|x64.Build.0 = Release|x64
 		{401F3222-BA44-444D-9F50-A346FE7F233A}.Release|x86.ActiveCfg = Release|Win32
 		{401F3222-BA44-444D-9F50-A346FE7F233A}.Release|x86.Build.0 = Release|Win32
+		{35FD5521-6EC6-41F8-829F-A165F4B9E939}.Debug|x64.ActiveCfg = Debug|x64
+		{35FD5521-6EC6-41F8-829F-A165F4B9E939}.Debug|x64.Build.0 = Debug|x64
+		{35FD5521-6EC6-41F8-829F-A165F4B9E939}.Debug|x86.ActiveCfg = Debug|x64
+		{35FD5521-6EC6-41F8-829F-A165F4B9E939}.Debug|x86.Build.0 = Debug|x64
+		{35FD5521-6EC6-41F8-829F-A165F4B9E939}.Release|x64.ActiveCfg = Release|x64
+		{35FD5521-6EC6-41F8-829F-A165F4B9E939}.Release|x64.Build.0 = Release|x64
+		{35FD5521-6EC6-41F8-829F-A165F4B9E939}.Release|x86.ActiveCfg = Release|x64
+		{35FD5521-6EC6-41F8-829F-A165F4B9E939}.Release|x86.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

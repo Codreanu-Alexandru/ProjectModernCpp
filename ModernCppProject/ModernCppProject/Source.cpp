@@ -78,7 +78,7 @@ int main()
 {
 
 	//Testing Encoder
-	Encoder encoder;
+	/*Encoder encoder;
 
 	std::string stringInput;
 	std::string otherString;
@@ -92,7 +92,7 @@ int main()
 	std::cout << "Try password: ";
 	std::string aux;
 	std::cin >> aux;
-	std::cout << (encoder.TryToMatch(aux, otherString) ? "Yes, it matches." : "No, it doesn't match.");
+	std::cout << (encoder.TryToMatch(aux, otherString) ? "Yes, it matches." : "No, it doesn't match.");*/
 
 	/*Testing question
 	Game g;
@@ -120,55 +120,55 @@ int main()
 		}
 	}*/
 
-	//const std::string csvDataFile = "user_dataset.csv";
+	const std::string csvDataFile = "user_dataset.csv";
 
-	//UserDB userDatabase;
-	//if (!userDatabase.InitializeDB(csvDataFile)) {
-	//	std::cout << "Failed to initialize the database!";
-	//	return -1;
-	//}
+	UserDB userDatabase;
+	if (!userDatabase.InitializeDB(csvDataFile)) {
+		std::cout << "Failed to initialize the database!";
+		return -1;
+	}
 
-	///*Map map(2);
-	//map.showMap();*/
+	/*Map map(2);
+	map.showMap();*/
 
 
-	//userDatabase.displayDatabase();
+	userDatabase.displayDatabase();
 
-	//Database userDB = userDatabase.getUserDatabase();
+	Database userDB = userDatabase.getUserDatabase();
 
-	//crow::SimpleApp app;
+	crow::SimpleApp app;
 
-	//CROW_ROUTE(app, "/")([]() {
-	//	return "Initial starting page for app server.";
-	//	});
+	CROW_ROUTE(app, "/")([]() {
+		return "Initial starting page for app server.";
+		});
 
-	//CROW_ROUTE(app, "/users")([&userDB]() {
-	//	std::vector<crow::json::wvalue> users_json;
-	//for (const auto& user : userDB.iterate<User>())
-	//{
-	//	users_json.push_back(crow::json::wvalue{
-	//		{"id", user.id},
-	//		{"username", user.username},
-	//		{"password", user.password},
-	//		{"matchHistory", user.matchHistory}
-	//		});
-	//}
-	//return crow::json::wvalue{ users_json };
-	//	});
+	CROW_ROUTE(app, "/users")([&userDB]() {
+		std::vector<crow::json::wvalue> users_json;
+	for (const auto& user : userDB.iterate<User>())
+	{
+		users_json.push_back(crow::json::wvalue{
+			{"id", user.id},
+			{"username", user.username},
+			{"password", user.password},
+			{"matchHistory", user.matchHistory}
+			});
+	}
+	return crow::json::wvalue{ users_json };
+		});
 
-	//auto& sendExistingUserToServerPut = CROW_ROUTE(app, "/sendExistingUserToServer")
-	//	.methods(crow::HTTPMethod::PUT); // https://stackoverflow.com/a/630475/12388382
-	//sendExistingUserToServerPut(getExistingUserData);
+	auto& sendExistingUserToServerPut = CROW_ROUTE(app, "/sendExistingUserToServer")
+		.methods(crow::HTTPMethod::PUT); // https://stackoverflow.com/a/630475/12388382
+	sendExistingUserToServerPut(getExistingUserData);
 
-	//auto& sendNewUserToServerPut = CROW_ROUTE(app, "/sendNewUserToServer")
-	//	.methods(crow::HTTPMethod::PUT); // https://stackoverflow.com/a/630475/12388382
-	//sendNewUserToServerPut(getNewUserData);
+	auto& sendNewUserToServerPut = CROW_ROUTE(app, "/sendNewUserToServer")
+		.methods(crow::HTTPMethod::PUT); // https://stackoverflow.com/a/630475/12388382
+	sendNewUserToServerPut(getNewUserData);
 
-	//auto& deleteUserFromServerPut = CROW_ROUTE(app, "/deleteUserFromServer")
-	//	.methods(crow::HTTPMethod::PUT); // https://stackoverflow.com/a/630475/12388382
-	//deleteUserFromServerPut(deleteUserData);
+	auto& deleteUserFromServerPut = CROW_ROUTE(app, "/deleteUserFromServer")
+		.methods(crow::HTTPMethod::PUT); // https://stackoverflow.com/a/630475/12388382
+	deleteUserFromServerPut(deleteUserData);
 
-	//app.port(4960).multithreaded().run();
+	app.port(18080).multithreaded().run();
 
 	return 0;
 }
