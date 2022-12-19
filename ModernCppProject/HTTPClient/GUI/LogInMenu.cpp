@@ -1,9 +1,11 @@
 #include "LogInMenu.h"
-//#include "../Client/AuthUtils.cpp"
 
 LogInMenu::LogInMenu(QWidget *parent)
 	: QMainWindow(parent)
 {
+	//cpr::Response response = cpr::Get(cpr::Url{ "http://localhost:18080/users" });
+	//clientInstance = new ClientInfo();
+
 	parentWindow = parent;
 	ui.setupUi(this);
 	QPixmap pix("./spartan_clipart.png");
@@ -17,16 +19,19 @@ LogInMenu::~LogInMenu()
 
 void LogInMenu::on_logIn2PushButton_clicked() {
 
-	//cpr::Response response = cpr::Get(cpr::Url{ "http://localhost:18080/users" });
-
 	QString qString_username = ui.usernameLineEdit->text();
 	QString qString_password = ui.passwordLineEdit->text();
 
 	std::string username = qString_username.toStdString();
 	std::string password = qString_password.toStdString();
 
+	//std::vector<std::pair<std::string, std::string> > serverUsersInfos = clientInstance->getUserInfo();
+
 	if (username == "test" && password == "test") {
-	// EMPTY
+		
+		hide();
+		loggedInMenu = new LoggedInMenu(this);
+		loggedInMenu->show();
 	}
 	else {
 		ui.errorLabel->setText("Incorrect username or password. Try again.");
