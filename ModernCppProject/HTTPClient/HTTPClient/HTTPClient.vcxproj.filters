@@ -18,13 +18,13 @@
     <ClCompile Include="Source.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="AuthentificationUtils.cpp">
+    <ClCompile Include="ClientInfo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AuthentificationUtils.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="ClientInfo.h">
+      <Filter>Resource Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
