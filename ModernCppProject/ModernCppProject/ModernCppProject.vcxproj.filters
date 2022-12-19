@@ -60,6 +60,15 @@
     <ClCompile Include="Source.cpp">
       <Filter>Source Files\Server Logic</Filter>
     </ClCompile>
+    <ClCompile Include="ExistingUserHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NewUserHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Login.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Advantages.h">
@@ -100,6 +109,15 @@
     </ClInclude>
     <ClInclude Include="utils.h">
       <Filter>Header Files\Server Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="ExistingUserHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NewUserHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Login.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
