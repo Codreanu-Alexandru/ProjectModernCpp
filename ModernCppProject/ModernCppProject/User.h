@@ -3,9 +3,7 @@
 #include <fstream>
 #include <iostream>
 #include <sqlite_orm/sqlite_orm.h>
-#include <crow.h>
 #include "utils.h"
-#include "Player.h"
 
 namespace sql = sqlite_orm;
 const std::string databaseFile = "users.sqlite";
@@ -43,8 +41,8 @@ public:
 public:
 	void displayDatabase();
 	Database getUserDatabase();
-	crow::response getExistingUserData(const crow::request& req);
-	User findUserByUsername(std::string username);
+
+	//User findUserByUsername(std::string username);
 
 private:
 	void PopulateDatabase(const std::string& dataFilePath);

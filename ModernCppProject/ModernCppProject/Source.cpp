@@ -8,48 +8,11 @@
 #include "User.h"
 #include "../TriviadorLogger/TriviadorLogger.h"
 #include "../PasswordEncoder/Encoder.h"
+#include "NewUserHandler.h"
+#include "ExistingUserHandler.h"
+#include "Login.h"
 
-
-crow::response getExistingUserData(const crow::request& req)
-{
-	auto bodyArgs = parseUrlArgs(req.body); //id=2&quantity=3&...
-	auto end = bodyArgs.end();
-	auto usernameIter = bodyArgs.find("username");
-	auto passwordIter = bodyArgs.find("password");
-
-	if (usernameIter != end && passwordIter != end)
-	{
-		std::cout << usernameIter->second;
-
-	}
-
-	return crow::response(201);
-}
-
-crow::response getNewUserData(const crow::request& req) 
-{
-	auto bodyArgs = parseUrlArgs(req.body); //id=2&quantity=3&...
-	auto end = bodyArgs.end();
-	auto usernameIter = bodyArgs.find("username");
-	auto passwordIter = bodyArgs.find("password");
-
-	UserDB userDatabase;
-	auto usersCount = userDatabase.getUserDatabase().count<User>();
-
-	User newUser;
-	newUser.id = usersCount + 1;
-	newUser.username = usernameIter->second;
-	newUser.password = passwordIter->second;
-	newUser.matchHistory = "0";
-
-	Database userDB = userDatabase.getUserDatabase();
-	userDB.insert(newUser);
-
-	std::cout << "New users count = " << userDatabase.getUserDatabase().count<User>() << std::endl;
-
-	return crow::response(201);
-}
-
+//to be moved
 crow::response deleteUserData(const crow::request& req)
 {
 	auto bodyArgs = parseUrlArgs(req.body); //id=2&quantity=3&...
@@ -60,7 +23,7 @@ crow::response deleteUserData(const crow::request& req)
 	Database userDB = userDatabase.getUserDatabase();
 
 	for (const auto& user : userDB.iterate<User>())
-	{	
+	{
 		if (usernameIter->second == user.username)
 		{
 			userDB.remove<User>(user.id);
@@ -73,6 +36,7 @@ crow::response deleteUserData(const crow::request& req)
 
 	return crow::response(201);
 }
+
 
 int main()
 {
@@ -156,19 +120,21 @@ int main()
 	return crow::json::wvalue{ users_json };
 		});
 
+	Login login;
+	ExistingUserHandler existingUser(login);
 	auto& sendExistingUserToServerPut = CROW_ROUTE(app, "/sendExistingUserToServer")
-		.methods(crow::HTTPMethod::PUT); // https://stackoverflow.com/a/630475/12388382
-	sendExistingUserToServerPut(getExistingUserData);
+		.methods(crow::HTTPMethod::PUT);
+	sendExistingUserToServerPut(existingUser);
 
 	auto& sendNewUserToServerPut = CROW_ROUTE(app, "/sendNewUserToServer")
 		.methods(crow::HTTPMethod::PUT); // https://stackoverflow.com/a/630475/12388382
-	sendNewUserToServerPut(getNewUserData);
+	sendNewUserToServerPut(NewUserHandler());
 
 	auto& deleteUserFromServerPut = CROW_ROUTE(app, "/deleteUserFromServer")
 		.methods(crow::HTTPMethod::PUT); // https://stackoverflow.com/a/630475/12388382
 	deleteUserFromServerPut(deleteUserData);
 
-	app.port(18080).multithreaded().run();
+	app.port(4960).multithreaded().run();
 
 	return 0;
 }

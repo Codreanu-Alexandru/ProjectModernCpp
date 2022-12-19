@@ -134,9 +134,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Advantages.cpp" />
+    <ClCompile Include="ExistingUserHandler.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Login.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="MultipleChoiceQuestion.cpp" />
+    <ClCompile Include="NewUserHandler.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Question.cpp" />
     <ClCompile Include="Region.cpp" />
@@ -147,9 +150,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Advantages.h" />
+    <ClInclude Include="ExistingUserHandler.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="Login.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="MultipleChoiceQuestion.h" />
+    <ClInclude Include="NewUserHandler.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Question.h" />
     <ClInclude Include="Region.h" />
