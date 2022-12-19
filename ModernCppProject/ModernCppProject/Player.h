@@ -4,7 +4,7 @@
 #include<stdio.h>
 #include "Region.h"
 #include"Advantages.h"
-#include "User.h"
+
 
 class Player
 {
@@ -14,10 +14,11 @@ private:
 	std::vector<Region> m_territory;
 	uint16_t m_score;
 	Advantages m_advantages;
-	//User m_user;
 
 public:
-	//Player(User user);
+	Player(std::string username);
+	std::string getName();
+	
 
 };
 
