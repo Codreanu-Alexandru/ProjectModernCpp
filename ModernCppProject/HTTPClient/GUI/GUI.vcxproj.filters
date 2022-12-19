@@ -46,6 +46,9 @@
     <ClCompile Include="SignUpMenu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="LoggedInMenu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="emperor_clipart.png">
@@ -60,12 +63,18 @@
     <Image Include="royal_design_right.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="castle.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="LogInMenu.ui">
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="SignUpMenu.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="LoggedInMenu.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
@@ -79,6 +88,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="SignUpMenu.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="LoggedInMenu.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

@@ -101,6 +101,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="LoggedInMenu.cpp" />
     <ClCompile Include="SignUpMenu.cpp" />
     <QtRcc Include="GUI.qrc" />
     <QtUic Include="GUI.ui" />
@@ -108,10 +109,12 @@
     <ClCompile Include="GUI.cpp" />
     <ClCompile Include="LogInMenu.cpp" />
     <ClCompile Include="main.cpp" />
+    <QtUic Include="LoggedInMenu.ui" />
     <QtUic Include="LogInMenu.ui" />
     <QtUic Include="SignUpMenu.ui" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="castle.png" />
     <Image Include="emperor_clipart.png" />
     <Image Include="royal_design_left.png" />
     <Image Include="royal_design_right.png" />
@@ -130,6 +133,9 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="SignUpMenu.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="LoggedInMenu.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
