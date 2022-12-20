@@ -7,7 +7,7 @@
 #include "Map.h"
 #include "User.h"
 #include "../TriviadorLogger/TriviadorLogger.h"
-#include "../PasswordEncoder/Encoder.h"
+#include "../Encoder/Encoder.h"
 #include "NewUserHandler.h"
 #include "ExistingUserHandler.h"
 #include "Login.h"
@@ -41,22 +41,22 @@ crow::response deleteUserData(const crow::request& req)
 int main()
 {
 
-	//Testing Encoder
-	/*Encoder encoder;
+	////Testing Encoder
+	//Encoder encoder;
 
-	std::string stringInput;
-	std::string otherString;
+	//std::string stringInput;
+	//std::string otherString;
 
-	std::cout << "Your password: ";
-	std::cin >> stringInput;
+	//std::cout << "Your password: ";
+	//std::cin >> stringInput;
 
-	otherString = encoder.Encode(stringInput, '\0');
-	std::cout << "Is now: " << otherString << std::endl;
+	//otherString = encoder.Encode(stringInput, '\0');
+	//std::cout << "Is now: " << otherString << std::endl;
 
-	std::cout << "Try password: ";
-	std::string aux;
-	std::cin >> aux;
-	std::cout << (encoder.TryToMatch(aux, otherString) ? "Yes, it matches." : "No, it doesn't match.");*/
+	//std::cout << "Try password: ";
+	//std::string aux;
+	//std::cin >> aux;
+	//std::cout << (encoder.TryToMatch(aux, otherString) ? "Yes, it matches." : "No, it doesn't match.");
 
 	/*Testing question
 	Game g;
