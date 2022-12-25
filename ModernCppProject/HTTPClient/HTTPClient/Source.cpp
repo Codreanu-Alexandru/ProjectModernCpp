@@ -3,7 +3,7 @@
 
 int  main()
 {
-    /*std::cout << "Welcome to the home page!\n";
+    std::cout << "Welcome to the home page!\n";
 
     int option = -1;
     std::string username;
@@ -164,7 +164,7 @@ int  main()
         }
         }
 
-    } while (option != 0);*/
+    } while (option != 0);
     
 
     return 0;

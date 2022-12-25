@@ -1,66 +1,46 @@
 #include "ClientInfo.h"
 
-//bool correctAuthentication(std::string username, std::string password) {
-//
-//    auto users = crow::json::load(response.text);
-//    for (const auto& user : users) {
-//
-//        if (user["username"].s() == username) {
-//
-//            if (user["password"].s() == password) {
-//                return true;
-//            }
-//        }
-//    }
-//
-//    return false;
-//}
-//
-//bool existingUser(std::string username) {
-//
-//    auto users = crow::json::load(response.text);
-//    for (const auto& user : users) {
-//
-//        if (user["username"].s() == username) {
-//            return true;
-//        }
-//    }
-//
-//    return false;
-//}
-//
-//void showUsers()
-//{
-//    std::cout << "Here is the list of Users(just for now):\n";
-//
-//    auto users = crow::json::load(response.text);
-//    for (const auto& user : users) {
-//        std::cout << user["id"] << ' '
-//            << user["username"].s() << ' '
-//            << user["password"] << ' '
-//            << user["matchHistory"] << '\n';
-//    }
-//}
+cpr::Response response = cpr::Get(cpr::Url{ "http://localhost:4960/users" });
 
-ClientInfo::ClientInfo() {
+bool correctAuthentication(std::string username, std::string password) {
 
+    auto users = crow::json::load(response.text);
+    for (const auto& user : users) {
+
+        if (user["username"].s() == username) {
+
+            if (user["password"].s() == password) {
+                return true;
+            }
+        }
+    }
+
+    return false;
 }
 
-ClientInfo::~ClientInfo()
-{}
+bool existingUser(std::string username) {
 
-std::vector<std::pair<std::string, std::string>> ClientInfo::setUserInfo() {
+    auto users = crow::json::load(response.text);
+    for (const auto& user : users) {
 
-	std::vector<std::pair<std::string, std::string>> userInfosCopy;
+        if (user["username"].s() == username) {
+            return true;
+        }
+    }
 
-	auto users = crow::json::load(response.text);
-	for (const auto& user : users) {
-		userInfosCopy.push_back(std::make_pair(user["username"].s(), user["password"].s()));
-	}
-
-	return userInfosCopy;
+    return false;
 }
 
-std::vector<std::pair<std::string, std::string>> ClientInfo::getUserInfo() {
-	return userInfos;
+void showUsers()
+{
+    std::cout << "Here is the list of Users(just for now):\n";
+
+    auto users = crow::json::load(response.text);
+    for (const auto& user : users) {
+        std::cout << user["id"] << ' '
+            << user["username"].s() << ' '
+            << user["password"] << ' '
+            << user["matchHistory"] << '\n';
+    }
 }
+
