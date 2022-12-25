@@ -16,6 +16,9 @@ LoggedInMenu::~LoggedInMenu()
 
 void LoggedInMenu::on_playPushButton_clicked() {
 
+	hide();
+	preLobbyMenu = new PreLobbyMenu(this);
+	preLobbyMenu->show();
 }
 
 void LoggedInMenu::on_viewMyProfilePushButton_clicked() {
@@ -29,6 +32,6 @@ void LoggedInMenu::on_optionsPushButton_clicked() {
 void LoggedInMenu::on_logOutPushButton_clicked() {
 
 	this->close();
-	//parentWindow->parentWidget();
+	parentWindow->show();
 }
 

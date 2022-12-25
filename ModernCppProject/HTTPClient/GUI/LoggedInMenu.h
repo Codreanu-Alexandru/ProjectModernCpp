@@ -2,6 +2,7 @@
 
 #include <QMainWindow>
 #include "ui_LoggedInMenu.h"
+#include "PreLobbyMenu.h"
 
 class LoggedInMenu : public QMainWindow
 {
@@ -20,4 +21,5 @@ private slots:
 private:
 	Ui::LoggedInMenuClass ui;
 	QWidget* parentWindow;
+	PreLobbyMenu* preLobbyMenu;
 };
