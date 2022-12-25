@@ -2,6 +2,9 @@
 
 #include <QMainWindow>
 #include "ui_SignUpMenu.h"
+#include "AuthUtils.h"
+#include "LogInMenu.h"
+#include <qmessagebox.h>
 
 class SignUpMenu : public QMainWindow
 {
