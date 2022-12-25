@@ -1,17 +1,20 @@
 #include "GUI.h"
 #include <QtWidgets/QApplication>
 #include <qfile.h>
+#include <qmessagebox.h>
 #include <iostream>
 #include <numeric>
 #include <sstream>
 #include <regex>
 #include <string>
-//#include <cpr/cpr.h>
-//#include <crow.h>
+#include <cpr/cpr.h>
+#include <crow.h>
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
+
+    cpr::Response response = cpr::Get(cpr::Url{ "http://localhost:4960/users" });
 
     //Setting the template
     QFile styleSheetFile("./Irrorater.qss");
