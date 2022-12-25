@@ -3,9 +3,6 @@
 LogInMenu::LogInMenu(QWidget *parent)
 	: QMainWindow(parent)
 {
-	//cpr::Response response = cpr::Get(cpr::Url{ "http://localhost:18080/users" });
-	//clientInstance = new ClientInfo();
-
 	parentWindow = parent;
 	ui.setupUi(this);
 	QPixmap pix("./spartan_clipart.png");
@@ -19,19 +16,33 @@ LogInMenu::~LogInMenu()
 
 void LogInMenu::on_logIn2PushButton_clicked() {
 
+	cpr::Response response = cpr::Get(cpr::Url{ "http://localhost:4960/users" });
+
 	QString qString_username = ui.usernameLineEdit->text();
 	QString qString_password = ui.passwordLineEdit->text();
 
-	std::string username = qString_username.toStdString();
-	std::string password = qString_password.toStdString();
+	std::string username = qString_username.toLocal8Bit().constData();
+	std::string password = qString_password.toLocal8Bit().constData();
 
-	//std::vector<std::pair<std::string, std::string> > serverUsersInfos = clientInstance->getUserInfo();
+	if (correctAuthentication(username, password, response)) {
 
-	if (username == "test" && password == "test") {
-		
-		hide();
-		loggedInMenu = new LoggedInMenu(this);
-		loggedInMenu->show();
+		auto userResponse = cpr::Put(
+			cpr::Url{ "http://localhost:4960/sendExistingUserToServer" },
+			cpr::Payload{
+				{ "username", username },
+				{ "password", password }
+			}
+		);
+
+		if (userResponse.status_code == 200 || userResponse.status_code == 201) {
+
+			hide();
+			loggedInMenu = new LoggedInMenu(this);
+			loggedInMenu->show();
+		}
+		else {
+			QMessageBox::warning(this, "Log In Error", "There was an error registering your information.");
+		}
 	}
 	else {
 		ui.errorLabel->setText("Incorrect username or password. Try again.");

@@ -4,8 +4,9 @@
 #include "ui_LogInMenu.h"
 #include <cpr/cpr.h>
 #include <crow.h>
+#include <qmessagebox.h>
 #include "LoggedInMenu.h"
-#include "../HTTPClient/ClientInfo.h"
+#include "AuthUtils.h"
 
 class LogInMenu : public QMainWindow
 {
@@ -23,5 +24,4 @@ private:
 	Ui::LogInMenuClass ui;
 	QWidget* parentWindow;
 	LoggedInMenu* loggedInMenu;
-	//ClientInfo* clientInstance = new ClientInfo();
 };
