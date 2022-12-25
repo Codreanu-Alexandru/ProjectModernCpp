@@ -49,6 +49,12 @@
     <ClCompile Include="LoggedInMenu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="AuthUtils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PreLobbyMenu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="emperor_clipart.png">
@@ -77,6 +83,9 @@
     <QtUic Include="LoggedInMenu.ui">
       <Filter>Form Files</Filter>
     </QtUic>
+    <QtUic Include="PreLobbyMenu.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
   </ItemGroup>
   <ItemGroup>
     <None Include="Irrorater.qss">
@@ -93,5 +102,13 @@
     <QtMoc Include="LoggedInMenu.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="PreLobbyMenu.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AuthUtils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

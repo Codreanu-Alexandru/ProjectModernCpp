@@ -80,7 +80,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
-      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -101,7 +101,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AuthUtils.cpp" />
     <ClCompile Include="LoggedInMenu.cpp" />
+    <ClCompile Include="PreLobbyMenu.cpp" />
     <ClCompile Include="SignUpMenu.cpp" />
     <QtRcc Include="GUI.qrc" />
     <QtUic Include="GUI.ui" />
@@ -111,6 +113,7 @@
     <ClCompile Include="main.cpp" />
     <QtUic Include="LoggedInMenu.ui" />
     <QtUic Include="LogInMenu.ui" />
+    <QtUic Include="PreLobbyMenu.ui" />
     <QtUic Include="SignUpMenu.ui" />
   </ItemGroup>
   <ItemGroup>
@@ -136,6 +139,10 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="LoggedInMenu.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AuthUtils.h" />
+    <QtMoc Include="PreLobbyMenu.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
