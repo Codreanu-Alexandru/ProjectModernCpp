@@ -6,26 +6,29 @@ class MultipleChoiceQuestion :
     public Question
 {
 public:
-
-    std::string m_answer;
-    std::vector<std::string> m_wrongChoices;
-
-public:
-
+    /*Public Constructor*/
     MultipleChoiceQuestion(
         const std::string& question,
         const std::string& answer,
         const std::vector<std::string>& wrongChoices,
         int id);
 
-    void SetChoices(const std::vector<std::string>& choices);
+    /*Getters*/
+    std::string GetAnswer();
     std::vector<std::string> GetChoices();
 
-    void SetAnswer(std::string newAnswer);
-    std::string GetAnswer();
+    /*Setters*/
+    void SetAnswer(const std::string& newAnswer);
+    void SetChoices(const std::vector<std::string>& choices);
 
-public:
+    /*Public Overridden Function*/
+    float CheckAnswer(const std::string& answer) override;
 
-    bool CheckAnswer(const std::string& answer) override;
+    bool operator==(const MultipleChoiceQuestion& other);
+
+private:
+    /*Private members*/
+    std::string m_answer;
+    std::vector<std::string> m_wrongChoices;
 };
 

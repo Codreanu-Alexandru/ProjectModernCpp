@@ -5,17 +5,29 @@ SingleNumericQuestion::SingleNumericQuestion(const std::string& question, int an
 {
 }
 
-void SingleNumericQuestion::SetAnswer(int newAnswer)
-{
-	m_answer = newAnswer;
-}
-
 int SingleNumericQuestion::GetAnswer()
 {
 	return m_answer;
 }
 
-bool SingleNumericQuestion::CheckAnswer(const std::string& answer)
+void SingleNumericQuestion::SetAnswer(int newAnswer)
 {
-	return std::stof(answer) == m_answer;
+	m_answer = newAnswer;
+}
+
+float SingleNumericQuestion::CheckAnswer(const std::string& answer)
+{
+	return static_cast<float>(std::stoi(answer)) / m_answer;
+}
+
+bool SingleNumericQuestion::operator==(const SingleNumericQuestion& other)
+{
+	if (other.m_answer == m_answer)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 }

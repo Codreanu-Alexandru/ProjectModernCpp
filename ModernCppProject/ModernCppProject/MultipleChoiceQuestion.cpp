@@ -9,9 +9,9 @@ MultipleChoiceQuestion::MultipleChoiceQuestion(
 {
 }
 
-void MultipleChoiceQuestion::SetChoices(const std::vector<std::string>& choices)
+std::string MultipleChoiceQuestion::GetAnswer()
 {
-	m_wrongChoices = choices;
+	return m_answer;
 }
 
 std::vector<std::string> MultipleChoiceQuestion::GetChoices()
@@ -19,17 +19,30 @@ std::vector<std::string> MultipleChoiceQuestion::GetChoices()
 	return m_wrongChoices;
 }
 
-void MultipleChoiceQuestion::SetAnswer(std::string newAnswer)
+void MultipleChoiceQuestion::SetAnswer(const std::string& newAnswer)
 {
 	m_answer = newAnswer;
 }
 
-std::string MultipleChoiceQuestion::GetAnswer()
+void MultipleChoiceQuestion::SetChoices(const std::vector<std::string>& choices)
 {
-	return m_answer;
+	m_wrongChoices = choices;
 }
 
-bool MultipleChoiceQuestion::CheckAnswer(const std::string& answer)
+float MultipleChoiceQuestion::CheckAnswer(const std::string& answer)
 {
-	return answer == m_answer;
+	return (answer == m_answer) ? 1.0 : 0.0;
+}
+
+bool MultipleChoiceQuestion::operator==(const MultipleChoiceQuestion& other)
+{
+	if (other.m_answer == m_answer &&
+		other.m_wrongChoices == m_wrongChoices)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 }
