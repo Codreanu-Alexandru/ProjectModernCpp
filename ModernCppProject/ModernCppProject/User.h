@@ -34,17 +34,24 @@ using Database = decltype(createUserStorage(""));
 class UserDB {
 
 public:
+	/*Public members*/
+	/*TBM*/
 	std::vector<User> m_databaseUsers;
+
+	/*Public Functions*/
 	bool InitializeDB(const std::string& csvDataFilePath);
 	int getNumberOfUsers();
 
-public:
+	/*Getters*/
 	void displayDatabase();
 	Database getUserDatabase();
 
 	//User findUserByUsername(std::string username);
 
 private:
+	/*Private Functions*/
 	void PopulateDatabase(const std::string& dataFilePath);
+
+	/*Public Database assignment*/
 	Database m_Database = createUserStorage(databaseFile);
 };

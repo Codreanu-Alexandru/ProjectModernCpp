@@ -92,8 +92,8 @@ int main()
 		return -1;
 	}
 
-	/*Map map(2);
-	map.showMap();*/
+	Map map(4);
+	map.ShowMap();
 
 
 	userDatabase.displayDatabase();

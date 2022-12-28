@@ -5,6 +5,7 @@
 class NewUserHandler
 {
 public:
+	/*Operator overload*/
 	crow::response operator() (const crow::request& req) const;
 };
 

@@ -1,8 +1,8 @@
 #include "ExistingUserHandler.h"
 
 ExistingUserHandler::ExistingUserHandler(Login login)
+	:m_login(login)
 {
-	m_login = login;
 }
 
 crow::response ExistingUserHandler::operator()(const crow::request& req) const

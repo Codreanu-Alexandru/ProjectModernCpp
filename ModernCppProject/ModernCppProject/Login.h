@@ -4,9 +4,11 @@
 class Login
 {
 public:
+	/*Public members*/
+	/*TBM*/
 	std::vector<Player> m_loggedInPlayers;
 
-public:
+	/*Public Constructor*/
 	void addLoggedInPlayer(std::string username);
 
 };
