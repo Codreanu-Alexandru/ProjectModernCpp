@@ -7,17 +7,16 @@ Advantages::Advantages()
 	m_suggestAnswerAvailable = true;
 }
 
-void Advantages::applyFiftyFifty()
+void Advantages::ApplyFiftyFifty()
 {
 	if (m_fiftyFiftyAvailable)
 	{
-
 		m_fiftyFiftyAvailable = false;
 	}
 	
 }
 
-void Advantages::applyChooseAnswer()
+void Advantages::ApplyChooseAnswer()
 {
 	if (m_chooseAnswerAvailable)
 	{
@@ -26,7 +25,7 @@ void Advantages::applyChooseAnswer()
 	
 }
 
-void Advantages::applySuggestAnswer()
+void Advantages::ApplySuggestAnswer()
 {
 	if (m_suggestAnswerAvailable)
 	{
@@ -35,12 +34,11 @@ void Advantages::applySuggestAnswer()
 	
 }
 
-void Advantages::displayAdvantages(Question question)
+void Advantages::DisplayAdvantages(Question question)
 {
 	uint8_t option;
-	SingleNumericQuestion* a = dynamic_cast<SingleNumericQuestion*>(&question);
 	std::cout << "Avantaje disponibile: \n";
-	if (a!=nullptr)
+	if (question.GetIsNumericQuestionBoolean())
 	{
 		if (m_fiftyFiftyAvailable)
 			std::cout << "7: 50/50 - Nu e valabil pentru acest tip de intrebare \n";
@@ -53,10 +51,10 @@ void Advantages::displayAdvantages(Question question)
 		switch (option)
 		{
 		case 8:
-			applyChooseAnswer();
+			ApplyChooseAnswer();
 			break;
 		case 9:
-			applySuggestAnswer();
+			ApplySuggestAnswer();
 			break;
 		default:
 			break;
@@ -74,10 +72,10 @@ void Advantages::displayAdvantages(Question question)
 		switch (option)
 		{
 		case 7:
-			applyFiftyFifty();
+			ApplyFiftyFifty();
 			break;
 		case 9:
-			applySuggestAnswer();
+			ApplySuggestAnswer();
 			break;
 		default:
 			break;

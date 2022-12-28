@@ -1,24 +1,25 @@
 #pragma once
-#include<iostream>
-#include<vector>
-#include<stdio.h>
-#include "Region.h"
-#include"Advantages.h"
+#include <cstdint>
+#include "Advantages.h"
 
 
 class Player
 {
-private:
-	std::string m_name;
-	Region m_base;
-	std::vector<Region> m_territory;
-	uint16_t m_score;
-	Advantages m_advantages;
-
 public:
-	Player(std::string username);
-	std::string getName();
-	
+	/*Public Constructor*/
+	Player(const std::string& username);
 
+	/*Getter*/
+	std::string GetName();
+
+	/*Setter*/
+	void SetName(const std::string& username);
+
+private:
+	/*Private members*/
+	bool m_isActivPlayer;
+	uint16_t m_score;
+	std::string m_name;
+	Advantages m_advantages;
 };
 

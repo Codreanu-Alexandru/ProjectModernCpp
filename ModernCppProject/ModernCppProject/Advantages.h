@@ -6,14 +6,17 @@
 class Advantages
 {
 public:
+	/*Public Constructor*/
 	Advantages();
-	void applyFiftyFifty();
-	void applyChooseAnswer();
-	void applySuggestAnswer();
-	void displayAdvantages(Question question);
 
+	/*Public Functions*/
+	void ApplyFiftyFifty();
+	void ApplyChooseAnswer();
+	void ApplySuggestAnswer();
+	void DisplayAdvantages(Question question);
 
 private:
+	/*Private members*/
 	bool m_fiftyFiftyAvailable;
 	bool m_chooseAnswerAvailable;
 	bool m_suggestAnswerAvailable;
