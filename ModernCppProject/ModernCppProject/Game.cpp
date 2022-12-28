@@ -2,44 +2,77 @@
 
 Game::Game()
 {
-	m_players={};
+	m_players = {};
 	m_numberOfPlayers = 0;
 	m_numberOfRounds = 0;
-	InitQuestions();
+	InitQuestions(0);
 }
 
 Game::Game(std::vector<Player>& players)
 	:m_players(players)
 {
 	m_numberOfPlayers = players.size();
-
-	m_map = Map(m_numberOfPlayers);
-
+	InitQuestions(m_numberOfPlayers);
 	switch (m_numberOfPlayers)
 	{
 	case 2:
 	{
+		/*2 Players
+		5 Rounds*/
 		m_numberOfRounds = 5;
 		break;
 	}
 	case 3:
 	{
+		/*3 Players
+		4 Rounds*/
 		m_numberOfRounds = 4;
 		break;
 	}
 	case 4:
 	{
+		/*4 Players
+		5 Rounds*/
 		m_numberOfRounds = 5;
 		break;
 	}
 	default:
+	{
+		/*Something went wrong*/
+		m_numberOfRounds = 0;
 		break;
+	}
 	}
 
 }
 
-void Game::InitQuestions()
+void Game::InitQuestions(uint8_t numberOfPlayers)
 {
+	uint8_t numberOfQuestions;
+	switch (numberOfPlayers)
+	{
+	case 2:
+	{	/*2 Players - 7 Questions*/
+		numberOfQuestions = 14;
+		break;
+	}
+	case 3:
+	{
+		/* 3 Players - 14 Questions*/
+		numberOfQuestions = 28;
+		break;
+	}
+	case 4:
+	{
+		/*4 Players - 22 Questions*/
+		numberOfQuestions = 44;
+		break;
+	}
+	default:
+		return;
+	}
+
+	std::vector<std::variant<SingleNumericQuestion, MultipleChoiceQuestion>> questions;
 	std::ifstream input("qna.txt");
 	if (!input.is_open())
 	{
@@ -103,9 +136,8 @@ void Game::InitQuestions()
 					input >> in;
 				}
 
-				Question* mcq = new MultipleChoiceQuestion(auxQuestion, auxAnswer, auxVector,idCounter);
-
-				m_questions.push_back(mcq);
+				auto q1 = MultipleChoiceQuestion(auxQuestion, auxAnswer, auxVector, idCounter);
+				questions.push_back(q1);
 
 				idCounter++;
 				auxAnswer = {};
@@ -125,9 +157,9 @@ void Game::InitQuestions()
 			else if (!state.compare("_CA_"))
 			{
 				auxAnswer = in;
-				Question* snq = new SingleNumericQuestion(auxQuestion, std::stoi(auxAnswer),idCounter);
 
-				m_questions.push_back(snq);
+				auto q2 = SingleNumericQuestion(auxQuestion, std::stoi(auxAnswer), idCounter);
+				questions.push_back(q2);
 
 				idCounter++;
 				auxAnswer = {};
@@ -137,4 +169,27 @@ void Game::InitQuestions()
 		}
 	}
 
+	std::random_device generator;
+	std::uniform_int_distribution<int> distribution(0, questions.size() - 1);
+
+	while (numberOfQuestions)
+	{
+		bool found = false;
+		int index = distribution(generator);
+		auto auxElement = std::move(questions[index]);
+
+		for (const auto& q : m_questions)
+		{
+			if (q.index() == auxElement.index())
+			{
+				found = true;
+				break;
+			}
+		}
+		if (!found)
+		{
+			m_questions.emplace_back(auxElement);
+			numberOfQuestions--;
+		}
+	}
 }
