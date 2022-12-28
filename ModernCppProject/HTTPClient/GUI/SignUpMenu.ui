@@ -71,6 +71,9 @@
        <height>30</height>
       </rect>
      </property>
+     <property name="echoMode">
+      <enum>QLineEdit::Password</enum>
+     </property>
     </widget>
     <widget class="QPushButton" name="signUp2Button">
      <property name="geometry">
