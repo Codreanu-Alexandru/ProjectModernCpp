@@ -6,22 +6,24 @@
 class Question
 {
 public:
-
-	int m_id;
-	std::string m_question;
-	bool m_isNumericQuestion;
-
-public:
-
+	/*Public Constructor*/
 	Question(const std::string& question, bool isNumericQuestion, int id);
 
+	/*Public Getters*/
 	std::string GetQuestion();
-	void SetQuestion(const std::string& newQuestion);
-
 	bool GetIsNumericQuestionBoolean();
 
-public:
+	/*Public Setters*/
+	void SetQuestion(const std::string& newQuestion);
 
-	virtual bool CheckAnswer(const std::string& answer);
+	/*Public Virtual Function*/
+	virtual float CheckAnswer(const std::string& answer);
+
+private:
+	/*Private members*/
+	int m_id;
+	bool m_isNumericQuestion;
+	std::string m_question;
+
 };
 
