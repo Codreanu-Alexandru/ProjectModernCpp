@@ -3,13 +3,15 @@
 #include <QMainWindow>
 #include "ui_LoggedInMenu.h"
 #include "PreLobbyMenu.h"
+#include "ProfileViewTab.h"
+
 
 class LoggedInMenu : public QMainWindow
 {
 	Q_OBJECT
 
 public:
-	LoggedInMenu(QWidget *parent = nullptr);
+	LoggedInMenu(QWidget *parent, CurrentUser* currentUser);
 	~LoggedInMenu();
 
 private slots:
@@ -21,5 +23,7 @@ private slots:
 private:
 	Ui::LoggedInMenuClass ui;
 	QWidget* parentWindow;
+	CurrentUser* loggedUser;
 	PreLobbyMenu* preLobbyMenu;
+	ProfileViewTab* profileViewTab;
 };

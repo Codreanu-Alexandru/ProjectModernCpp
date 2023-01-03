@@ -10,8 +10,9 @@ PreLobbyMenu::PreLobbyMenu(QWidget *parent)
 PreLobbyMenu::~PreLobbyMenu()
 {}
 
-void PreLobbyMenu::on_twoPlayersPushButton_clicked()
-{
+void PreLobbyMenu::on_twoPlayersPushButton_clicked() {
+
+	cpr::Response response = cpr::Get(cpr::Url{ "http://localhost:4960/users" });
 }
 
 void PreLobbyMenu::on_threePlayersPushButton_clicked()

@@ -1,6 +1,8 @@
 #pragma once
 
 #include <QMainWindow>
+#include <cpr/cpr.h>
+#include <crow.h>
 #include "ui_PreLobbyMenu.h"
 
 class PreLobbyMenu : public QMainWindow

@@ -36,8 +36,11 @@ void LogInMenu::on_logIn2PushButton_clicked() {
 
 		if (userResponse.status_code == 200 || userResponse.status_code == 201) {
 
+			CurrentUser* currentUser = new CurrentUser;
+			currentUser->createUser(username);
+
 			hide();
-			loggedInMenu = new LoggedInMenu(this);
+			loggedInMenu = new LoggedInMenu(this, currentUser);
 			loggedInMenu->show();
 		}
 		else {

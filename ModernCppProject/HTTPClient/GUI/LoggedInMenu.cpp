@@ -1,10 +1,12 @@
 #include "LoggedInMenu.h"
 
-LoggedInMenu::LoggedInMenu(QWidget *parent)
+LoggedInMenu::LoggedInMenu(QWidget *parent, CurrentUser *currentUser)
 	: QMainWindow(parent)
 {
 	parentWindow = parent;
 	ui.setupUi(this);
+	loggedUser = currentUser;
+
 	QPixmap pix("./castle.png");
 	int img_width = ui.castleImageLabel->width();
 	int img_height = ui.castleImageLabel->height();
@@ -23,6 +25,9 @@ void LoggedInMenu::on_playPushButton_clicked() {
 
 void LoggedInMenu::on_viewMyProfilePushButton_clicked() {
 
+	hide();
+	profileViewTab = new ProfileViewTab(this, loggedUser);
+	profileViewTab->show();
 }
 
 void LoggedInMenu::on_optionsPushButton_clicked() {
