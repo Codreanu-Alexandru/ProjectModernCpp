@@ -102,8 +102,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AuthUtils.cpp" />
+    <ClCompile Include="CurrentUser.cpp" />
     <ClCompile Include="LoggedInMenu.cpp" />
     <ClCompile Include="PreLobbyMenu.cpp" />
+    <ClCompile Include="ProfileViewTab.cpp" />
     <ClCompile Include="SignUpMenu.cpp" />
     <QtRcc Include="GUI.qrc" />
     <QtUic Include="GUI.ui" />
@@ -114,10 +116,12 @@
     <QtUic Include="LoggedInMenu.ui" />
     <QtUic Include="LogInMenu.ui" />
     <QtUic Include="PreLobbyMenu.ui" />
+    <QtUic Include="ProfileViewTab.ui" />
     <QtUic Include="SignUpMenu.ui" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="castle.png" />
+    <Image Include="conqueror_clipart.png" />
     <Image Include="emperor_clipart.png" />
     <Image Include="royal_design_left.png" />
     <Image Include="royal_design_right.png" />
@@ -142,6 +146,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AuthUtils.h" />
+    <ClInclude Include="CurrentUser.h" />
+    <QtMoc Include="ProfileViewTab.h" />
     <QtMoc Include="PreLobbyMenu.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

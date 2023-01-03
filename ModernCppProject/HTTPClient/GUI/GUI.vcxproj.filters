@@ -55,6 +55,12 @@
     <ClCompile Include="PreLobbyMenu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ProfileViewTab.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CurrentUser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="emperor_clipart.png">
@@ -72,6 +78,9 @@
     <Image Include="castle.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="conqueror_clipart.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="LogInMenu.ui">
@@ -84,6 +93,9 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="PreLobbyMenu.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="ProfileViewTab.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
@@ -105,9 +117,15 @@
     <QtMoc Include="PreLobbyMenu.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="ProfileViewTab.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AuthUtils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CurrentUser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
