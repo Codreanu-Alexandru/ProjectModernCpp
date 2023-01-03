@@ -6,7 +6,10 @@
 #include <string>
 #include <cpr/cpr.h>
 #include <crow.h>
+#include "CurrentUser.h"
 
 bool correctAuthentication(std::string username, std::string password, cpr::Response response);
 bool existingUser(std::string username, cpr::Response response);
 void showUsers(cpr::Response response);
+std::string getCurrentUserUsername();
+

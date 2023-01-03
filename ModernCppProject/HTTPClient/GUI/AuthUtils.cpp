@@ -8,6 +8,7 @@ bool correctAuthentication(std::string username, std::string password, cpr::Resp
         if (user["username"].s() == username) {
 
             if (user["password"].s() == password) {
+
                 return true;
             }
         }
@@ -29,8 +30,8 @@ bool existingUser(std::string username, cpr::Response response) {
     return false;
 }
 
-void showUsers(cpr::Response response)
-{
+void showUsers(cpr::Response response) {
+
     std::cout << "Here is the list of Users(just for now):\n";
 
     auto users = crow::json::load(response.text);
@@ -41,3 +42,5 @@ void showUsers(cpr::Response response)
             << user["matchHistory"] << '\n';
     }
 }
+
+
