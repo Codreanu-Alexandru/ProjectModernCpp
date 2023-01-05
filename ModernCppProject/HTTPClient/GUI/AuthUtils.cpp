@@ -2,12 +2,13 @@
 
 bool correctAuthentication(std::string username, std::string password, cpr::Response response) {
 
+    Encoder encoder;
     auto users = crow::json::load(response.text);
     for (const auto& user : users) {
 
         if (user["username"].s() == username) {
 
-            if (user["password"].s() == password) {
+            if (encoder.TryToMatch(password, user["password"].s())) { //TryToMach(password,user["password"].s())
 
                 return true;
             }

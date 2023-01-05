@@ -2,6 +2,7 @@
 
 crow::response NewUserHandler::operator()(const crow::request& req) const
 {
+	Encoder encoder;
 		auto bodyArgs = parseUrlArgs(req.body); //id=2&quantity=3&...
 		auto end = bodyArgs.end();
 		auto usernameIter = bodyArgs.find("username");
@@ -13,7 +14,7 @@ crow::response NewUserHandler::operator()(const crow::request& req) const
 		User newUser;
 		newUser.id = usersCount + 1;
 		newUser.username = usernameIter->second;
-		newUser.password = passwordIter->second;
+		newUser.password = encoder.Encode(passwordIter->second, '\0');//Encode(passwordIter->second);
 		newUser.matchHistory = "0";
 	
 		Database userDB = userDatabase.getUserDatabase();

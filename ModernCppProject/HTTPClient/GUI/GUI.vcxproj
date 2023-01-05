@@ -61,6 +61,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <AdditionalOptions>/D_SILENCE_ALL_CXX20_DEPRECATION_WARNINGS %(AdditionalOptions)</AdditionalOptions>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
@@ -69,6 +70,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <AdditionalOptions>/D_SILENCE_ALL_CXX20_DEPRECATION_WARNINGS %(AdditionalOptions)</AdditionalOptions>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
@@ -103,6 +105,7 @@
   <ItemGroup>
     <ClCompile Include="AuthUtils.cpp" />
     <ClCompile Include="CurrentUser.cpp" />
+    <ClCompile Include="Encoder.cpp" />
     <ClCompile Include="LoggedInMenu.cpp" />
     <ClCompile Include="PreLobbyMenu.cpp" />
     <ClCompile Include="ProfileViewTab.cpp" />
@@ -147,6 +150,7 @@
   <ItemGroup>
     <ClInclude Include="AuthUtils.h" />
     <ClInclude Include="CurrentUser.h" />
+    <ClInclude Include="Encoder.h" />
     <QtMoc Include="ProfileViewTab.h" />
     <QtMoc Include="PreLobbyMenu.h" />
   </ItemGroup>

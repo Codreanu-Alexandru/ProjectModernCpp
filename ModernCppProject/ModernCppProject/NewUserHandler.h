@@ -1,6 +1,7 @@
 #pragma once
 #include <crow.h>
 #include "User.h"
+#include "../Encoder/Encoder.h"
 
 class NewUserHandler
 {
