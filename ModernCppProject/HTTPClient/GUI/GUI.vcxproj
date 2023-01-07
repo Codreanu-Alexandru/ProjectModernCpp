@@ -106,16 +106,20 @@
     <ClCompile Include="AuthUtils.cpp" />
     <ClCompile Include="CurrentUser.cpp" />
     <ClCompile Include="Encoder.cpp" />
+    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Lobby.cpp" />
     <ClCompile Include="LoggedInMenu.cpp" />
     <ClCompile Include="PreLobbyMenu.cpp" />
     <ClCompile Include="ProfileViewTab.cpp" />
     <ClCompile Include="SignUpMenu.cpp" />
     <QtRcc Include="GUI.qrc" />
+    <QtUic Include="Game.ui" />
     <QtUic Include="GUI.ui" />
     <QtMoc Include="GUI.h" />
     <ClCompile Include="GUI.cpp" />
     <ClCompile Include="LogInMenu.cpp" />
     <ClCompile Include="main.cpp" />
+    <QtUic Include="Lobby.ui" />
     <QtUic Include="LoggedInMenu.ui" />
     <QtUic Include="LogInMenu.ui" />
     <QtUic Include="PreLobbyMenu.ui" />
@@ -151,6 +155,8 @@
     <ClInclude Include="AuthUtils.h" />
     <ClInclude Include="CurrentUser.h" />
     <ClInclude Include="Encoder.h" />
+    <QtMoc Include="Game.h" />
+    <QtMoc Include="Lobby.h" />
     <QtMoc Include="ProfileViewTab.h" />
     <QtMoc Include="PreLobbyMenu.h" />
   </ItemGroup>

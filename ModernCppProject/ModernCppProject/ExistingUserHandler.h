@@ -9,7 +9,7 @@ class ExistingUserHandler
 {
 public:
 	/*Public Constructor*/
-	ExistingUserHandler(Login login);
+	ExistingUserHandler(Login &login);
 
 	/*Operator overload*/
 	crow::response operator() (const crow::request& req) const;

@@ -62,6 +62,10 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Encoder.cpp">
+    <ClCompile Include="Lobby.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -101,6 +105,12 @@
     <QtUic Include="ProfileViewTab.ui">
       <Filter>Form Files</Filter>
     </QtUic>
+    <QtUic Include="Lobby.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="Game.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
   </ItemGroup>
   <ItemGroup>
     <None Include="Irrorater.qss">
@@ -121,6 +131,12 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="ProfileViewTab.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="Lobby.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="Game.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

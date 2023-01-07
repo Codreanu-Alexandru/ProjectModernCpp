@@ -69,6 +69,12 @@
     <ClCompile Include="NewUserHandler.cpp">
       <Filter>Source Files\Server Logic</Filter>
     </ClCompile>
+    <ClCompile Include="LobbyHandler.cpp">
+      <Filter>Source Files\Server Logic</Filter>
+    </ClCompile>
+    <ClCompile Include="Lobby.cpp">
+      <Filter>Source Files\Server Logic</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Advantages.h">
@@ -117,6 +123,12 @@
       <Filter>Header Files\Server Logic</Filter>
     </ClInclude>
     <ClInclude Include="NewUserHandler.h">
+      <Filter>Header Files\Server Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="LobbyHandler.h">
+      <Filter>Header Files\Server Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="Lobby.h">
       <Filter>Header Files\Server Logic</Filter>
     </ClInclude>
   </ItemGroup>

@@ -136,6 +136,8 @@
     <ClCompile Include="Advantages.cpp" />
     <ClCompile Include="ExistingUserHandler.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Lobby.cpp" />
+    <ClCompile Include="LobbyHandler.cpp" />
     <ClCompile Include="Login.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="MultipleChoiceQuestion.cpp" />
@@ -152,6 +154,8 @@
     <ClInclude Include="Advantages.h" />
     <ClInclude Include="ExistingUserHandler.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="Lobby.h" />
+    <ClInclude Include="LobbyHandler.h" />
     <ClInclude Include="Login.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="MultipleChoiceQuestion.h" />

@@ -1,6 +1,6 @@
 #include "ExistingUserHandler.h"
 
-ExistingUserHandler::ExistingUserHandler(Login login)
+ExistingUserHandler::ExistingUserHandler(Login &login)
 	:m_login(login)
 {
 }
