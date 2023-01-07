@@ -4,7 +4,7 @@
 #include "ui_LoggedInMenu.h"
 #include "PreLobbyMenu.h"
 #include "ProfileViewTab.h"
-
+#include "Lobby.h"
 
 class LoggedInMenu : public QMainWindow
 {
@@ -25,5 +25,6 @@ private:
 	QWidget* parentWindow;
 	CurrentUser* loggedUser;
 	PreLobbyMenu* preLobbyMenu;
+	Lobby* lobby;
 	ProfileViewTab* profileViewTab;
 };

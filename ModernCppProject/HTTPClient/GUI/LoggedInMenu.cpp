@@ -1,5 +1,6 @@
 #include "LoggedInMenu.h"
 
+
 LoggedInMenu::LoggedInMenu(QWidget *parent, CurrentUser *currentUser)
 	: QMainWindow(parent)
 {
@@ -19,8 +20,8 @@ LoggedInMenu::~LoggedInMenu()
 void LoggedInMenu::on_playPushButton_clicked() {
 
 	hide();
-	preLobbyMenu = new PreLobbyMenu(this);
-	preLobbyMenu->show();
+	lobby = new Lobby(this,loggedUser->getUsername());
+	lobby->show();
 }
 
 void LoggedInMenu::on_viewMyProfilePushButton_clicked() {
