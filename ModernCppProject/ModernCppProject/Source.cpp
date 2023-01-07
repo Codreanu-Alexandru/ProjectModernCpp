@@ -11,6 +11,8 @@
 #include "NewUserHandler.h"
 #include "ExistingUserHandler.h"
 #include "Login.h"
+#include "LobbyHandler.h"
+#include "Lobby.h"
 
 //to be moved
 crow::response deleteUserData(const crow::request& req)
@@ -133,6 +135,38 @@ int main()
 	auto& deleteUserFromServerPut = CROW_ROUTE(app, "/deleteUserFromServer")
 		.methods(crow::HTTPMethod::PUT); // https://stackoverflow.com/a/630475/12388382
 	deleteUserFromServerPut(deleteUserData);
+
+	Lobby lobby(app);
+	LobbyHandler lobbyHandler(lobby);
+
+	auto& sendPlayersInLobbyPut = CROW_ROUTE(app, "/sendPlayerInLobbyToServer")
+		.methods(crow::HTTPMethod::PUT);
+	sendPlayersInLobbyPut(lobbyHandler);
+
+	CROW_ROUTE(app, "/lobbyInfo")([&lobby]() {
+
+		
+	crow::json::wvalue lobbyData;
+	int timerSeconds = lobby.timerSeconds;
+	int numberOfPlayers = lobby.numberOfPlayers;
+	int code;
+	lobbyData["timerSeconds"] = timerSeconds;
+	lobbyData["playersInLobby"] = numberOfPlayers;
+	
+	lobby.timerSeconds--;
+	std::cout << std::endl;
+	std::cout << lobby.timerSeconds;
+	if (lobby.numberOfPlayers == 1)
+		code = 304;
+	if (lobby.numberOfPlayers != 4&&lobby.timerSeconds > 0)
+		code = 303;
+	if (lobby.numberOfPlayers == 4||lobby.timerSeconds<=0)
+		code = 302;
+
+	return crow::response(code, lobbyData);
+		});
+
+
 
 	app.port(4960).multithreaded().run();
 
