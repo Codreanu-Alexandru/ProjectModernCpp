@@ -143,6 +143,10 @@ int main()
 		.methods(crow::HTTPMethod::PUT);
 	sendPlayersInLobbyPut(lobbyHandler);
 
+	auto& removePlayersFromLobbyPut = CROW_ROUTE(app, "/removePlayerFromLobby")
+		.methods(crow::HTTPMethod::PUT);
+	removePlayersFromLobbyPut(lobbyHandler);
+
 	CROW_ROUTE(app, "/lobbyInfo")([&lobby]() {
 
 		
@@ -156,17 +160,18 @@ int main()
 	lobby.timerSeconds--;
 	std::cout << std::endl;
 	std::cout << lobby.timerSeconds;
-	if (lobby.numberOfPlayers == 1)
-		code = 304;
-	if (lobby.numberOfPlayers != 4&&lobby.timerSeconds > 0)
+
+	if (lobby.numberOfPlayers != 4 && lobby.timerSeconds > 0)
 		code = 303;
-	if (lobby.numberOfPlayers == 4||lobby.timerSeconds<=0)
+	else if (lobby.numberOfPlayers == 1 && lobby.timerSeconds <= 0) {
 		code = 302;
+		lobby.flush();
+	}
+	else if (lobby.numberOfPlayers == 4 || (lobby.timerSeconds <= 0 && lobby.numberOfPlayers > 1))
+		code = 301;
 
 	return crow::response(code, lobbyData);
 		});
-
-
 
 	app.port(4960).multithreaded().run();
 
