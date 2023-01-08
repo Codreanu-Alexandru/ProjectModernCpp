@@ -21,6 +21,4 @@ private:
 	/*Private members*/
 	std::vector<Player> m_playersInLobby;
 	mutable Lobby *m_lobby;
-
-
 };
