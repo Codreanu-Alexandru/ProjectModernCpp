@@ -5,6 +5,7 @@
 #include <cpr/cpr.h>
 #include <crow.h>
 #include "Game.h"
+#include <qmessagebox.h>
 
 class Lobby : public QMainWindow
 {
@@ -16,6 +17,7 @@ public:
 
 public slots:
 	void showTime();
+	void on_cancelPushButton_clicked();
 
 private:
 	Ui::LobbyClass ui;

@@ -20,7 +20,7 @@ LoggedInMenu::~LoggedInMenu()
 void LoggedInMenu::on_playPushButton_clicked() {
 
 	hide();
-	lobby = new Lobby(this,loggedUser->getUsername());
+	lobby = new Lobby(this, loggedUser->getUsername());
 	lobby->show();
 }
 
