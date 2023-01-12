@@ -13,10 +13,13 @@
 class Game
 {
 public:
+	bool running;
+public:
 
 	/*Public Constructor*/
 	Game();
 	Game(std::vector<Player>& players);
+	Map* getMap();
 
 private:
 	/*Private members*/
@@ -24,6 +27,7 @@ private:
 	int m_numberOfRounds;
 	std::vector<Player> m_players;
 	std::vector<std::variant<SingleNumericQuestion,MultipleChoiceQuestion>> m_questions;
+	Map* m_map;
 
 	/*Private Function*/
 	void InitQuestions(uint8_t numberOfPlayers);

@@ -2,16 +2,21 @@
 
 Game::Game()
 {
+	running = false;
 	m_players = {};
 	m_numberOfPlayers = 0;
 	m_numberOfRounds = 0;
+	m_map = new Map(0);
 	InitQuestions(0);
 }
 
 Game::Game(std::vector<Player>& players)
 	:m_players(players)
 {
+	running = true;
 	m_numberOfPlayers = players.size();
+	int mapSizeForTest = m_numberOfPlayers+1;//just for testing the app without releasing 
+	m_map = new Map(mapSizeForTest);
 	InitQuestions(m_numberOfPlayers);
 	switch (m_numberOfPlayers)
 	{
@@ -44,6 +49,11 @@ Game::Game(std::vector<Player>& players)
 	}
 	}
 
+}
+
+Map* Game::getMap()
+{
+	return m_map;
 }
 
 void Game::InitQuestions(uint8_t numberOfPlayers)
