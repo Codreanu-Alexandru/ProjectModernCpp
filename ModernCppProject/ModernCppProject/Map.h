@@ -12,6 +12,8 @@ public:
 	void SetHeight(size_t height);
 
 	/*Getters*/
+	uint8_t GetHeight();
+	uint8_t GetWidth();
 
 	/*Public Functions*/
 	void ShowMap();

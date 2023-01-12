@@ -46,6 +46,16 @@ void Map::SetHeight(size_t height) {
 	kHeight = height;
 }
 
+uint8_t Map::GetHeight()
+{
+	return kHeight;
+}
+
+uint8_t Map::GetWidth()
+{
+	return kWidth;
+}
+
 void Map::GenerateMap()
 {
 	for (int heightIndex = 0; heightIndex < kHeight; heightIndex++)
