@@ -3,7 +3,7 @@
 Lobby::Lobby(crow::SimpleApp& app)
 {
 	this->app = &app;
-	numberOfPlayers = 0;
+	numberOfPlayers = 1;//just for testing the app without releasing
 	timerSeconds = 30;
 }
 
