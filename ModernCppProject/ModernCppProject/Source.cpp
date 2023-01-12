@@ -13,6 +13,7 @@
 #include "Login.h"
 #include "LobbyHandler.h"
 #include "Lobby.h"
+#include "StartGameHandler.h"
 
 //to be moved
 crow::response deleteUserData(const crow::request& req)
@@ -153,7 +154,7 @@ int main()
 	crow::json::wvalue lobbyData;
 	int timerSeconds = lobby.timerSeconds;
 	int numberOfPlayers = lobby.numberOfPlayers;
-	int code;
+	int code = 500;
 	lobbyData["timerSeconds"] = timerSeconds;
 	lobbyData["playersInLobby"] = numberOfPlayers;
 	
@@ -172,6 +173,13 @@ int main()
 
 	return crow::response(code, lobbyData);
 		});
+
+	Game game;
+	StartGameHandler startGame(&game, lobby);
+	auto& startGamePut = CROW_ROUTE(app, "/startGame")
+		.methods(crow::HTTPMethod::PUT);
+	startGamePut(startGame);
+
 
 	app.port(4960).multithreaded().run();
 
