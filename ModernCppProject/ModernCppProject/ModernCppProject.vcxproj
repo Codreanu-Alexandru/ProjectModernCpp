@@ -147,6 +147,7 @@
     <ClCompile Include="Region.cpp" />
     <ClCompile Include="SingleNumericQuestion.cpp" />
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="StartGameHandler.cpp" />
     <ClCompile Include="User.cpp" />
     <ClCompile Include="utils.cpp" />
   </ItemGroup>
@@ -164,6 +165,7 @@
     <ClInclude Include="Question.h" />
     <ClInclude Include="Region.h" />
     <ClInclude Include="SingleNumericQuestion.h" />
+    <ClInclude Include="StartGameHandler.h" />
     <ClInclude Include="User.h" />
     <ClInclude Include="utils.h" />
   </ItemGroup>

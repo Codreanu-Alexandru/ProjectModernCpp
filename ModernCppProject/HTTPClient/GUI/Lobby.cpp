@@ -37,8 +37,7 @@ void Lobby::showTime()
 	cpr::Response response = cpr::Get(cpr::Url{ "http://localhost:4960/lobbyInfo" });
 	
 	auto lobbyData = crow::json::load(response.text);
-	//auto lobbyData = std::stoi(response.text);
-	
+
 	QString playersText = QString::number(lobbyData["playersInLobby"].i());
 	ui.numberOfPlayersLabel->setText(playersText);
 
@@ -59,10 +58,12 @@ void Lobby::showTime()
 	{
 		timer->stop();
 		hide();
-		game = new Game(parentWindow);
+		game = new Game(parentWindow, m_username);
 		game->show();
+		
 	}
 }
+
 
 void Lobby::on_cancelPushButton_clicked()
 {

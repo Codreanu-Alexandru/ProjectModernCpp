@@ -75,6 +75,9 @@
     <ClCompile Include="Lobby.cpp">
       <Filter>Source Files\Server Logic</Filter>
     </ClCompile>
+    <ClCompile Include="StartGameHandler.cpp">
+      <Filter>Source Files\Server Logic</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Advantages.h">
@@ -129,6 +132,9 @@
       <Filter>Header Files\Server Logic</Filter>
     </ClInclude>
     <ClInclude Include="Lobby.h">
+      <Filter>Header Files\Server Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="StartGameHandler.h">
       <Filter>Header Files\Server Logic</Filter>
     </ClInclude>
   </ItemGroup>
