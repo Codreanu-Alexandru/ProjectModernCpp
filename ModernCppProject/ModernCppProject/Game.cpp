@@ -10,7 +10,7 @@ Game::Game()
 	InitQuestions(0);
 }
 
-Game::Game(std::vector<Player>& players)
+Game::Game(std::vector<Player> players)
 	:m_players(players)
 {
 	running = true;
@@ -201,5 +201,44 @@ void Game::InitQuestions(uint8_t numberOfPlayers)
 			m_questions.emplace_back(auxElement);
 			numberOfQuestions--;
 		}
+	}
+}
+
+void Game::setInfo(std::vector<Player> players) {
+
+	running = true;
+	m_numberOfPlayers = players.size();
+	int mapSizeForTest = m_numberOfPlayers;//just for testing the app without releasing 
+	m_map = new Map(mapSizeForTest);
+	//InitQuestions(m_numberOfPlayers);
+	switch (m_numberOfPlayers)
+	{
+	case 2:
+	{
+		/*2 Players
+		5 Rounds*/
+		m_numberOfRounds = 5;
+		break;
+	}
+	case 3:
+	{
+		/*3 Players
+		4 Rounds*/
+		m_numberOfRounds = 4;
+		break;
+	}
+	case 4:
+	{
+		/*4 Players
+		5 Rounds*/
+		m_numberOfRounds = 5;
+		break;
+	}
+	default:
+	{
+		/*Something went wrong*/
+		m_numberOfRounds = 0;
+		break;
+	}
 	}
 }

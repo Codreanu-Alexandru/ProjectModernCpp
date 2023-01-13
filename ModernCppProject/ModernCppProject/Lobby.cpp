@@ -3,15 +3,15 @@
 Lobby::Lobby(crow::SimpleApp& app)
 {
 	this->app = &app;
-	numberOfPlayers = 1;//just for testing the app without releasing
-	timerSeconds = 30;
+	numberOfPlayers = 0; //just for testing the app without releasing
+	timerSeconds = 15;
 }
 
 void Lobby::addPlayerInLobby(std::string username)
 {
 	m_playersInLobby.emplace_back(Player(username));
 	numberOfPlayers++;
-	timerSeconds = 30;
+	timerSeconds = 15;
 }
 
 void Lobby::removePlayerInLobby(std::string username)

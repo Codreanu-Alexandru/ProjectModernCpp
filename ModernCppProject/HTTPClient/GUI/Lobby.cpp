@@ -7,9 +7,9 @@ Lobby::Lobby(QWidget* parent, std::string username)
 {
 	ui.setupUi(this);
 	parentWindow = parent;
-	timerSeconds = 30;
+	timerSeconds = 15;
 	m_username = username;
-	playersInLobby = 1;
+	playersInLobby = 0;
 
 	QPixmap pix("./hourglass_clipart.png");
 	int img_width = ui.hourglassImageLabel->width();
@@ -60,7 +60,6 @@ void Lobby::showTime()
 		hide();
 		game = new Game(parentWindow, m_username);
 		game->show();
-		
 	}
 }
 

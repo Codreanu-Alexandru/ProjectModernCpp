@@ -24,6 +24,11 @@ Game::Game(QWidget *parent, std::string username)
 Game::~Game()
 {}
 
+void Game::Display() {
+
+
+}
+
 void Game::generateMap(size_t rows, size_t cols)
 {
 	for (int i = 0; i < rows; i++) {
@@ -35,6 +40,7 @@ void Game::generateMap(size_t rows, size_t cols)
 			map->addWidget(button, i, j);
 		}
 	}
+
 	mapWidget = new QWidget;
 	mapWidget->setLayout(map);
 }

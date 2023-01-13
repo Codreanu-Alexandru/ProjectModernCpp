@@ -78,6 +78,9 @@
     <ClCompile Include="StartGameHandler.cpp">
       <Filter>Source Files\Server Logic</Filter>
     </ClCompile>
+    <ClCompile Include="GameInfoHandler.cpp">
+      <Filter>Source Files\Server Logic</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Advantages.h">
@@ -135,6 +138,9 @@
       <Filter>Header Files\Server Logic</Filter>
     </ClInclude>
     <ClInclude Include="StartGameHandler.h">
+      <Filter>Header Files\Server Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="GameInfoHandler.h">
       <Filter>Header Files\Server Logic</Filter>
     </ClInclude>
   </ItemGroup>

@@ -12,6 +12,7 @@
 #include "ExistingUserHandler.h"
 #include "Login.h"
 #include "LobbyHandler.h"
+#include "Player.h"
 #include "Lobby.h"
 #include "StartGameHandler.h"
 
@@ -123,6 +124,8 @@ int main()
 	return crow::json::wvalue{ users_json };
 		});
 
+	Game game;
+
 	Login login;
 	ExistingUserHandler existingUser(login);
 	auto& sendExistingUserToServerPut = CROW_ROUTE(app, "/sendExistingUserToServer")
@@ -148,7 +151,7 @@ int main()
 		.methods(crow::HTTPMethod::PUT);
 	removePlayersFromLobbyPut(lobbyHandler);
 
-	CROW_ROUTE(app, "/lobbyInfo")([&lobby]() {
+	CROW_ROUTE(app, "/lobbyInfo")([&lobby, &game]() {
 
 		
 	crow::json::wvalue lobbyData;
@@ -168,18 +171,18 @@ int main()
 		code = 302;
 		lobby.flush();
 	}
-	else if (lobby.numberOfPlayers == 4 || (lobby.timerSeconds <= 0 && lobby.numberOfPlayers > 1))
+	else if (lobby.numberOfPlayers == 4 || (lobby.timerSeconds <= 0 && lobby.numberOfPlayers > 1)) {
+		game.setInfo(lobby.getPlayers());
 		code = 301;
+	}
 
 	return crow::response(code, lobbyData);
 		});
 
-	Game game;
-	StartGameHandler startGame(&game, lobby);
+	StartGameHandler startGame(game, lobby);
 	auto& startGamePut = CROW_ROUTE(app, "/startGame")
 		.methods(crow::HTTPMethod::PUT);
 	startGamePut(startGame);
-
 
 	app.port(4960).multithreaded().run();
 

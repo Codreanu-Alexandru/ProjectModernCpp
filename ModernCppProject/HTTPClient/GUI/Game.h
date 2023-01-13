@@ -17,6 +17,7 @@ public:
 	Game(QWidget *parent, std::string username);
 	~Game();
 	
+	void Display();
 	void generateMap(size_t kHeight, size_t kWidth);
 	void showMap(size_t kHeight, size_t kWidth);
 
