@@ -1,5 +1,6 @@
 #pragma once
 #include "Question.h"
+#include <limits>
 
 class SingleNumericQuestion :
     public Question
@@ -19,6 +20,7 @@ public:
 
     /*Public Overridden Function*/
     float CheckAnswer(const std::string& answer) override;
+    std::string ToString() override;
 
     /*Public Operator Overload*/
     bool operator==(const SingleNumericQuestion& other);
