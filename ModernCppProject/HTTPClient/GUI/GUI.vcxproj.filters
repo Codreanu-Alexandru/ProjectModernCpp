@@ -7,9 +7,6 @@
     <ClCompile Include="CurrentUser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Encoder.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -40,9 +37,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AuthUtils.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Encoder.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CurrentUser.h">
