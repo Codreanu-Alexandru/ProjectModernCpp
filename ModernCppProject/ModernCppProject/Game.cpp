@@ -10,6 +10,20 @@ Game::Game()
 	InitQuestions(0);
 }
 
+SingleNumericQuestion Game::GetNumericQuestion()
+{
+	auto& question = m_numericQuestions.back();
+	m_numericQuestions.pop_back();
+	return question;
+}
+
+std::variant<SingleNumericQuestion, MultipleChoiceQuestion> Game::GetQuestion()
+{
+	auto& question = m_questions.back();
+	m_questions.pop_back();
+	return question;
+}
+
 Game::Game(std::vector<Player> players)
 	:m_players(players)
 {
@@ -83,6 +97,7 @@ void Game::InitQuestions(uint8_t numberOfPlayers)
 	}
 
 	std::vector<std::variant<SingleNumericQuestion, MultipleChoiceQuestion>> questions;
+	std::vector<SingleNumericQuestion> numericQuestions;
 	std::ifstream input("qna.txt");
 	if (!input.is_open())
 	{
@@ -170,6 +185,7 @@ void Game::InitQuestions(uint8_t numberOfPlayers)
 
 				auto q2 = SingleNumericQuestion(auxQuestion, std::stoi(auxAnswer), idCounter);
 				questions.push_back(q2);
+				numericQuestions.push_back(q2);
 
 				idCounter++;
 				auxAnswer = {};
@@ -200,6 +216,29 @@ void Game::InitQuestions(uint8_t numberOfPlayers)
 		{
 			m_questions.emplace_back(auxElement);
 			numberOfQuestions--;
+		}
+	} 
+
+	std::uniform_int_distribution<int> newDistribution(0, numericQuestions.size() - 1);
+	uint8_t numberOfNumericQuestions = 6;
+	while (numberOfNumericQuestions)
+	{
+		bool found = false;
+		int index = newDistribution(generator);
+		auto auxElement = numericQuestions[index];
+
+		for (const auto& q : m_numericQuestions)
+		{
+			if (auxElement == q)
+			{
+				found = true;
+				break;
+			}
+		}
+		if (!found)
+		{
+			m_numericQuestions.emplace_back(auxElement);
+			numberOfNumericQuestions--;
 		}
 	}
 }
@@ -242,6 +281,41 @@ void Game::setInfo(std::vector<Player> players) {
 		break;
 	}
 	}
+}
+
+std::vector<uint8_t> getRanking(std::vector<std::tuple<uint8_t, float, float>> closenessVector)
+{
+	std::vector<std::tuple<uint8_t, float, float>> diferences;
+	std::vector<uint8_t> ranking;
+
+	for (const auto& i : closenessVector)
+	{
+		auto& [id, answerCloseness, timeStamp] = i;
+		diferences.emplace_back(id, std::fabs(answerCloseness - 1.0f), timeStamp);
+	}
+
+	std::sort(diferences.begin(), diferences.end(),
+		[](const std::tuple<int, float, float> a, const std::tuple<int, float, float>& b) {
+			auto& [idA, answerClosenessA, timeStampA] = a;
+			auto& [idB, answerClosenessB, timeStampB] = b;
+			if (answerClosenessA == answerClosenessB)
+			{
+				return timeStampA < timeStampB;
+			}
+			else
+			{
+				return answerClosenessA < answerClosenessB;
+			}
+		});
+
+	for (const auto& i : diferences)
+	{
+		auto& [id, answerCloseness, timeStamp] = i;
+		ranking.push_back(id);
+	}
+
+	return ranking;
+}
 }
 
 std::vector<Player> Game::getPlayers()
