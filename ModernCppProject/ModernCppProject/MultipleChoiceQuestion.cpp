@@ -31,18 +31,26 @@ void MultipleChoiceQuestion::SetChoices(const std::vector<std::string>& choices)
 
 float MultipleChoiceQuestion::CheckAnswer(const std::string& answer)
 {
-	return (answer == m_answer) ? 1.0 : 0.0;
+	return (answer == m_answer) ? 1.0f : 0.0f;
+}
+
+std::string MultipleChoiceQuestion::ToString()
+{
+	std::string questionString{ "" };
+	questionString += this->GetQuestion();
+	questionString += "/";
+	questionString += this->GetAnswer();
+	questionString += "/";
+	for (const auto& wa : m_wrongChoices)
+	{
+		questionString += wa;
+		questionString += "/";
+	}
+
+	return questionString;
 }
 
 bool MultipleChoiceQuestion::operator==(const MultipleChoiceQuestion& other)
 {
-	if (other.m_answer == m_answer &&
-		other.m_wrongChoices == m_wrongChoices)
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
+	return (other.m_answer == m_answer && other.m_wrongChoices == m_wrongChoices);
 }

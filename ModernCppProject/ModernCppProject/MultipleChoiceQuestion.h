@@ -23,6 +23,7 @@ public:
 
     /*Public Overridden Function*/
     float CheckAnswer(const std::string& answer) override;
+    std::string ToString() override;
 
     bool operator==(const MultipleChoiceQuestion& other);
 
