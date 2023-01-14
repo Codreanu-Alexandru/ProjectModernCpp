@@ -15,10 +15,10 @@ class Game
 public:
 	bool running;
 public:
-
 	/*Public Constructor*/
-	Game();
+	Game(std::vector<Player>& players);
 	Game(std::vector<Player> players);
+	Game();
 	void setInfo(std::vector<Player> players);
 	Map* getMap();
 

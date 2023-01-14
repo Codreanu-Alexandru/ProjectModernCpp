@@ -14,7 +14,7 @@ crow::response StartGameHandler::operator()(const crow::request& req) const
 	}*/
 
 	crow::json::wvalue gameData;
-	int mapHeight = static_cast<int>(game->getMap()->GetHeight());
+	int mapHeight = static_cast<int>(game->GetMap()->GetHeight());
 	std::cout << mapHeight << std::endl;
 	int mapWidth = static_cast<int>(game->getMap()->GetWidth());
 	gameData["nrPlayers"] = lobby->numberOfPlayers;

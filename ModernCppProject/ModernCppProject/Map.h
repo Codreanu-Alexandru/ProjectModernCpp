@@ -1,9 +1,13 @@
 #pragma once
 #include <vector>
+#include <ranges>
 #include "Region.h"
 
 class Map {
 public:
+
+	using Position = std::pair<size_t, size_t>;
+
 	/*Public Constructor*/
 	Map(uint8_t nrPlayers);
 
@@ -16,7 +20,12 @@ public:
 	uint8_t GetWidth();
 
 	/*Public Functions*/
+	bool HasEmptyRegions();
 	void ShowMap();
+
+	/*Public Operators*/
+	Region& operator[](const Position& position);
+	const Region& operator[](const Position& position) const;
 
 private:
 	/*Private members*/
