@@ -25,3 +25,9 @@ float Question::CheckAnswer(const std::string& answer)
 	std::cerr << "(!)" << "Something went wrong." << std::endl;
 	return 0.0;
 }
+
+std::string Question::ToString()
+{
+	std::cerr << "How did we get here?" << std::endl;
+	return { "" };
+}

@@ -714,10 +714,10 @@ Japan
 _END_
 
 _SNQ_
-Cat de adanc (in metrii) a fost curemurul din 1977 din Romania?
+Cat de adanc (in mile) a fost curemurul din 1977 din Romania?
 _END_
 _CA_
-85300
+53003
 
 _MCQ_
 Ce element are numarul atomic 6?

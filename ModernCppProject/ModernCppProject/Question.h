@@ -18,6 +18,7 @@ public:
 
 	/*Public Virtual Function*/
 	virtual float CheckAnswer(const std::string& answer);
+	virtual std::string ToString();
 
 private:
 	/*Private members*/
