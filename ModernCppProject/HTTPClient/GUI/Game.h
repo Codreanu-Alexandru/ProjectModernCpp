@@ -27,13 +27,17 @@ public:
 	void setOrderPlace(int orderPlace);
 	int getUserId();
 
+private slots:
+	void on_readyPushButton_clicked();
 
 private:
 	Ui::GameClass ui;
 	QWidget *parentWindow;
+	QTimer* qtimer;
 	int mapWidth;
 	int mapHeight;
 	std::string username;
+	NumericQuestion* numericQuestion;
 	QGridLayout* map;
 	QWidget* mapWidget;
 	int numberOfChoices;

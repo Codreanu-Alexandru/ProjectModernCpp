@@ -4,14 +4,13 @@
 #include "ui_NumericQuestion.h"
 #include <cpr/cpr.h>
 #include <crow.h>
-#include "Game.h"
 
 class NumericQuestion : public QMainWindow
 {
 	Q_OBJECT
 
 public:
-	NumericQuestion(QWidget *parent, Game &game);
+	NumericQuestion(QWidget *parent);
 	~NumericQuestion();
 
 private slots:
@@ -20,5 +19,4 @@ private slots:
 private:
 	Ui::NumericQuestionClass ui;
 	QWidget* parentWindow;
-	Game* game;
 };
