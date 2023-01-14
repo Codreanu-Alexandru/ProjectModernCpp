@@ -31,8 +31,6 @@ Game::Game(QWidget *parent, std::string username)
 		ui.Player2Label->setPixmap(pix.scaled(ui.Player2Label->width(), ui.Player2Label->height(), Qt::KeepAspectRatio));
 		ui.Player2Username->setText("Player 2");
 
-		ui.Player2Username->setText(QString::fromUtf8(std::to_string(gameData["nrPlayers"].i()).data(), int(std::to_string(gameData["nrPlayers"].i()).size())));
-
 		if (gameData["nrPlayers"].i() >= 3) {
 
 			pix.load("./yellow_player3.png");
