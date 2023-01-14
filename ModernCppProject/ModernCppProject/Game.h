@@ -13,8 +13,6 @@
 class Game
 {
 public:
-	bool running;
-public:
 	/*Public Constructor*/
 	Game(std::vector<Player>& players);
 	Game(std::vector<Player> players);
@@ -30,7 +28,16 @@ public:
 	/*Getters*/
 	std::vector<Player> getPlayers();
 	Map* GetMap();
-
+	enum class State : uint8_t
+	{
+		None,
+		BSelection,
+		Conquer,
+		Duel,
+		End
+	};
+	State GetState();
+	void bSelection();
 private:
 	/*Private members*/
 	int m_numberOfPlayers;
@@ -39,6 +46,7 @@ private:
 	std::vector<std::variant<SingleNumericQuestion,MultipleChoiceQuestion>> m_questions;
 	std::vector<SingleNumericQuestion> m_numericQuestions;
 	Map* m_map;
+	State m_state;
 
 	/*Private Function*/
 	void InitQuestions(uint8_t numberOfPlayers);

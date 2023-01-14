@@ -6,13 +6,14 @@
 #include <crow.h>
 #include "Game.h"
 #include <qmessagebox.h>
+#include "CurrentUser.h"
 
 class Lobby : public QMainWindow
 {
 	Q_OBJECT
 
 public:
-	Lobby(QWidget *parent, std::string username);
+	Lobby(QWidget *parent, std::string username, int id);
 	~Lobby();
 
 public slots:
@@ -27,4 +28,5 @@ private:
 	int timerSeconds;
 	int playersInLobby;
 	Game* game;
+	int userId;
 };

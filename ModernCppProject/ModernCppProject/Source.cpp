@@ -150,7 +150,8 @@ int main()
 		.methods(crow::HTTPMethod::PUT);
 	removePlayersFromLobbyPut(lobbyHandler);
 
-	CROW_ROUTE(app, "/lobbyInfo")([&lobby, &game]() {
+	std::vector<SingleNumericQuestion> questions;
+	CROW_ROUTE(app, "/lobbyInfo")([&lobby, &game, &questions]() {
 
 		
 	crow::json::wvalue lobbyData;
@@ -172,6 +173,10 @@ int main()
 	}
 	else if (lobby.numberOfPlayers == 4 || (lobby.timerSeconds <= 0 && lobby.numberOfPlayers > 1)) {
 		game.setInfo(lobby.getPlayers());
+		questions.emplace_back(game.GetNumericQuestion());
+		questions.emplace_back(game.GetNumericQuestion());
+		questions.emplace_back(game.GetNumericQuestion());
+
 		code = 301;
 	}
 
@@ -182,6 +187,19 @@ int main()
 	auto& startGamePut = CROW_ROUTE(app, "/startGame")
 		.methods(crow::HTTPMethod::PUT);
 	startGamePut(startGame);
+
+	CROW_ROUTE(app, "/gameState")([&game]() {
+		crow::json::wvalue gameState;
+	gameState["State"] = static_cast<int>(game.GetState());
+	return crow::response(200, gameState);
+		});
+
+	
+	CROW_ROUTE(app, "/numericQ/<int>")([&game, &questions](int questionPos) {
+		crow::json::wvalue baseQuestion;
+	baseQuestion["question"] = questions[questionPos].ToString();
+	return crow::response(200, baseQuestion);
+		});
 
 	app.port(4960).multithreaded().run();
 

@@ -2,14 +2,16 @@
 #include <qtimer.h>
 #include <string>
 
-Lobby::Lobby(QWidget* parent, std::string username)
+Lobby::Lobby(QWidget* parent, std::string username, int id)
 	: QMainWindow(parent)
 {
 	ui.setupUi(this);
 	parentWindow = parent;
 	timerSeconds = 15;
 	m_username = username;
+	userId = id;
 	playersInLobby = 0;
+
 
 	QPixmap pix("./hourglass_clipart.png");
 	int img_width = ui.hourglassImageLabel->width();
@@ -58,7 +60,7 @@ void Lobby::showTime()
 	{
 		timer->stop();
 		hide();
-		game = new Game(parentWindow, m_username);
+		game = new Game(parentWindow, m_username, userId);
 		game->show();
 	}
 }

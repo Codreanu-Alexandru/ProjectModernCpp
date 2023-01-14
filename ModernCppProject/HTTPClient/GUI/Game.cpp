@@ -1,12 +1,13 @@
 #include "Game.h"
 
-Game::Game(QWidget *parent, std::string username)
+Game::Game(QWidget *parent, std::string username, int userId)
 	: QMainWindow(parent)
 {
 	ui.setupUi(this);
 	parentWindow = parent;
 	this->setStyleSheet("");
 	this->username = username;
+	this->userId = userId;
 	int mapHeight = 0;
 	int mapWidth = 0;
 	auto startGame = cpr::Put(
@@ -86,4 +87,46 @@ void Game::showMap(size_t kHeight, size_t kWidth)
 	QMainWindow *window = new QMainWindow;
 	this->setCentralWidget(ui.mapWidget);
 	update();
+}
+
+void Game::start()//check state
+{
+	auto stateResponse = cpr::Get(cpr::Url{ "http://localhost:4960/gameState" });
+	auto gameState = crow::json::load(stateResponse.text);
+	if(gameState["State"].i() != 5)
+	{
+		if (gameState["State"].i() == 2)
+		{
+			NumericQuestion questionWindow(this, this);
+
+			//opens numeric question window(game)
+			
+			
+			//returns to game
+			// 
+			//get turn 
+			//if turn = game.orderNumber
+			//while(number of choices > 0)
+			//text label cu select region. show
+		}
+		if (gameState["State"].i() == 3)
+		{
+			
+		}
+	}
+}
+
+void Game::setNumberOfChoices(int numberOfChoices)
+{
+	this->numberOfChoices = numberOfChoices;
+}
+
+void Game::setOrderPlace(int orderPlace)
+{
+	this->orderPlace = orderPlace;
+}
+
+int Game::getUserId()
+{
+	return userId;
 }

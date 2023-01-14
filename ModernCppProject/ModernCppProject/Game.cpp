@@ -2,12 +2,12 @@
 
 Game::Game()
 {
-	running = false;
 	m_players = {};
 	m_numberOfPlayers = 0;
 	m_numberOfRounds = 0;
 	m_map = new Map(0);
 	InitQuestions(0);
+	m_state = State::None;
 }
 
 SingleNumericQuestion Game::GetNumericQuestion()
@@ -27,7 +27,6 @@ std::variant<SingleNumericQuestion, MultipleChoiceQuestion> Game::GetQuestion()
 Game::Game(std::vector<Player> players)
 	:m_players(players)
 {
-	running = true;
 	m_numberOfPlayers = players.size();
 	int mapSizeForTest = m_numberOfPlayers+1;//just for testing the app without releasing 
 	m_map = new Map(mapSizeForTest);
@@ -68,6 +67,16 @@ Game::Game(std::vector<Player> players)
 Map* Game::GetMap()
 {
 	return m_map;
+}
+
+Game::State Game::GetState()
+{
+	return m_state;
+}
+
+void Game::bSelection()
+{
+	m_state = State::BSelection;
 }
 
 void Game::InitQuestions(uint8_t numberOfPlayers)
@@ -245,12 +254,11 @@ void Game::InitQuestions(uint8_t numberOfPlayers)
 
 void Game::setInfo(std::vector<Player> players) {
 
-	running = true;
 	m_numberOfPlayers = players.size();
 	int mapSizeForTest = m_numberOfPlayers;//just for testing the app without releasing 
 	m_map = new Map(mapSizeForTest);
 	m_players = players;
-	//InitQuestions(m_numberOfPlayers);
+	InitQuestions(m_numberOfPlayers);
 	switch (m_numberOfPlayers)
 	{
 	case 2:
@@ -316,7 +324,7 @@ std::vector<uint8_t> getRanking(std::vector<std::tuple<uint8_t, float, float>> c
 
 	return ranking;
 }
-}
+
 
 std::vector<Player> Game::getPlayers()
 {

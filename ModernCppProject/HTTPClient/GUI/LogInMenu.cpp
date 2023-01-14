@@ -23,8 +23,9 @@ void LogInMenu::on_logIn2PushButton_clicked() {
 
 	std::string username = qString_username.toLocal8Bit().constData();
 	std::string password = qString_password.toLocal8Bit().constData();
+	int id = -1;
 
-	if (correctAuthentication(username, password, response)) {
+	if (correctAuthentication(username, password, response,id)) {
 
 		auto userResponse = cpr::Put(
 			cpr::Url{ "http://localhost:4960/sendExistingUserToServer" },

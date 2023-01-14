@@ -25,6 +25,7 @@ crow::response StartGameHandler::operator()(const crow::request& req) const
 	gameData["nrPlayers"] = lobby->numberOfPlayers;
 	gameData["mapHeight"] = mapHeight;
 	gameData["mapWidth"] = mapWidth;
+	game->bSelection();
 
 	return crow::response(200, gameData);
 }
