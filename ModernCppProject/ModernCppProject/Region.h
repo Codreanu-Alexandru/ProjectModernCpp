@@ -6,14 +6,23 @@
 class Region {
 public:
 	/*Public Constructor*/
-	Region(uint16_t score, std::optional<Player> owner);
+	Region(uint16_t score);
 	Region();
 
 	/*Getters*/
 	uint16_t GetScore();
+	std::optional<Player>& GetOwner();
 
 	/*Setters*/
 	void SetScore(uint16_t score);
+	void SetOwner(std::optional<Player>& player);
+
+	/*Public Functions*/
+	bool HasOwner();
+	void GiveOwnershipTo(const Player& player);
+	void UpdatedScore(uint16_t newScore);
+	void IncreaseScoreBy(uint16_t inscreaser);
+	void DecreaseScoreBy(uint16_t descreaser);
 
 private:
 	/*Private members*/
