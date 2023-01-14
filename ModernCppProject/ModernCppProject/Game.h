@@ -20,7 +20,7 @@ public:
 	Game(std::vector<Player> players);
 	Game();
 	void setInfo(std::vector<Player> players);
-	Map* getMap();
+	Map* GetMap();
 
 private:
 	/*Private members*/

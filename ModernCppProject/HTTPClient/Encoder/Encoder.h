@@ -5,7 +5,13 @@
 #include <cmath>
 #include <iostream>
 
-class Encoder
+#ifdef ENCODER_EXPORTS
+#define ENCODER_API __declspec(dllexport)
+#else
+#define ENCODER_API __declspec(dllimport)
+#endif
+
+class ENCODER_API Encoder
 {
 private:
 

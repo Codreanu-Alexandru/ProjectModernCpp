@@ -51,7 +51,7 @@ Game::Game(std::vector<Player> players)
 
 }
 
-Map* Game::getMap()
+Map* Game::GetMap()
 {
 	return m_map;
 }
