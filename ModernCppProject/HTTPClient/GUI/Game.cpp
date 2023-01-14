@@ -15,9 +15,37 @@ Game::Game(QWidget *parent, std::string username)
 		auto gameData = crow::json::load(startGame.text);
 		mapHeight = gameData["mapHeight"].i();
 		mapWidth = gameData["mapWidth"].i();
-		map = new QGridLayout;
+		/*map = new QGridLayout;
 		generateMap(mapHeight, mapWidth);
-		showMap(mapHeight, mapWidth);
+		showMap(mapHeight, mapWidth);*/
+
+		QPixmap pix;
+
+		pix.load("./red_player1.png");
+		int imgw = ui.Player1Label->width();
+		int imgh = ui.Player1Label->height();
+		ui.Player1Label->setPixmap(pix.scaled(imgw, imgh, Qt::KeepAspectRatio));
+		ui.Player1Username->setText("Player 1");
+
+		pix.load("./blue_player2.png");
+		ui.Player2Label->setPixmap(pix.scaled(ui.Player2Label->width(), ui.Player2Label->height(), Qt::KeepAspectRatio));
+		ui.Player2Username->setText("Player 2");
+
+		ui.Player2Username->setText(QString::fromUtf8(std::to_string(gameData["nrPlayers"].i()).data(), int(std::to_string(gameData["nrPlayers"].i()).size())));
+
+		if (gameData["nrPlayers"].i() >= 3) {
+
+			pix.load("./yellow_player3.png");
+			ui.Player3Label->setPixmap(pix.scaled(ui.Player3Label->width(), ui.Player3Label->height(), Qt::KeepAspectRatio));
+			ui.Player3Username->setText("Player 3");
+
+			if (gameData["nrPlayers"].i() == 4) {
+
+				pix.load("./green_player4.png");
+				ui.Player4Label->setPixmap(pix.scaled(ui.Player4Label->width(), ui.Player4Label->height(), Qt::KeepAspectRatio));
+				ui.Player4Username->setText("Player 4");
+			}
+		}
 	}
 }
 

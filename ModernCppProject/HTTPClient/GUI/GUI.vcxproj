@@ -126,12 +126,16 @@
     <QtUic Include="SignUpMenu.ui" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="blue_player2.png" />
     <Image Include="castle.png" />
     <Image Include="conqueror_clipart.png" />
     <Image Include="emperor_clipart.png" />
+    <Image Include="green_player4.png" />
+    <Image Include="red_player1.png" />
     <Image Include="royal_design_left.png" />
     <Image Include="royal_design_right.png" />
     <Image Include="spartan_clipart.png" />
+    <Image Include="yellow_player3.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Irrorater.qss" />

@@ -62,6 +62,18 @@
     <Image Include="spartan_clipart.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="yellow_player3.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="blue_player2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="green_player4.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="red_player1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="Game.h">
