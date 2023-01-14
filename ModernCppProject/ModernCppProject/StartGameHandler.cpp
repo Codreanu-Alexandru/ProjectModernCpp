@@ -8,15 +8,20 @@ StartGameHandler::StartGameHandler(Game& game, Lobby& lobby)
 
 crow::response StartGameHandler::operator()(const crow::request& req) const
 {
-	/*if (game.running == false) {
-		std::vector<Player> players = lobby->getPlayers();
-		game = new Game(players);
-	}*/
 
 	crow::json::wvalue gameData;
 	int mapHeight = static_cast<int>(game->GetMap()->GetHeight());
 	std::cout << mapHeight << std::endl;
 	int mapWidth = static_cast<int>(game->GetMap()->GetWidth());
+	
+	std::vector<Player> players = game->getPlayers();
+	std::string usernames_unparsed = "";
+
+	for (Player player : players) {
+		usernames_unparsed += player.GetName() + " ";
+	}
+
+	gameData["usernames_unparsed"] = usernames_unparsed;
 	gameData["nrPlayers"] = lobby->numberOfPlayers;
 	gameData["mapHeight"] = mapHeight;
 	gameData["mapWidth"] = mapWidth;

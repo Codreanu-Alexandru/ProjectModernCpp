@@ -13,4 +13,5 @@ bool correctAuthentication(std::string username, std::string password, cpr::Resp
 bool existingUser(std::string username, cpr::Response response);
 void showUsers(cpr::Response response);
 std::string getCurrentUserUsername();
+std::vector<std::string> split(const std::string& str, const std::string& delim);
 

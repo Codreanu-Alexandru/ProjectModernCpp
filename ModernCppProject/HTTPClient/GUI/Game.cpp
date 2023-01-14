@@ -13,6 +13,9 @@ Game::Game(QWidget *parent, std::string username)
 	);
 	if (startGame.status_code == 200 || startGame.status_code == 201) {
 		auto gameData = crow::json::load(startGame.text);
+
+		std::vector<std::string> usernames_parsed = split(gameData["usernames_unparsed"].s(), " ");
+
 		mapHeight = gameData["mapHeight"].i();
 		mapWidth = gameData["mapWidth"].i();
 		/*map = new QGridLayout;
@@ -25,23 +28,27 @@ Game::Game(QWidget *parent, std::string username)
 		int imgw = ui.Player1Label->width();
 		int imgh = ui.Player1Label->height();
 		ui.Player1Label->setPixmap(pix.scaled(imgw, imgh, Qt::KeepAspectRatio));
-		ui.Player1Username->setText("Player 1");
+		ui.Player1Username->setText((QString::fromUtf8((usernames_parsed[0].data()),
+			int(usernames_parsed[0].size()))));
 
 		pix.load("./blue_player2.png");
 		ui.Player2Label->setPixmap(pix.scaled(ui.Player2Label->width(), ui.Player2Label->height(), Qt::KeepAspectRatio));
-		ui.Player2Username->setText("Player 2");
+		ui.Player2Username->setText((QString::fromUtf8((usernames_parsed[1].data()),
+			int(usernames_parsed[1].size()))));
 
 		if (gameData["nrPlayers"].i() >= 3) {
 
 			pix.load("./yellow_player3.png");
 			ui.Player3Label->setPixmap(pix.scaled(ui.Player3Label->width(), ui.Player3Label->height(), Qt::KeepAspectRatio));
-			ui.Player3Username->setText("Player 3");
+			ui.Player3Username->setText((QString::fromUtf8((usernames_parsed[2].data()),
+				int(usernames_parsed[2].size()))));
 
 			if (gameData["nrPlayers"].i() == 4) {
 
 				pix.load("./green_player4.png");
 				ui.Player4Label->setPixmap(pix.scaled(ui.Player4Label->width(), ui.Player4Label->height(), Qt::KeepAspectRatio));
-				ui.Player4Username->setText("Player 4");
+				ui.Player4Username->setText((QString::fromUtf8((usernames_parsed[3].data()),
+					int(usernames_parsed[3].size()))));
 			}
 		}
 	}

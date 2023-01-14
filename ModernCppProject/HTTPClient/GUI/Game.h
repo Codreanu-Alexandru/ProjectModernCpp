@@ -8,6 +8,7 @@
 #include "qpushbutton.h"
 #include "qwidget.h"
 #include "qstring.h"
+#include "AuthUtils.h"
 
 class Game : public QMainWindow
 {

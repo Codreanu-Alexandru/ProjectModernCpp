@@ -210,6 +210,7 @@ void Game::setInfo(std::vector<Player> players) {
 	m_numberOfPlayers = players.size();
 	int mapSizeForTest = m_numberOfPlayers;//just for testing the app without releasing 
 	m_map = new Map(mapSizeForTest);
+	m_players = players;
 	//InitQuestions(m_numberOfPlayers);
 	switch (m_numberOfPlayers)
 	{
@@ -241,4 +242,9 @@ void Game::setInfo(std::vector<Player> players) {
 		break;
 	}
 	}
+}
+
+std::vector<Player> Game::getPlayers()
+{
+	return m_players;
 }

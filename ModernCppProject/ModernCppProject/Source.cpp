@@ -99,7 +99,6 @@ int main()
 	Map map(4);
 	map.ShowMap();
 
-
 	userDatabase.displayDatabase();
 
 	Database userDB = userDatabase.getUserDatabase();
