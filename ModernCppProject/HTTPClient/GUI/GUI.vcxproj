@@ -140,7 +140,7 @@
     <QtMoc Include="LogInMenu.h" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Modern C++ -managing network projects\ProjectModernCpp\ModernCppProject\HTTPClient\Encoder\Encoder.vcxproj">
+    <ProjectReference Include="..\Encoder\Encoder.vcxproj">
       <Project>{c8f2d9d0-9c9b-4453-bd15-082aa312347d}</Project>
     </ProjectReference>
     <ProjectReference Include="..\HTTPClient\HTTPClient.vcxproj">
