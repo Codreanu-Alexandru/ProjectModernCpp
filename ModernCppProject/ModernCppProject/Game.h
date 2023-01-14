@@ -38,6 +38,7 @@ public:
 	};
 	State GetState();
 	void bSelection();
+
 private:
 	/*Private members*/
 	int m_numberOfPlayers;

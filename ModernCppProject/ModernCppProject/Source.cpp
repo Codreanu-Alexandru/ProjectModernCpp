@@ -173,9 +173,9 @@ int main()
 	}
 	else if (lobby.numberOfPlayers == 4 || (lobby.timerSeconds <= 0 && lobby.numberOfPlayers > 1)) {
 		game.setInfo(lobby.getPlayers());
+		/*questions.emplace_back(game.GetNumericQuestion());
 		questions.emplace_back(game.GetNumericQuestion());
-		questions.emplace_back(game.GetNumericQuestion());
-		questions.emplace_back(game.GetNumericQuestion());
+		questions.emplace_back(game.GetNumericQuestion())*/;
 
 		code = 301;
 	}
@@ -194,6 +194,18 @@ int main()
 	return crow::response(200, gameState);
 		});
 
+
+	int readyPlayers = 0;
+	CROW_ROUTE(app, "/ready")([&game, &readyPlayers]() {
+	readyPlayers++;
+	std::cout << "Ready players: " << readyPlayers << "\n";
+		
+	if (readyPlayers == game.getPlayers().size()) {
+		readyPlayers = 0;
+		return crow::response(301);
+	}
+	return crow::response(302);
+		});
 	
 	CROW_ROUTE(app, "/numericQ/<int>")([&game, &questions](int questionPos) {
 		crow::json::wvalue baseQuestion;

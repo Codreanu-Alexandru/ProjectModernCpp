@@ -27,40 +27,6 @@ std::variant<SingleNumericQuestion, MultipleChoiceQuestion> Game::GetQuestion()
 Game::Game(std::vector<Player> players)
 	:m_players(players)
 {
-	m_numberOfPlayers = players.size();
-	int mapSizeForTest = m_numberOfPlayers+1;//just for testing the app without releasing 
-	m_map = new Map(mapSizeForTest);
-	InitQuestions(m_numberOfPlayers);
-	switch (m_numberOfPlayers)
-	{
-	case 2:
-	{
-		/*2 Players
-		5 Rounds*/
-		m_numberOfRounds = 5;
-		break;
-	}
-	case 3:
-	{
-		/*3 Players
-		4 Rounds*/
-		m_numberOfRounds = 4;
-		break;
-	}
-	case 4:
-	{
-		/*4 Players
-		5 Rounds*/
-		m_numberOfRounds = 5;
-		break;
-	}
-	default:
-	{
-		/*Something went wrong*/
-		m_numberOfRounds = 0;
-		break;
-	}
-	}
 
 }
 
@@ -258,7 +224,7 @@ void Game::setInfo(std::vector<Player> players) {
 	int mapSizeForTest = m_numberOfPlayers;//just for testing the app without releasing 
 	m_map = new Map(mapSizeForTest);
 	m_players = players;
-	InitQuestions(m_numberOfPlayers);
+	//InitQuestions(m_numberOfPlayers);
 	switch (m_numberOfPlayers)
 	{
 	case 2:
