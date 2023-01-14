@@ -118,6 +118,16 @@
      <string/>
     </property>
    </widget>
+   <widget class="QWidget" name="mapWidget" native="true">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>90</y>
+      <width>541</width>
+      <height>311</height>
+     </rect>
+    </property>
+   </widget>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
  </widget>

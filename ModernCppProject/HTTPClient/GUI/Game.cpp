@@ -5,6 +5,7 @@ Game::Game(QWidget *parent, std::string username)
 {
 	ui.setupUi(this);
 	parentWindow = parent;
+	this->setStyleSheet("");
 	this->username = username;
 	int mapHeight = 0;
 	int mapWidth = 0;
@@ -18,16 +19,14 @@ Game::Game(QWidget *parent, std::string username)
 
 		mapHeight = gameData["mapHeight"].i();
 		mapWidth = gameData["mapWidth"].i();
-		/*map = new QGridLayout;
+		map = new QGridLayout;
 		generateMap(mapHeight, mapWidth);
-		showMap(mapHeight, mapWidth);*/
+		//showMap(mapHeight, mapWidth);
 
 		QPixmap pix;
 
 		pix.load("./red_player1.png");
-		int imgw = ui.Player1Label->width();
-		int imgh = ui.Player1Label->height();
-		ui.Player1Label->setPixmap(pix.scaled(imgw, imgh, Qt::KeepAspectRatio));
+		ui.Player1Label->setPixmap(pix.scaled(ui.Player1Label->width(), ui.Player1Label->height(), Qt::KeepAspectRatio));
 		ui.Player1Username->setText((QString::fromUtf8((usernames_parsed[0].data()),
 			int(usernames_parsed[0].size()))));
 
@@ -66,21 +65,25 @@ void Game::generateMap(size_t rows, size_t cols)
 {
 	for (int i = 0; i < rows; i++) {
 		for (int j = 0; j < cols; j++) {
-			QPushButton* button = new QPushButton("r");
-			button->resize(40, 40);
+			QPushButton* button = new QPushButton();
+			
+			button->setText("100");
+			button->resize(40, 80);
 			button->move(40 * j, 40 * i);
+			button->setAutoFillBackground(true);
+			button->setStyleSheet("background-color: rgb(255, 255, 255); color: rgb(0, 0, 0)");
 			button->show();
 			map->addWidget(button, i, j);
 		}
 	}
 
-	mapWidget = new QWidget;
-	mapWidget->setLayout(map);
+	ui.mapWidget->setLayout(map);
+	ui.mapWidget->show();
 }
 
 void Game::showMap(size_t kHeight, size_t kWidth)
 {
 	QMainWindow *window = new QMainWindow;
-	this->setCentralWidget(mapWidget);
+	this->setCentralWidget(ui.mapWidget);
 	update();
 }
