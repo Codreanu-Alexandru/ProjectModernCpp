@@ -7,7 +7,7 @@ ExistingUserHandler::ExistingUserHandler(Login &login)
 
 crow::response ExistingUserHandler::operator()(const crow::request& req) const
 {
-	auto bodyArgs = parseUrlArgs(req.body); //id=2&quantity=3&...
+	auto bodyArgs = parseUrlArgs(req.body); 
 	auto end = bodyArgs.end();
 	auto usernameIter = bodyArgs.find("username");
 	auto passwordIter = bodyArgs.find("password");

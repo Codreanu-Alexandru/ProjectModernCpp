@@ -16,32 +16,7 @@
 #include "Lobby.h"
 #include "StartGameHandler.h"
 #include "GetAnswerHandler.h"
-
-//to be moved
-crow::response deleteUserData(const crow::request& req)
-{
-	auto bodyArgs = parseUrlArgs(req.body); //id=2&quantity=3&...
-	auto end = bodyArgs.end();
-	auto usernameIter = bodyArgs.find("username");
-
-	UserDB userDatabase;
-	Database userDB = userDatabase.getUserDatabase();
-
-	for (const auto& user : userDB.iterate<User>())
-	{
-		if (usernameIter->second == user.username)
-		{
-			userDB.remove<User>(user.id);
-			break;
-		}
-	}
-
-	std::cout << "User " << usernameIter->second << " has been deleted. New users count = "
-		<< userDatabase.getUserDatabase().count<User>() << std::endl;
-
-	return crow::response(201);
-}
-
+#include "DeleteUserHandler.h"
 
 int main()
 {
@@ -133,12 +108,12 @@ int main()
 	sendExistingUserToServerPut(existingUser);
 
 	auto& sendNewUserToServerPut = CROW_ROUTE(app, "/sendNewUserToServer")
-		.methods(crow::HTTPMethod::PUT); // https://stackoverflow.com/a/630475/12388382
+		.methods(crow::HTTPMethod::PUT); 
 	sendNewUserToServerPut(NewUserHandler());
 
 	auto& deleteUserFromServerPut = CROW_ROUTE(app, "/deleteUserFromServer")
-		.methods(crow::HTTPMethod::PUT); // https://stackoverflow.com/a/630475/12388382
-	deleteUserFromServerPut(deleteUserData);
+		.methods(crow::HTTPMethod::PUT); 
+	deleteUserFromServerPut(DeleteUserHandler());
 
 	Lobby lobby(app);
 	LobbyHandler lobbyHandler(lobby);
@@ -152,13 +127,12 @@ int main()
 	removePlayersFromLobbyPut(lobbyHandler);
 
 	std::vector<SingleNumericQuestion> questions;
-	CROW_ROUTE(app, "/lobbyInfo")([&lobby, &game, &questions]() {
+	int code = 500;
+	CROW_ROUTE(app, "/lobbyInfo")([&lobby, &game, &questions, &code]() {
 
-		
 	crow::json::wvalue lobbyData;
 	int timerSeconds = lobby.timerSeconds;
 	int numberOfPlayers = lobby.numberOfPlayers;
-	int code = 500;
 	lobbyData["timerSeconds"] = timerSeconds;
 	lobbyData["playersInLobby"] = numberOfPlayers;
 	
@@ -173,11 +147,13 @@ int main()
 		lobby.flush();
 	}
 	else if (lobby.numberOfPlayers == 4 || (lobby.timerSeconds <= 0 && lobby.numberOfPlayers > 1)) {
-		game.setInfo(lobby.getPlayers());
-		questions.emplace_back(SingleNumericQuestion("bau question?",123,2));
-		//questions.emplace_back(game.GetNumericQuestion());
-		/*questions.emplace_back(game.GetNumericQuestion()); */
-
+		if (code != 301) {
+			game.setInfo(lobby.getPlayers());
+			questions.emplace_back(SingleNumericQuestion("bau question?",123,2));
+			/*questions.emplace_back(game.GetNumericQuestion());
+			questions.emplace_back(game.GetNumericQuestion());
+			questions.emplace_back(game.GetNumericQuestion());*/
+		}
 		code = 301;
 	}
 
@@ -211,6 +187,7 @@ int main()
 	CROW_ROUTE(app, "/numericQ/<int>")([&game, &questions](const crow::request& req, crow::response& res, int questionPos) {
 		crow::json::wvalue baseQuestion;
 	baseQuestion["question"] = questions[questionPos].ToString();
+	baseQuestion["isNumeric"] = questions[questionPos].GetIsNumericQuestionBoolean();
 	res = crow::response(200, baseQuestion);
 	res.end();
 		});

@@ -84,6 +84,9 @@
     <ClCompile Include="GetAnswerHandler.cpp">
       <Filter>Source Files\Server Logic</Filter>
     </ClCompile>
+    <ClCompile Include="DeleteUserHandler.cpp">
+      <Filter>Source Files\Server Logic</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Advantages.h">
@@ -147,6 +150,9 @@
       <Filter>Header Files\Server Logic</Filter>
     </ClInclude>
     <ClInclude Include="GetAnswerHandler.h">
+      <Filter>Header Files\Server Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="DeleteUserHandler.h">
       <Filter>Header Files\Server Logic</Filter>
     </ClInclude>
   </ItemGroup>

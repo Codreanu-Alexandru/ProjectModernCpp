@@ -134,6 +134,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Advantages.cpp" />
+    <ClCompile Include="DeleteUserHandler.cpp" />
     <ClCompile Include="ExistingUserHandler.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameInfoHandler.cpp" />
@@ -155,6 +156,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Advantages.h" />
+    <ClInclude Include="DeleteUserHandler.h" />
     <ClInclude Include="ExistingUserHandler.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameInfoHandler.h" />
