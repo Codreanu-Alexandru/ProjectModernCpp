@@ -1,14 +1,17 @@
 #include "NumericQuestion.h"
 
-NumericQuestion::NumericQuestion(QWidget* parent)
+NumericQuestion::NumericQuestion(QWidget* parent, int &numberOfChoices, int &orderPlace, int &userId)
 	: QMainWindow(parent)
 {
 	ui.setupUi(this);
 	parentWindow = parent;
-	/*auto firstPhaseResponse = cpr::Get(cpr::Url{ "http://localhost:4960/numericQ/0" });
+	auto firstPhaseResponse = cpr::Get(cpr::Url{ "http://localhost:4960/numericQ/0" });
 	auto questionJson = crow::json::load(firstPhaseResponse.text);
 	QString question = QString::fromStdString(questionJson["question"].s());
-	ui.Question->setText(question);*/
+	ui.Question->setText(question);
+	m_numberOfChoices = &numberOfChoices;
+	m_orderPlace = &orderPlace;
+	m_userId = &userId;
 	//put with answer, id and time
 	//response 
 	// get with id in link with order number and number of choices
@@ -22,15 +25,21 @@ NumericQuestion::~NumericQuestion()
 
 void NumericQuestion::on_SendButton_clicked()
 {
-	//QString qString_answer = ui.AnswerLine->text();
-	//std::string answerStr = qString_answer.toLocal8Bit().constData();
+	QString qString_answer = ui.AnswerLine->text();
+	std::string answerStr = qString_answer.toLocal8Bit().constData();
 
-	//auto answerPut = cpr::Put(
-	//	cpr::Url{ "http://localhost:4960/numericAnswer" },
-	//	cpr::Payload{
-	//		{ "answer", answerStr }
-	//	}
-	//);
+	auto answerPut = cpr::Put(
+		cpr::Url{ "http://localhost:4960/numericAnswer/"+std::to_string(*m_userId)},
+		cpr::Payload{
+			{ "answer", answerStr },
+			{"time", "30"}
+		}
+	);
+	if (answerPut.status_code == 200 || answerPut.status_code == 201)
+	{
+		parentWindow->show();
+		this->close();
+	}
 	//if (answerPut.status_code == 200 || answerPut.status_code == 201)
 	//{
 	//	auto phaseDataGet = cpr::Get(cpr::Url{ "http://localhost:4960/phaseData/" + std::to_string(0) });
