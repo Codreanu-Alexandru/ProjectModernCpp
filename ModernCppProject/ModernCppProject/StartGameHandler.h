@@ -10,6 +10,7 @@ public:
 	StartGameHandler(Game& game, Lobby &lobby);
 
 	crow::response operator() (const crow::request& req) const;
+
 private:
 	mutable Game* game;
 	mutable Lobby* lobby;

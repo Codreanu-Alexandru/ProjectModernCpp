@@ -1,6 +1,6 @@
 #include "SingleNumericQuestion.h"
 
-SingleNumericQuestion::SingleNumericQuestion(const std::string& question, int answer, int id) :
+SingleNumericQuestion::SingleNumericQuestion(const std::string& question, int answer, uint16_t id) :
 	Question(question, true, id), m_answer(answer)
 {
 }

@@ -10,24 +10,21 @@ crow::response StartGameHandler::operator()(const crow::request& req) const
 {
 
 	crow::json::wvalue gameData;
-	int mapHeight = static_cast<int>(game->GetMap()->GetHeight());
-	std::cout << mapHeight << std::endl;
-	int mapWidth = static_cast<int>(game->GetMap()->GetWidth());
 	
-	std::vector<Player> players = game->getPlayers();
 	std::string usernames_unparsed = "";
-
-	for (Player player : players) {
+	for (Player player : game->getPlayers()) {
 		usernames_unparsed += player.GetName() + " ";
 	}
 
+	/*Initializing the data to send to the client*/
 	gameData["usernames_unparsed"] = usernames_unparsed;
-	gameData["nrPlayers"] = lobby->numberOfPlayers;
-	gameData["mapHeight"] = mapHeight;
-	gameData["mapWidth"] = mapWidth;
+	gameData["nrPlayers"] = lobby->getPlayerCount();
+	gameData["mapWidth"] = static_cast<int>(game->GetMap()->GetWidth());
+	gameData["mapHeight"] = static_cast<int>(game->GetMap()->GetHeight());
+
 	game->bSelection();
 
-	std::cout << "Started with " << lobby->numberOfPlayers << " players\n";
+	std::cout << "Started with " << (int)lobby->getPlayerCount() << " players\n";
 
 	return crow::response(200, gameData);
 }

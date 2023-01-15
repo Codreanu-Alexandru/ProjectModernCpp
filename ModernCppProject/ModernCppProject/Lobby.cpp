@@ -3,15 +3,15 @@
 Lobby::Lobby(crow::SimpleApp& app)
 {
 	this->app = &app;
-	numberOfPlayers = 0; //just for testing the app without releasing
-	timerSeconds = 15;
+	m_numberOfPlayers = 0; //just for testing the app without releasing
+	m_timerSeconds = 15;
 }
 
 void Lobby::addPlayerInLobby(std::string username)
 {
 	m_playersInLobby.emplace_back(Player(username));
-	numberOfPlayers++;
-	timerSeconds = 15;
+	m_numberOfPlayers++;
+	m_timerSeconds = 15;
 }
 
 void Lobby::removePlayerInLobby(std::string username)
@@ -21,16 +21,32 @@ void Lobby::removePlayerInLobby(std::string username)
 			m_playersInLobby.erase(m_playersInLobby.begin() + indexPlayer);
 		}
 	}
-	numberOfPlayers--;
-}
-
-std::vector<Player> Lobby::getPlayers() {
-	return m_playersInLobby;
+	m_numberOfPlayers--;
 }
 
 void Lobby::flush() {
 
 	m_playersInLobby.clear();
-	numberOfPlayers = 0;
+	m_numberOfPlayers = 0;
+}
+
+void Lobby::decreaseTimer()
+{
+	m_timerSeconds--;
+}
+
+uint8_t Lobby::getPlayerCount() const
+{
+	return m_numberOfPlayers;
+}
+
+uint8_t Lobby::getTimerSeconds() const
+{
+	return m_timerSeconds;
+}
+
+std::vector<Player> Lobby::getPlayers() const
+{
+	return m_playersInLobby;
 }
 

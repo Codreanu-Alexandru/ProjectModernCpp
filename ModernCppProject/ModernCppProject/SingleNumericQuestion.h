@@ -10,7 +10,7 @@ public:
     /*Public Constructor*/
     SingleNumericQuestion(const std::string& question,
         int answer,
-        int id);
+        uint16_t id);
 
     /*Public Getters*/
     void SetAnswer(int newAnswer);

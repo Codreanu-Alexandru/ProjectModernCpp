@@ -21,7 +21,5 @@ private:
 	/*Private members*/
 	std::vector<Player> m_loggedInPlayers;
 	mutable Login m_login;
-
-
 };
 

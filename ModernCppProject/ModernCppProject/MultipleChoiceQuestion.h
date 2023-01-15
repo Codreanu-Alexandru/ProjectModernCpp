@@ -11,11 +11,11 @@ public:
         const std::string& question,
         const std::string& answer,
         const std::vector<std::string>& wrongChoices,
-        int id);
+        uint16_t id);
 
     /*Getters*/
-    std::string GetAnswer();
-    std::vector<std::string> GetChoices();
+    std::string GetAnswer() const;
+    std::vector<std::string> GetChoices() const;
 
     /*Setters*/
     void SetAnswer(const std::string& newAnswer);

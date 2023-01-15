@@ -5,8 +5,6 @@ LobbyHandler::LobbyHandler(Lobby &lobby)
 {
 }
 
-
-
 crow::response LobbyHandler::operator()(const crow::request& req) const
 {
 	auto bodyArgs = parseUrlArgs(req.body); //id=2&quantity=3&...

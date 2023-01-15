@@ -21,7 +21,7 @@ void Region::SetOwner(std::optional<Player>& player)
 	m_owner = player;
 }
 
-bool Region::HasOwner()
+bool Region::HasOwner() const
 {
 	return m_owner.has_value();
 }
@@ -46,7 +46,8 @@ void Region::DecreaseScoreBy(uint16_t decreaser)
 	m_score -= decreaser;
 }
 
-uint16_t Region::GetScore() {
+uint16_t Region::GetScore() const
+{
 	return m_score;
 }
 

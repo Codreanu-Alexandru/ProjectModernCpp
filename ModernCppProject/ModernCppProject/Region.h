@@ -10,7 +10,7 @@ public:
 	Region();
 
 	/*Getters*/
-	uint16_t GetScore();
+	uint16_t GetScore() const;
 	std::optional<Player>& GetOwner();
 
 	/*Setters*/
@@ -18,7 +18,7 @@ public:
 	void SetOwner(std::optional<Player>& player);
 
 	/*Public Functions*/
-	bool HasOwner();
+	bool HasOwner() const;
 	void GiveOwnershipTo(const Player& player);
 	void UpdatedScore(uint16_t newScore);
 	void IncreaseScoreBy(uint16_t inscreaser);

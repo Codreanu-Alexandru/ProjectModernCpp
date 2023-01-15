@@ -10,6 +10,5 @@ public:
 
 	/*Public Constructor*/
 	void addLoggedInPlayer(std::string username);
-
 };
 

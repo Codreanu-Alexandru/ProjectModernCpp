@@ -86,24 +86,24 @@ int main()
 
 		crow::json::wvalue lobbyData;
 
-	lobbyData["timerSeconds"] = lobby.timerSeconds;
-	lobbyData["playersInLobby"] = lobby.numberOfPlayers;
+	lobbyData["timerSeconds"] = lobby.getTimerSeconds();
+	lobbyData["playersInLobby"] = lobby.getPlayerCount();
 
 	requests++;
-	if (requests % lobby.numberOfPlayers == 0) {
-		lobby.timerSeconds--;
+	if (requests % lobby.getPlayerCount() == 0) {
+		lobby.decreaseTimer();
 	}
 
 	std::cout << std::endl;
-	std::cout << lobby.timerSeconds;
+	std::cout << lobby.getTimerSeconds();
 
-	if (lobby.numberOfPlayers != 4 && lobby.timerSeconds > 0)
+	if (lobby.getPlayerCount() != 4 && lobby.getTimerSeconds() > 0)
 		code = 303;
-	else if (lobby.numberOfPlayers == 1 && lobby.timerSeconds <= 0) {
+	else if (lobby.getPlayerCount() == 1 && lobby.getTimerSeconds() <= 0) {
 		code = 302;
 		lobby.flush();
 	}
-	else if (lobby.numberOfPlayers == 4 || (lobby.timerSeconds <= 0 && lobby.numberOfPlayers > 1)) {
+	else if (lobby.getPlayerCount() == 4 || (lobby.getTimerSeconds() <= 0 && lobby.getPlayerCount() > 1)) {
 		if (code != 301) {
 			game.setInfo(lobby.getPlayers());
 			questions.emplace_back(SingleNumericQuestion("bau question?", 123, 2));

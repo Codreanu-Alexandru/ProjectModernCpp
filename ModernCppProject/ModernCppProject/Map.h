@@ -3,10 +3,10 @@
 #include <ranges>
 #include "Region.h"
 
+using Position = std::pair<size_t, size_t>;
+
 class Map {
 public:
-
-	using Position = std::pair<size_t, size_t>;
 
 	/*Public Constructor*/
 	Map(uint8_t nrPlayers);
@@ -16,8 +16,8 @@ public:
 	void SetHeight(size_t height);
 
 	/*Getters*/
-	uint8_t GetHeight();
-	uint8_t GetWidth();
+	uint8_t GetHeight() const;
+	uint8_t GetWidth() const;
 
 	/*Public Functions*/
 	bool HasEmptyRegions();
@@ -29,9 +29,9 @@ public:
 
 private:
 	/*Private members*/
+	std::vector<std::vector<Region>> m_regions;
 	size_t kWidth;
 	size_t kHeight;
-	std::vector<std::vector<Region>> m_regions;
 
 	/*Private Functions*/
 	void GenerateMap();

@@ -26,8 +26,8 @@ public:
 	void setInfo(std::vector<Player> players);
 
 	/*Getters*/
-	std::vector<Player> getPlayers();
-	Map* GetMap();
+	std::vector<Player> getPlayers() const;
+	Map* GetMap() const;
 	enum class State : uint8_t
 	{
 		None,
@@ -36,23 +36,24 @@ public:
 		Duel,
 		End
 	};
-	State GetState();
+	State GetState() const;
 	void bSelection();
 
 private:
 	/*Private members*/
-	int m_numberOfPlayers;
-	int m_numberOfRounds;
 	std::vector<Player> m_players;
 	std::vector<std::variant<SingleNumericQuestion,MultipleChoiceQuestion>> m_questions;
 	std::vector<SingleNumericQuestion> m_numericQuestions;
+
 	Map* m_map;
 	State m_state;
+
+	uint16_t m_numberOfPlayers;
+	uint16_t m_numberOfRounds;
 
 	/*Private Function*/
 	void InitQuestions(uint16_t numberOfPlayers);
 };
 
 std::vector<uint8_t> GetRankingFromQuestion(std::vector<std::tuple<uint8_t, std::string, std::string>> closenessVector, std::variant<SingleNumericQuestion, MultipleChoiceQuestion> question);
-
 std::vector<uint8_t> getRanking(std::vector<std::tuple<uint8_t, float, float>> closenessVector);

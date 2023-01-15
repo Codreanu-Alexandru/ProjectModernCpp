@@ -4,17 +4,17 @@ MultipleChoiceQuestion::MultipleChoiceQuestion(
 	const std::string& question,
 	const std::string& answer,
 	const std::vector<std::string>& wrongAnswers,
-	int id) :
+	uint16_t id) :
 	Question(question, false, id), m_answer(answer), m_wrongChoices(wrongAnswers)
 {
 }
 
-std::string MultipleChoiceQuestion::GetAnswer()
+std::string MultipleChoiceQuestion::GetAnswer() const
 {
 	return m_answer;
 }
 
-std::vector<std::string> MultipleChoiceQuestion::GetChoices()
+std::vector<std::string> MultipleChoiceQuestion::GetChoices() const
 {
 	return m_wrongChoices;
 }

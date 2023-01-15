@@ -7,11 +7,11 @@ class Question
 {
 public:
 	/*Public Constructor*/
-	Question(const std::string& question, bool isNumericQuestion, int id);
+	Question(const std::string& question, bool isNumericQuestion, uint16_t id);
 
 	/*Public Getters*/
-	std::string GetQuestion();
-	bool GetIsNumericQuestionBoolean();
+	std::string GetQuestion() const;
+	bool GetIsNumericQuestionBoolean() const;
 
 	/*Public Setters*/
 	void SetQuestion(const std::string& newQuestion);
@@ -22,9 +22,8 @@ public:
 
 private:
 	/*Private members*/
-	int m_id;
+	uint16_t m_id;
 	bool m_isNumericQuestion;
 	std::string m_question;
-
 };
 

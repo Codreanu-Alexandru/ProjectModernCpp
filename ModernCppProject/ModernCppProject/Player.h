@@ -10,7 +10,7 @@ public:
 	Player(const std::string& username);
 
 	/*Getter*/
-	std::string GetName();
+	std::string GetName() const;
 
 	/*Setter*/
 	void SetName(const std::string& username);

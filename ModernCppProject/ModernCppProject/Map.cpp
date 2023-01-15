@@ -46,12 +46,12 @@ void Map::SetHeight(size_t height) {
 	kHeight = height;
 }
 
-uint8_t Map::GetHeight()
+uint8_t Map::GetHeight() const
 {
 	return kHeight;
 }
 
-uint8_t Map::GetWidth()
+uint8_t Map::GetWidth() const
 {
 	return kWidth;
 }

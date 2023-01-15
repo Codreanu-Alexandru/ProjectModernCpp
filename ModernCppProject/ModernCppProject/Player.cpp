@@ -7,7 +7,7 @@ Player::Player(const std::string& username)
 	m_score = 0;
 }
 
-std::string Player::GetName()
+std::string Player::GetName() const
 {
 	return m_name;
 }

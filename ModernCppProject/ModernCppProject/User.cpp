@@ -14,7 +14,7 @@ bool UserDB::InitializeDB(const std::string& csvDataFilePath) {
 	return usersCount != 0;
 }
 
-int UserDB::getNumberOfUsers() {
+uint16_t UserDB::getNumberOfUsers() {
 	auto usersCount = m_Database.count<User>();
 	return usersCount;
 }
@@ -22,10 +22,11 @@ int UserDB::getNumberOfUsers() {
 
 void UserDB::displayDatabase() {
 	auto usersCount = m_Database.count<User>();
-	std::cout << "usersCount = " << usersCount << '\n';
+	std::cout << "Total count of users registered: " << usersCount << '\n';
 }
 
-Database UserDB::getUserDatabase() {
+Database UserDB::getUserDatabase() const
+{
 	return m_Database;
 }
 
@@ -44,25 +45,5 @@ void UserDB::PopulateDatabase(const std::string& dataFilePath) {
 		users.emplace_back(User{ -1, result[1], result[2], result[3] });
 	}
 
-	/*m_Database.insert_range(users.begin(), users.end());
-
-	std::vector<User> users = {
-		
-	};*/
-
 	m_Database.insert_range(users.begin(), users.end());
 }
-
-
-//User UserDB::findUserByUsername(std::string username)
-//{
-//	for (User user : m_databaseUsers)
-//	{
-//		if (user.username == username)
-//		{
-//			return user;
-//		}
-//	}
-//
-//	//return ;
-//}

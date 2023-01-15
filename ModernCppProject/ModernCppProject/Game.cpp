@@ -24,12 +24,12 @@ std::variant<SingleNumericQuestion, MultipleChoiceQuestion> Game::GetQuestion()
 	return question;
 }
 
-Map* Game::GetMap()
+Map* Game::GetMap() const
 {
 	return m_map;
 }
 
-Game::State Game::GetState()
+Game::State Game::GetState() const
 {
 	return m_state;
 }
@@ -286,7 +286,7 @@ std::vector<uint8_t> getRanking(std::vector<std::tuple<uint8_t, float, float>> c
 }
 
 
-std::vector<Player> Game::getPlayers()
+std::vector<Player> Game::getPlayers() const
 {
 	return m_players;
 }
