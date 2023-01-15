@@ -50,7 +50,9 @@ private:
 	State m_state;
 
 	/*Private Function*/
-	void InitQuestions(uint8_t numberOfPlayers);
+	void InitQuestions(uint16_t numberOfPlayers);
 };
 
-std::vector<uint8_t> getRanking(std::vector<std::tuple<int, float, float>> closenessVector);
+std::vector<uint8_t> GetRankingFromQuestion(std::vector<std::tuple<uint8_t, std::string, std::string>> closenessVector, std::variant<SingleNumericQuestion, MultipleChoiceQuestion> question);
+
+std::vector<uint8_t> getRanking(std::vector<std::tuple<uint8_t, float, float>> closenessVector);

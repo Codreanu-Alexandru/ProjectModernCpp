@@ -99,7 +99,7 @@ int main()
 	return crow::json::wvalue{ users_json };
 		});
 
-	Game game;
+	Game game; game.setInfo({ Player("AAA"),Player("BBB") });
 
 	Login login;
 	ExistingUserHandler existingUser(login);
