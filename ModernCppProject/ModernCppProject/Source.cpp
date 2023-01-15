@@ -108,8 +108,8 @@ int main()
 			game.setInfo(lobby.getPlayers());
 			//questions.emplace_back(SingleNumericQuestion("bau question?", 123, 2));
 			questions.emplace_back(game.GetNumericQuestion());
-			//questions.emplace_back(game.GetNumericQuestion());
-			//questions.emplace_back(game.GetNumericQuestion());
+			questions.emplace_back(game.GetNumericQuestion());
+			questions.emplace_back(game.GetNumericQuestion());
 		}
 		code = 301;
 	}

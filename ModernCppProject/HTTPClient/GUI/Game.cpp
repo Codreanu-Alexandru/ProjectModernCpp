@@ -48,8 +48,7 @@ Game::Game(QWidget *parent, CurrentUser* currentUser)
 			}
 		}
 	}
-
-	start();
+	QTimer::singleShot(5000, this, SLOT(start()));
 }
 
 Game::~Game()

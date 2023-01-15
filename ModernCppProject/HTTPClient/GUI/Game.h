@@ -12,6 +12,7 @@
 #include "NumericQuestion.h"
 #include "MultipleChoiceQuestion.h"
 #include "CurrentUser.h"
+#include <qtimer.h>
 
 class Game : public QMainWindow
 {
@@ -24,12 +25,12 @@ public:
 	void Display();
 	void generateMap(size_t kHeight, size_t kWidth);
 	void showMap(size_t kHeight, size_t kWidth);
-	void start();
 	void setNumberOfChoices(int numberOfChoices);
 	void setOrderPlace(int orderPlace);
 
 private slots:
 	void buttonClicked(int row, int col);
+	void start();
 
 private:
 	Ui::GameClass ui;
@@ -45,6 +46,7 @@ private:
 
 	uint16_t numberOfChoices;
 	uint16_t orderPlace;
+	QTimer* timer;
 
 
 };
