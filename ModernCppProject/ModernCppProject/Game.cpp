@@ -6,28 +6,22 @@ Game::Game()
 	m_numberOfPlayers = 0;
 	m_numberOfRounds = 0;
 	m_map = new Map(0);
-	InitQuestions(0);
+	//InitQuestions(0);
 	m_state = State::None;
 }
 
 SingleNumericQuestion Game::GetNumericQuestion()
 {
-	auto& question = m_numericQuestions.back();
+	auto question = m_numericQuestions.back();
 	m_numericQuestions.pop_back();
 	return question;
 }
 
 std::variant<SingleNumericQuestion, MultipleChoiceQuestion> Game::GetQuestion()
 {
-	auto& question = m_questions.back();
+	auto question = m_questions.back();
 	m_questions.pop_back();
 	return question;
-}
-
-Game::Game(std::vector<Player> players)
-	:m_players(players)
-{
-
 }
 
 Map* Game::GetMap()
@@ -45,9 +39,9 @@ void Game::bSelection()
 	m_state = State::BSelection;
 }
 
-void Game::InitQuestions(uint8_t numberOfPlayers)
+void Game::InitQuestions(uint16_t numberOfPlayers)
 {
-	uint8_t numberOfQuestions;
+	uint16_t numberOfQuestions;
 	switch (numberOfPlayers)
 	{
 	case 2:
@@ -181,7 +175,7 @@ void Game::InitQuestions(uint8_t numberOfPlayers)
 
 		for (const auto& q : m_questions)
 		{
-			if (q.index() == auxElement.index())
+			if (q._Storage()._Get() == auxElement._Storage()._Get())
 			{
 				found = true;
 				break;
@@ -224,7 +218,7 @@ void Game::setInfo(std::vector<Player> players) {
 	int mapSizeForTest = m_numberOfPlayers;//just for testing the app without releasing 
 	m_map = new Map(mapSizeForTest);
 	m_players = players;
-	//InitQuestions(m_numberOfPlayers);
+	InitQuestions(m_numberOfPlayers);
 	switch (m_numberOfPlayers)
 	{
 	case 2:
@@ -295,4 +289,30 @@ std::vector<uint8_t> getRanking(std::vector<std::tuple<uint8_t, float, float>> c
 std::vector<Player> Game::getPlayers()
 {
 	return m_players;
+}
+
+std::vector<uint8_t> GetRankingFromQuestion(std::vector<std::tuple<uint8_t, std::string, std::string>> closenessVector,
+	std::variant<SingleNumericQuestion, MultipleChoiceQuestion> question)
+{
+	bool isNumeric = std::holds_alternative<SingleNumericQuestion>(question);
+	std::vector<std::tuple<uint8_t, float, float>> realClosenessVector;
+
+	for (auto& cv : closenessVector)
+	{
+		auto& [id, answerString, timeStamp] = cv;
+		if (isNumeric)
+		{
+			realClosenessVector.push_back({ id,
+				std::get<SingleNumericQuestion>(question).CheckAnswer(answerString),
+				std::stof(timeStamp) });
+		}
+		else
+		{
+			realClosenessVector.push_back({ id,
+				std::get<MultipleChoiceQuestion>(question).CheckAnswer(answerString),
+				std::stof(timeStamp) });
+		}
+	}
+
+	return getRanking(realClosenessVector);
 }

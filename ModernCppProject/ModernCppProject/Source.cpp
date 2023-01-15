@@ -58,6 +58,9 @@ int main()
 	return crow::json::wvalue{ users_json };
 		});
 
+	Game game;
+
+	Login login;
 	ExistingUserHandler existingUser(login);
 	auto& sendExistingUserToServerPut = CROW_ROUTE(app, "/sendExistingUserToServer")
 		.methods(crow::HTTPMethod::PUT);
