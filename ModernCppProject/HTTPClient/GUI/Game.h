@@ -22,7 +22,6 @@ public:
 	Game(QWidget *parent, CurrentUser* currentUser);
 	~Game();
 	
-	void Display();
 	void generateMap(size_t kHeight, size_t kWidth);
 	void showMap(size_t kHeight, size_t kWidth);
 	void setNumberOfChoices(int numberOfChoices);
@@ -32,7 +31,7 @@ protected:
 	void showEvent(QShowEvent* ev);
 
 private slots:
-	void buttonClicked(int row, int col);
+	void buttonClicked(uint8_t row, uint8_t col, int id);
 	void start();
 
 private:
@@ -50,6 +49,9 @@ private:
 	size_t mapWidth;
 	size_t mapHeight;
 
+	uint8_t idTurn;
+	uint8_t update_line;
+	uint8_t update_col;
 	uint16_t numberOfChoices;
 	uint16_t orderPlace;
 	QTimer* timer;

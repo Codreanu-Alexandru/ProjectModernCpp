@@ -6,6 +6,9 @@ Game::Game(QWidget *parent, CurrentUser* currentUser)
 	ui.setupUi(this);
 	parentWindow = parent;
 	loggedUser = currentUser;
+	idTurn = 0;
+	update_line = -1;
+	update_col = -1;
 
 	auto startGame = cpr::Put(
 		cpr::Url{ "http://localhost:4960/startGame" }
@@ -64,25 +67,28 @@ void Game::showEventHelper()
 	QTimer::singleShot(3000, this, SLOT(start()));
 }
 
-void Game::Display() {
-
-}
 
 void Game::generateMap(size_t rows, size_t cols)
 {
-	for (int index_line = 0; index_line < rows; index_line++) {
-		for (int index_col = 0; index_col < cols; index_col++) {
+	for (uint8_t index_line = 0; index_line < rows; index_line++) {
+		for (uint8_t index_col = 0; index_col < cols; index_col++) {
 			QPushButton* button = new QPushButton(QString("(%1, %2)").arg(index_line).arg(index_col));
 			
 			button->setText("100");
 			button->resize(40, 80);
 			button->move(40 * index_col, 40 * index_line);
 			button->setAutoFillBackground(true);
-			button->setStyleSheet("background-color: rgb(255, 255, 255); color: rgb(0, 0, 0)");
+			if (update_line == index_line && update_col == index_col) {
+
+				button->setStyleSheet("background-color: rgb(255, 0, 0); color: rgb(0, 0, 0)");
+			}
+			else {
+				button->setStyleSheet("background-color: rgb(255, 255, 255); color: rgb(0, 0, 0)");
+			}
 			button->show();
 
 			map->addWidget(button, index_line, index_col);
-			connect(button, &QPushButton::clicked, [=] { buttonClicked(index_line, index_col); });
+			connect(button, &QPushButton::clicked, [=] { buttonClicked(index_line, index_col, 1); });
 		}
 	}
 
@@ -90,12 +96,17 @@ void Game::generateMap(size_t rows, size_t cols)
 	ui.mapWidget->show();
 }
 
-void Game::buttonClicked(int row, int col) {
+void Game::buttonClicked(uint8_t row, uint8_t col, int id) {
 
+	if (id == idTurn) {
 
+		update_line = row;
+		update_col = col;
+		update();
+	}
 }
 
-void Game::start()//check state
+void Game::start() //Checks state
 {
 	auto stateResponse = cpr::Get(cpr::Url{ "http://localhost:4960/gameState" });
 	auto gameState = crow::json::load(stateResponse.text);
@@ -111,7 +122,7 @@ void Game::start()//check state
 		}
 		else if (gameState["State"].i() == 2)
 		{
-			
+			idTurn = 1;
 		}
 
 		stateResponse = cpr::Get(cpr::Url{ "http://localhost:4960/gameState" });
