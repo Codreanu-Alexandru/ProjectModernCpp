@@ -52,7 +52,6 @@ Game::Game(QWidget *parent, std::string username, int userId)
 			}
 		}
 	}
-	
 	start();
 }
 
@@ -91,46 +90,31 @@ void Game::showMap(size_t kHeight, size_t kWidth)
 	update();
 }
 
-void Game::start() {
-
+void Game::start()//check state
+{
 	auto stateResponse = cpr::Get(cpr::Url{ "http://localhost:4960/gameState" });
-}
+	auto gameState = crow::json::load(stateResponse.text);
+	if(gameState["State"].i() != 5)
+	{
+		if (gameState["State"].i() == 1)
+		{
+			questionWindow = new NumericQuestion(this, numberOfChoices, orderPlace, userId);
+			questionWindow->show();
 
-//void Game::start()//check state
-//{
-//	auto stateResponse = cpr::Get(cpr::Url{ "http://localhost:4960/gameState" });
-//	auto gameState = crow::json::load(stateResponse.text);
-//	if(gameState["State"].i() != 5)
-//	{
-//		if (gameState["State"].i() == 2)
-//		{
-//			NumericQuestion questionWindow(this);
-//
-//			//opens numeric question window(game)
-//			
-//			
-//			//returns to game
-//			// 
-//			//get turn 
-//			//if turn = game.orderNumber
-//			//while(number of choices > 0)
-//			//text label cu select region. show
-//		}
-//		if (gameState["State"].i() == 3)
-//		{
-//			
-//		}
-//	}
-//}
-
-void Game::on_readyPushButton_clicked() {
-
-	auto readyResponse = cpr::Get(cpr::Url{ "http://localhost:4960/ready" });
-
-	if (readyResponse.status_code == 301) {
-
-		numericQuestion = new NumericQuestion(this);
-		numericQuestion->show();
+			//opens numeric question window(game)
+			
+			
+			//returns to game
+			// 
+			//get turn 
+			//if turn = game.orderNumber
+			//while(number of choices > 0)
+			//text label cu select region. show
+		}
+		if (gameState["State"].i() == 3)
+		{
+			
+		}
 	}
 }
 
