@@ -81,6 +81,9 @@
     <ClCompile Include="GameInfoHandler.cpp">
       <Filter>Source Files\Server Logic</Filter>
     </ClCompile>
+    <ClCompile Include="GetAnswerHandler.cpp">
+      <Filter>Source Files\Server Logic</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Advantages.h">
@@ -141,6 +144,9 @@
       <Filter>Header Files\Server Logic</Filter>
     </ClInclude>
     <ClInclude Include="GameInfoHandler.h">
+      <Filter>Header Files\Server Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="GetAnswerHandler.h">
       <Filter>Header Files\Server Logic</Filter>
     </ClInclude>
   </ItemGroup>
