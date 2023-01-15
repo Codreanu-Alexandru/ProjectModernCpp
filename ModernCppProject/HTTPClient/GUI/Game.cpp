@@ -1,28 +1,24 @@
 #include "Game.h"
 
-Game::Game(QWidget *parent, std::string username, int userId)
+Game::Game(QWidget *parent, CurrentUser* currentUser)
 	: QMainWindow(parent)
 {
 	ui.setupUi(this);
 	parentWindow = parent;
-	this->setStyleSheet("");
-	this->username = username;
-	this->userId = userId;
-	int mapHeight = 0;
-	int mapWidth = 0;
+	loggedUser = currentUser;
+
 	auto startGame = cpr::Put(
 		cpr::Url{ "http://localhost:4960/startGame" }
 	);
 	if (startGame.status_code == 200 || startGame.status_code == 201) {
+
 		auto gameData = crow::json::load(startGame.text);
 
 		std::vector<std::string> usernames_parsed = split(gameData["usernames_unparsed"].s(), " ");
-
 		mapHeight = gameData["mapHeight"].i();
 		mapWidth = gameData["mapWidth"].i();
 		map = new QGridLayout;
 		generateMap(mapHeight, mapWidth);
-		//showMap(mapHeight, mapWidth);
 
 		QPixmap pix;
 
@@ -52,6 +48,7 @@ Game::Game(QWidget *parent, std::string username, int userId)
 			}
 		}
 	}
+
 	start();
 }
 
@@ -60,22 +57,22 @@ Game::~Game()
 
 void Game::Display() {
 
-
 }
 
 void Game::generateMap(size_t rows, size_t cols)
 {
-	for (int i = 0; i < rows; i++) {
-		for (int j = 0; j < cols; j++) {
+	for (int index_line = 0; index_line < rows; index_line++) {
+		for (int index_col = 0; index_col < cols; index_col++) {
 			QPushButton* button = new QPushButton();
 			
 			button->setText("100");
 			button->resize(40, 80);
-			button->move(40 * j, 40 * i);
+			button->move(40 * index_col, 40 * index_line);
 			button->setAutoFillBackground(true);
 			button->setStyleSheet("background-color: rgb(255, 255, 255); color: rgb(0, 0, 0)");
 			button->show();
-			map->addWidget(button, i, j);
+
+			map->addWidget(button, index_line, index_col);
 		}
 	}
 
@@ -83,12 +80,12 @@ void Game::generateMap(size_t rows, size_t cols)
 	ui.mapWidget->show();
 }
 
-void Game::showMap(size_t kHeight, size_t kWidth)
-{
-	QMainWindow *window = new QMainWindow;
-	this->setCentralWidget(ui.mapWidget);
-	update();
-}
+//void Game::showMap(size_t kHeight, size_t kWidth)
+//{
+//	QMainWindow *window = new QMainWindow;
+//	this->setCentralWidget(ui.mapWidget);
+//	update();
+//}
 
 void Game::start()//check state
 {
@@ -98,7 +95,7 @@ void Game::start()//check state
 	{
 		if (gameState["State"].i() == 1)
 		{
-			questionWindow = new NumericQuestion(this, numberOfChoices, orderPlace, userId);
+			questionWindow = new NumericQuestion(this, numberOfChoices, orderPlace, loggedUser->getId());
 			questionWindow->show();
 
 			//opens numeric question window(game)
@@ -126,9 +123,4 @@ void Game::setNumberOfChoices(int numberOfChoices)
 void Game::setOrderPlace(int orderPlace)
 {
 	this->orderPlace = orderPlace;
-}
-
-int Game::getUserId()
-{
-	return userId;
 }

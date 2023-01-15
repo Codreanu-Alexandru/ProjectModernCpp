@@ -2,21 +2,18 @@
 #include <qtimer.h>
 #include <string>
 
-Lobby::Lobby(QWidget* parent, std::string username, int id)
+Lobby::Lobby(QWidget* parent, CurrentUser* currentUser)
 	: QMainWindow(parent)
 {
 	ui.setupUi(this);
 	parentWindow = parent;
+	loggedUser = currentUser;
+
 	timerSeconds = 15;
-	m_username = username;
-	userId = id;
 	playersInLobby = 0;
 
-
 	QPixmap pix("./hourglass_clipart.png");
-	int img_width = ui.hourglassImageLabel->width();
-	int img_height = ui.hourglassImageLabel->height();
-	ui.hourglassImageLabel->setPixmap(pix.scaled(img_width, img_height, Qt::KeepAspectRatio));
+	ui.hourglassImageLabel->setPixmap(pix.scaled(ui.hourglassImageLabel->width(), ui.hourglassImageLabel->height(), Qt::KeepAspectRatio));
 
 	QFont font("Arial", 12);
 	ui.timerLabel->setFont(font);
@@ -25,7 +22,7 @@ Lobby::Lobby(QWidget* parent, std::string username, int id)
 	auto lobbyResponse = cpr::Put(
 		cpr::Url{ "http://localhost:4960/sendPlayerInLobbyToServer" },
 		cpr::Payload{
-			{ "username", m_username }
+			{ "username", loggedUser->getUsername() }
 		}
 	);
 	
@@ -40,28 +37,38 @@ void Lobby::showTime()
 	
 	auto lobbyData = crow::json::load(response.text);
 
-	QString playersText = QString::number(lobbyData["playersInLobby"].i());
-	ui.numberOfPlayersLabel->setText(playersText);
+	ui.numberOfPlayersLabel->setText(QString::number(lobbyData["playersInLobby"].i()));
 
-	if (response.status_code == 303)
-	{
-		QString timerText = QString::number(lobbyData["timerSeconds"].i());
-		ui.timerLabel->setText(timerText);
-	}
-	else if (response.status_code == 302)
-	{	
+	switch (response.status_code) {
+
+	case 303:
+
+		ui.timerLabel->setText(QString::number(lobbyData["timerSeconds"].i()));
+
+		break;
+
+	case 302:
+
 		timer->stop();
 		QMessageBox::warning(this, "Lobby Error", "Insufficient players to start a game.");
 		this->close();
 		parentWindow->show();
 		return;
-	}
-	else if (response.status_code == 301)
-	{
+
+		break;
+
+	case 301:
+
 		timer->stop();
 		hide();
-		game = new Game(parentWindow, m_username, userId);
-		game->show();
+		gameWindow = new Game(parentWindow, loggedUser);
+		gameWindow->show();
+
+		break;
+
+	default:
+
+		break;
 	}
 }
 
@@ -71,7 +78,7 @@ void Lobby::on_cancelPushButton_clicked()
 	auto lobbyResponse = cpr::Put(
 		cpr::Url{ "http://localhost:4960/removePlayerFromLobby" },
 		cpr::Payload{
-			{ "username", m_username }
+			{ "username", loggedUser->getUsername() }
 		}
 	);
 

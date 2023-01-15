@@ -6,9 +6,7 @@ LogInMenu::LogInMenu(QWidget *parent)
 	parentWindow = parent;
 	ui.setupUi(this);
 	QPixmap pix("./spartan_clipart.png");
-	int img_width = ui.LogInImage->width();
-	int img_height = ui.LogInImage->height();
-	ui.LogInImage->setPixmap(pix.scaled(img_width, img_height, Qt::KeepAspectRatio));
+	ui.LogInImage->setPixmap(pix.scaled(ui.LogInImage->width(), ui.LogInImage->height(), Qt::KeepAspectRatio));
 }
 
 LogInMenu::~LogInMenu()
@@ -18,12 +16,8 @@ void LogInMenu::on_logIn2PushButton_clicked() {
 
 	cpr::Response response = cpr::Get(cpr::Url{ "http://localhost:4960/users" });
 
-	QString qString_username = ui.usernameLineEdit->text();
-	QString qString_password = ui.passwordLineEdit->text();
-
-	std::string username = qString_username.toLocal8Bit().constData();
-	std::string password = qString_password.toLocal8Bit().constData();
-	int id = -1;
+	std::string username = ui.usernameLineEdit->text().toLocal8Bit().constData();
+	std::string password = ui.passwordLineEdit->text().toLocal8Bit().constData();
 
 	if (correctAuthentication(username, password, response)) {
 

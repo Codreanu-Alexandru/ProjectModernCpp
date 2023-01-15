@@ -7,12 +7,8 @@ SignUpMenu::SignUpMenu(QWidget *parent)
 	ui.setupUi(this);
 	QPixmap pix_left("./royal_design_left.png");
 	QPixmap pix_right("./royal_design_right.png");
-	int left_img_width = ui.leftImageLabel->width();
-	int left_img_height = ui.leftImageLabel->height();
-	int right_img_width = ui.rightImageLabel->width();
-	int right_img_height = ui.rightImageLabel->height();
-	ui.leftImageLabel->setPixmap(pix_left.scaled(left_img_width, left_img_height, Qt::KeepAspectRatio));
-	ui.rightImageLabel->setPixmap(pix_right.scaled(right_img_width, right_img_height, Qt::KeepAspectRatio));
+	ui.leftImageLabel->setPixmap(pix_left.scaled(ui.leftImageLabel->width(), ui.leftImageLabel->height(), Qt::KeepAspectRatio));
+	ui.rightImageLabel->setPixmap(pix_right.scaled(ui.rightImageLabel->width(), ui.rightImageLabel->height(), Qt::KeepAspectRatio));
 }
 
 SignUpMenu::~SignUpMenu()
@@ -22,11 +18,8 @@ void SignUpMenu::on_signUp2Button_clicked() {
 
 	cpr::Response response = cpr::Get(cpr::Url{ "http://localhost:4960/users" });
 
-	QString qString_username = ui.username2LineEdit->text();
-	QString qString_password = ui.password2LineEdit->text();
-
-	std::string username = qString_username.toLocal8Bit().constData();
-	std::string password = qString_password.toLocal8Bit().constData();
+	std::string username = ui.username2LineEdit->text().toLocal8Bit().constData();
+	std::string password = ui.password2LineEdit->text().toLocal8Bit().constData();
 
 	if (!existingUser(username, response)) {
 

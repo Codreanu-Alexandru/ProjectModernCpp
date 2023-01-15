@@ -13,20 +13,22 @@ class Lobby : public QMainWindow
 	Q_OBJECT
 
 public:
-	Lobby(QWidget *parent, std::string username, int id);
+	Lobby(QWidget *parent, CurrentUser* currentUser);
 	~Lobby();
+
+private slots:
+	void on_cancelPushButton_clicked();
 
 public slots:
 	void showTime();
-	void on_cancelPushButton_clicked();
 
 private:
 	Ui::LobbyClass ui;
 	QWidget* parentWindow;
+	Game* gameWindow;
+	CurrentUser* loggedUser;
+
 	QTimer* timer;
-	std::string m_username;
-	int timerSeconds;
-	int playersInLobby;
-	Game* game;
-	int userId;
+	uint16_t timerSeconds;
+	uint16_t playersInLobby;
 };

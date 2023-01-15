@@ -9,9 +9,7 @@ LoggedInMenu::LoggedInMenu(QWidget *parent, CurrentUser *currentUser)
 	loggedUser = currentUser;
 
 	QPixmap pix("./castle.png");
-	int img_width = ui.castleImageLabel->width();
-	int img_height = ui.castleImageLabel->height();
-	ui.castleImageLabel->setPixmap(pix.scaled(img_width, img_height, Qt::KeepAspectRatio));
+	ui.castleImageLabel->setPixmap(pix.scaled(ui.castleImageLabel->width(), ui.castleImageLabel->height(), Qt::KeepAspectRatio));
 }
 
 LoggedInMenu::~LoggedInMenu()
@@ -20,7 +18,7 @@ LoggedInMenu::~LoggedInMenu()
 void LoggedInMenu::on_playPushButton_clicked() {
 
 	hide();
-	lobby = new Lobby(this, loggedUser->getUsername(),loggedUser->getId());
+	lobby = new Lobby(this, loggedUser);
 	lobby->show();
 }
 
@@ -31,8 +29,24 @@ void LoggedInMenu::on_viewMyProfilePushButton_clicked() {
 	profileViewTab->show();
 }
 
-void LoggedInMenu::on_optionsPushButton_clicked() {
+void LoggedInMenu::on_deleteAccountPushButton_clicked() {
 
+	auto deleteUserResponse = cpr::Put(
+		cpr::Url{ "http://localhost:4960/deleteUserFromServer" },
+		cpr::Payload{
+			{ "username", loggedUser->getUsername()}
+		}
+	);
+	if (deleteUserResponse.status_code == 200 || deleteUserResponse.status_code == 201) {
+
+		QMessageBox::information(this, "Delete Account Info", "Your account has been succesfully deleted.");
+		this->close();
+		parentWindow->show();
+	}
+	else {
+
+		QMessageBox::warning(this, "Delete Account Error", "There was an error registering your information.");
+	}
 }
 
 void LoggedInMenu::on_logOutPushButton_clicked() {

@@ -14,8 +14,6 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
-    cpr::Response response = cpr::Get(cpr::Url{ "http://localhost:4960/users" });
-
     //Setting the template
     QFile styleSheetFile("./Irrorater.qss");
     styleSheetFile.open(QFile::ReadOnly);

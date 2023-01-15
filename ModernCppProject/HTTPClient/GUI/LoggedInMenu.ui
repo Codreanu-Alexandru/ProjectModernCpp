@@ -40,7 +40,7 @@
      <string>View my profile</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="optionsPushButton">
+   <widget class="QPushButton" name="deleteAccountPushButton">
     <property name="geometry">
      <rect>
       <x>50</x>
@@ -50,7 +50,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Options</string>
+     <string>Delete Account</string>
     </property>
    </widget>
    <widget class="QPushButton" name="logOutPushButton">

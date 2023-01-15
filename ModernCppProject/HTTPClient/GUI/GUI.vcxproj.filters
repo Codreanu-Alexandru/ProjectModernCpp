@@ -25,9 +25,6 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PreLobbyMenu.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="ProfileViewTab.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -94,9 +91,6 @@
     <QtMoc Include="LogInMenu.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="PreLobbyMenu.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
     <QtMoc Include="ProfileViewTab.h">
       <Filter>Header Files</Filter>
     </QtMoc>
@@ -121,9 +115,6 @@
       <Filter>User Interfaces</Filter>
     </QtUic>
     <QtUic Include="LogInMenu.ui">
-      <Filter>User Interfaces</Filter>
-    </QtUic>
-    <QtUic Include="PreLobbyMenu.ui">
       <Filter>User Interfaces</Filter>
     </QtUic>
     <QtUic Include="ProfileViewTab.ui">

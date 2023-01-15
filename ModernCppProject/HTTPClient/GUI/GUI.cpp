@@ -5,9 +5,7 @@ GUI::GUI(QWidget *parent)
 {
     ui.setupUi(this);
     QPixmap pix("./emperor_clipart.png");
-    int img_width = ui.mainMenuImage->width();
-    int img_height = ui.mainMenuImage->height();
-    ui.mainMenuImage->setPixmap(pix.scaled(img_width, img_height, Qt::KeepAspectRatio));
+    ui.mainMenuImage->setPixmap(pix.scaled(ui.mainMenuImage->width(), ui.mainMenuImage->height(), Qt::KeepAspectRatio));
 }
 
 GUI::~GUI()

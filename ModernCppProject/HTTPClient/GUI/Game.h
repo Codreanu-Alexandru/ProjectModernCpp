@@ -10,13 +10,14 @@
 #include "qstring.h"
 #include "AuthUtils.h"
 #include "NumericQuestion.h"
+#include "CurrentUser.h"
 
 class Game : public QMainWindow
 {
 	Q_OBJECT
 
 public:
-	Game(QWidget *parent, std::string username, int userId);
+	Game(QWidget *parent, CurrentUser* currentUser);
 	~Game();
 	
 	void Display();
@@ -25,19 +26,19 @@ public:
 	void start();
 	void setNumberOfChoices(int numberOfChoices);
 	void setOrderPlace(int orderPlace);
-	int getUserId();
 
 
 private:
 	Ui::GameClass ui;
 	QWidget *parentWindow;
-	int mapWidth;
-	int mapHeight;
-	std::string username;
-	QGridLayout* map;
-	QWidget* mapWidget;
-	int numberOfChoices;
-	int orderPlace;
-	int userId;
 	NumericQuestion* questionWindow;
+	CurrentUser* loggedUser;
+
+	QWidget* mapWidget;
+	QGridLayout* map;
+	size_t mapWidth;
+	size_t mapHeight;
+
+	uint16_t numberOfChoices;
+	uint16_t orderPlace;
 };

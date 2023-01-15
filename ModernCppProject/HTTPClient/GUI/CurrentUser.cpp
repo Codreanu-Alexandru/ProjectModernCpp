@@ -1,13 +1,18 @@
 #include "CurrentUser.h"
 
-std::string CurrentUser::getUsername()
+std::string CurrentUser::getUsername() const
 {
     return username;
 }
 
-std::string CurrentUser::getMatchHistory()
+std::string CurrentUser::getMatchHistory() const
 {
     return matchHistory;
+}
+
+uint16_t CurrentUser::getId() const
+{
+    return id;
 }
 
 void CurrentUser::setUsername(std::string username)
@@ -23,10 +28,6 @@ void CurrentUser::setMatchHistory(std::string matchHistory)
 void CurrentUser::setId(int id)
 {
     this->id = id;
-}
-int CurrentUser::getId()
-{
-    return id;
 }
 
 void CurrentUser::createUser(std::string username) {

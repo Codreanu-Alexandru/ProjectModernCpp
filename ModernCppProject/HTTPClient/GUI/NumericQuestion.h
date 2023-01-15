@@ -10,7 +10,7 @@ class NumericQuestion : public QMainWindow
 	Q_OBJECT
 
 public:
-	NumericQuestion(QWidget* parent, int& numberOfChoices, int& orderPlace, int& userId);
+	NumericQuestion(QWidget* parent, uint16_t& numberOfChoices, uint16_t& orderPlace, uint16_t userId);
 	~NumericQuestion();
 
 private slots:
@@ -19,7 +19,9 @@ private slots:
 private:
 	Ui::NumericQuestionClass ui;
 	QWidget* parentWindow;
-	int* m_numberOfChoices;
-	int* m_orderPlace;
-	int* m_userId;
+
+	uint16_t* m_numberOfChoices;
+	uint16_t* m_orderPlace;
+
+	uint16_t m_userId;
 };

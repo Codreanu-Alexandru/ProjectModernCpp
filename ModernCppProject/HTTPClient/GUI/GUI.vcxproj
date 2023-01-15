@@ -109,7 +109,6 @@
     <ClCompile Include="Lobby.cpp" />
     <ClCompile Include="LoggedInMenu.cpp" />
     <ClCompile Include="NumericQuestion.cpp" />
-    <ClCompile Include="PreLobbyMenu.cpp" />
     <ClCompile Include="ProfileViewTab.cpp" />
     <ClCompile Include="SignUpMenu.cpp" />
     <QtRcc Include="GUI.qrc" />
@@ -123,7 +122,6 @@
     <QtUic Include="LoggedInMenu.ui" />
     <QtUic Include="LogInMenu.ui" />
     <QtUic Include="NumericQuestion.ui" />
-    <QtUic Include="PreLobbyMenu.ui" />
     <QtUic Include="ProfileViewTab.ui" />
     <QtUic Include="SignUpMenu.ui" />
   </ItemGroup>
@@ -149,9 +147,6 @@
     <ProjectReference Include="..\Encoder\Encoder.vcxproj">
       <Project>{c8f2d9d0-9c9b-4453-bd15-082aa312347d}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\HTTPClient\HTTPClient.vcxproj">
-      <Project>{401f3222-ba44-444d-9f50-a346fe7f233a}</Project>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="SignUpMenu.h" />
@@ -166,7 +161,6 @@
     <QtMoc Include="Game.h" />
     <QtMoc Include="Lobby.h" />
     <QtMoc Include="ProfileViewTab.h" />
-    <QtMoc Include="PreLobbyMenu.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

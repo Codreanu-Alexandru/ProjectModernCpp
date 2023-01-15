@@ -8,9 +8,7 @@ ProfileViewTab::ProfileViewTab(QWidget *parent, CurrentUser* currentUser)
 	loggedUser = currentUser;
 
 	QPixmap pix("./conqueror_clipart.png");
-	int img_width = ui.conquerorImageLabel->width();
-	int img_height = ui.conquerorImageLabel->height();
-	ui.conquerorImageLabel->setPixmap(pix.scaled(img_width, img_height, Qt::KeepAspectRatio));
+	ui.conquerorImageLabel->setPixmap(pix.scaled(ui.conquerorImageLabel->width(), ui.conquerorImageLabel->height(), Qt::KeepAspectRatio));
 
 	QFont font("Arial", 14);
 
@@ -20,24 +18,20 @@ ProfileViewTab::ProfileViewTab(QWidget *parent, CurrentUser* currentUser)
 	
 	//Extracting the last 10 games played, if they exist
 	const std::string matchHistory = loggedUser->getMatchHistory();
-
 	std::string last10Matches = "";
-	int nrOfGames = 0;
+	uint16_t nrOfGames = 0;
 
 	for (const char& result : matchHistory) {
 		
 		last10Matches += result + " ";
-
 		nrOfGames++;
 		if (nrOfGames == 10) {
 			break;
 		}
 	}
-
 	while (nrOfGames <= 10) {
 
 		last10Matches += "- ";
-
 		nrOfGames++;
 	}
 
@@ -45,7 +39,7 @@ ProfileViewTab::ProfileViewTab(QWidget *parent, CurrentUser* currentUser)
 	ui.matchHistoryLabel->setText(QString::fromUtf8(last10Matches.data(), int(last10Matches.size())));
 
 	//Calculating the winrate and number of wins
-	int nrOfWins = 0;
+	uint16_t nrOfWins = 0;
 	float winrate = 0.0;
 
 	if (matchHistory.size() > 0) {
