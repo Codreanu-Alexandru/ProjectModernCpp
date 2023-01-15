@@ -21,49 +21,6 @@
 int main()
 {
 
-	////Testing Encoder
-	//Encoder encoder;
-
-	//std::string stringInput;
-	//std::string otherString;
-
-	//std::cout << "Your password: ";
-	//std::cin >> stringInput;
-
-	//otherString = encoder.Encode(stringInput, '\0');
-	//std::cout << "Is now: " << otherString << std::endl;
-
-	//std::cout << "Try password: ";
-	//std::string aux;
-	//std::cin >> aux;
-	//std::cout << (encoder.TryToMatch(aux, otherString) ? "Yes, it matches." : "No, it doesn't match.");
-
-	/*Testing question
-	Game g;
-	std::cout << g.m_questions.size() << std::endl;
-	for (int i = 0; i < g.m_questions.size(); i++)
-	{
-		if (!g.m_questions[i]->GetIsNumericQuestionBoolean())
-		{
-			MultipleChoiceQuestion* mcq = dynamic_cast<MultipleChoiceQuestion*>(g.m_questions[i]);
-			std::cout << mcq->GetQuestion() << std::endl;
-			std::cout << mcq->GetAnswer() << std::endl;
-			std::vector<std::string> wrong = mcq->GetChoices();
-			for (int i = 0; i < wrong.size(); i++)
-			{
-				std::cout << wrong[i]<< std::endl;
-			}
-			std::cout << std::endl;
-		}
-		else
-		{
-			SingleNumericQuestion* snq = dynamic_cast<SingleNumericQuestion*>(g.m_questions[i]);
-			std::cout << snq->GetQuestion() << std::endl;
-			std::cout << snq->GetAnswer() << std::endl;
-			std::cout << std::endl;
-		}
-	}*/
-
 	const std::string csvDataFile = "user_dataset.csv";
 
 	UserDB userDatabase;
@@ -72,14 +29,16 @@ int main()
 		return -1;
 	}
 
-	Map map(4);
-	map.ShowMap();
-
 	userDatabase.displayDatabase();
-
 	Database userDB = userDatabase.getUserDatabase();
 
 	crow::SimpleApp app;
+
+	Game game;
+	Lobby lobby(app);
+	Login login;
+	std::vector<SingleNumericQuestion> questions;
+	std::vector<std::tuple<uint8_t, float, float>> answers;
 
 	CROW_ROUTE(app, "/")([]() {
 		return "Initial starting page for app server.";
@@ -99,25 +58,20 @@ int main()
 	return crow::json::wvalue{ users_json };
 		});
 
-	Game game;
-
-	Login login;
 	ExistingUserHandler existingUser(login);
 	auto& sendExistingUserToServerPut = CROW_ROUTE(app, "/sendExistingUserToServer")
 		.methods(crow::HTTPMethod::PUT);
 	sendExistingUserToServerPut(existingUser);
 
 	auto& sendNewUserToServerPut = CROW_ROUTE(app, "/sendNewUserToServer")
-		.methods(crow::HTTPMethod::PUT); 
+		.methods(crow::HTTPMethod::PUT);
 	sendNewUserToServerPut(NewUserHandler());
 
 	auto& deleteUserFromServerPut = CROW_ROUTE(app, "/deleteUserFromServer")
-		.methods(crow::HTTPMethod::PUT); 
+		.methods(crow::HTTPMethod::PUT);
 	deleteUserFromServerPut(DeleteUserHandler());
 
-	Lobby lobby(app);
 	LobbyHandler lobbyHandler(lobby);
-
 	auto& sendPlayersInLobbyPut = CROW_ROUTE(app, "/sendPlayerInLobbyToServer")
 		.methods(crow::HTTPMethod::PUT);
 	sendPlayersInLobbyPut(lobbyHandler);
@@ -126,17 +80,20 @@ int main()
 		.methods(crow::HTTPMethod::PUT);
 	removePlayersFromLobbyPut(lobbyHandler);
 
-	std::vector<SingleNumericQuestion> questions;
-	int code = 500;
-	CROW_ROUTE(app, "/lobbyInfo")([&lobby, &game, &questions, &code]() {
+	uint16_t code = 500;
+	uint16_t requests = 0;
+	CROW_ROUTE(app, "/lobbyInfo")([&lobby, &game, &questions, &code, &requests]() {
 
-	crow::json::wvalue lobbyData;
-	int timerSeconds = lobby.timerSeconds;
-	int numberOfPlayers = lobby.numberOfPlayers;
-	lobbyData["timerSeconds"] = timerSeconds;
-	lobbyData["playersInLobby"] = numberOfPlayers;
-	
-	lobby.timerSeconds--;
+		crow::json::wvalue lobbyData;
+
+	lobbyData["timerSeconds"] = lobby.timerSeconds;
+	lobbyData["playersInLobby"] = lobby.numberOfPlayers;
+
+	requests++;
+	if (requests % lobby.numberOfPlayers == 0) {
+		lobby.timerSeconds--;
+	}
+
 	std::cout << std::endl;
 	std::cout << lobby.timerSeconds;
 
@@ -149,7 +106,7 @@ int main()
 	else if (lobby.numberOfPlayers == 4 || (lobby.timerSeconds <= 0 && lobby.numberOfPlayers > 1)) {
 		if (code != 301) {
 			game.setInfo(lobby.getPlayers());
-			questions.emplace_back(SingleNumericQuestion("bau question?",123,2));
+			questions.emplace_back(SingleNumericQuestion("bau question?", 123, 2));
 			/*questions.emplace_back(game.GetNumericQuestion());
 			questions.emplace_back(game.GetNumericQuestion());
 			questions.emplace_back(game.GetNumericQuestion());*/
@@ -174,16 +131,16 @@ int main()
 
 	int readyPlayers = 0;
 	CROW_ROUTE(app, "/ready")([&game, &readyPlayers]() {
-	readyPlayers++;
+		readyPlayers++;
 	std::cout << "Ready players: " << readyPlayers << "\n";
-		
+
 	if (readyPlayers == game.getPlayers().size()) {
 		readyPlayers = 0;
 		return crow::response(301);
 	}
 	return crow::response(302);
 		});
-	
+
 	CROW_ROUTE(app, "/numericQ/<int>")([&game, &questions](const crow::request& req, crow::response& res, int questionPos) {
 		crow::json::wvalue baseQuestion;
 	baseQuestion["question"] = questions[questionPos].ToString();
@@ -192,7 +149,6 @@ int main()
 	res.end();
 		});
 
-	std::vector<std::tuple<uint8_t, float, float>> answers;
 	GetAnswerHandler getAnswer(answers);
 	auto& getAnswerPut = CROW_ROUTE(app, "/numericAnswer/<int>")
 		.methods(crow::HTTPMethod::PUT);
