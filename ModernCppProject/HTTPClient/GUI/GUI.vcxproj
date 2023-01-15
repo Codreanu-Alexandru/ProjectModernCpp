@@ -108,6 +108,7 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Lobby.cpp" />
     <ClCompile Include="LoggedInMenu.cpp" />
+    <ClCompile Include="MultipleChoiceQuestion.cpp" />
     <ClCompile Include="NumericQuestion.cpp" />
     <ClCompile Include="ProfileViewTab.cpp" />
     <ClCompile Include="SignUpMenu.cpp" />
@@ -121,6 +122,7 @@
     <QtUic Include="Lobby.ui" />
     <QtUic Include="LoggedInMenu.ui" />
     <QtUic Include="LogInMenu.ui" />
+    <QtUic Include="MultipleChoiceQuestion.ui" />
     <QtUic Include="NumericQuestion.ui" />
     <QtUic Include="ProfileViewTab.ui" />
     <QtUic Include="SignUpMenu.ui" />
@@ -157,6 +159,7 @@
   <ItemGroup>
     <ClInclude Include="AuthUtils.h" />
     <ClInclude Include="CurrentUser.h" />
+    <QtMoc Include="MultipleChoiceQuestion.h" />
     <QtMoc Include="NumericQuestion.h" />
     <QtMoc Include="Game.h" />
     <QtMoc Include="Lobby.h" />

@@ -95,8 +95,8 @@ void Game::start()//check state
 	{
 		if (gameState["State"].i() == 1)
 		{
-			questionWindow = new NumericQuestion(this, numberOfChoices, orderPlace, loggedUser->getId());
-			questionWindow->show();
+			nQuestionWindow = new NumericQuestion(this, numberOfChoices, orderPlace, loggedUser->getId());
+			nQuestionWindow->show();
 
 			//opens numeric question window(game)
 			

@@ -4,13 +4,12 @@ NumericQuestion::NumericQuestion(QWidget* parent, uint16_t &numberOfChoices, uin
 	: QMainWindow(parent)
 {
 	ui.setupUi(this);
-	parentWindow = parent;
 
 	auto firstPhaseResponse = cpr::Get(cpr::Url{ "http://localhost:4960/numericQ/0" });
 	auto questionJson = crow::json::load(firstPhaseResponse.text);
 	std::string question = questionJson["question"].s();
-	ui.Question->setFont(QFont("Arial", 12));
-	ui.Question->setText(QString::fromUtf8(question.data(), int(question.size())));
+	ui.questionLabel->setFont(QFont("Arial", 12));
+	ui.questionLabel->setText(QString::fromUtf8(question.data(), int(question.size())));
 	//ui.Question->setText(QString::fromStdString(questionJson["question"].s()));
 
 	m_numberOfChoices = &numberOfChoices;

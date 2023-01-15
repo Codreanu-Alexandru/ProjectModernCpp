@@ -18,7 +18,6 @@ private slots:
 
 private:
 	Ui::NumericQuestionClass ui;
-	QWidget* parentWindow;
 
 	uint16_t* m_numberOfChoices;
 	uint16_t* m_orderPlace;

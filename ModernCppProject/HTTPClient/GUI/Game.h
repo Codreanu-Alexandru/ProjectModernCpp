@@ -10,6 +10,7 @@
 #include "qstring.h"
 #include "AuthUtils.h"
 #include "NumericQuestion.h"
+#include "MultipleChoiceQuestion.h"
 #include "CurrentUser.h"
 
 class Game : public QMainWindow
@@ -31,7 +32,8 @@ public:
 private:
 	Ui::GameClass ui;
 	QWidget *parentWindow;
-	NumericQuestion* questionWindow;
+	NumericQuestion* nQuestionWindow;
+	MultipleChoiceQuestion* mQuestionWindow;
 	CurrentUser* loggedUser;
 
 	QWidget* mapWidget;

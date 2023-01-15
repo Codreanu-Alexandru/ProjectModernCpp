@@ -34,6 +34,9 @@
     <ClCompile Include="NumericQuestion.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="MultipleChoiceQuestion.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AuthUtils.h">
@@ -100,6 +103,9 @@
     <QtMoc Include="NumericQuestion.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="MultipleChoiceQuestion.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="Game.ui">
@@ -124,6 +130,9 @@
       <Filter>User Interfaces</Filter>
     </QtUic>
     <QtUic Include="NumericQuestion.ui">
+      <Filter>User Interfaces</Filter>
+    </QtUic>
+    <QtUic Include="MultipleChoiceQuestion.ui">
       <Filter>User Interfaces</Filter>
     </QtUic>
   </ItemGroup>
