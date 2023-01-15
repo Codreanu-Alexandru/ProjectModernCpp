@@ -197,7 +197,7 @@ _SNQ_
 In ce an a avut loc primul razboi mondial?
 _END_
 _CA_
-1918
+1914
 
 _MCQ_
 Cate universitati sunt in Romania?
@@ -217,7 +217,7 @@ _SNQ_
 In ce an a avut loc al doilea razboi mondial?
 _END_
 _CA_
-1936
+1939
 
 _MCQ_
 Care a fost prima universitate a Romaniei?
@@ -294,10 +294,10 @@ _RA_
 _END_
 
 _SNQ_
-Cati oameni traiesc in orasul Tokyo?(2018)
+Cati oameni traiesc in orasul Tokyo?
 _END_
 _CA_
-13515271
+13988129
 
 _MCQ_
 Care este cel mai populat oras din Lume?
@@ -357,7 +357,7 @@ _SNQ_
 In ce an a fost primul premiu nobel?
 _END_
 _CA_
-1895
+1901
 
 _MCQ_
 Ce tip de acid este ADN-ul?
@@ -417,7 +417,7 @@ _SNQ_
 In ce an s-a lansat Google?
 _END_
 _CA_
-1997
+1998
 
 _MCQ_
 Ce aroma este Cointreau?
@@ -577,7 +577,7 @@ _SNQ_
 In ce an a fost revolutia Rusa?
 _END_
 _CA_
-1907
+1917
 
 _MCQ_
 Care a dezvoltat software-ul de zbor la bord pentru programul spațial Apollo?
@@ -657,7 +657,7 @@ _SNQ_
 Cand a fost inventat primul joc video?
 _END_
 _CA_
-1972
+1958
 
 _MCQ_
 Care a fost primul joc video?
@@ -817,7 +817,7 @@ _SNQ_
 Cate cuvinte sunt in limba romana?
 _END_
 _CA_
-62000
+350000 
 
 _MCQ_
 Care este cea mai eficienta metoda de a comite sinucidere?
@@ -957,7 +957,7 @@ _SNQ_
 Cati romani mor anual din cauza sinuciderii?
 _END_
 _CA_
-3000
+1744
 
 _MCQ_
 Care este cel mai populat oras din Moldova?
@@ -977,7 +977,7 @@ _SNQ_
 Cati moldoveni mor anual din cauza sinuciderii?
 _END_
 _CA_
-500
+318
 
 _MCQ_
 Cum se numeste cea mai mare regiunea distinct culturala din Romania?
