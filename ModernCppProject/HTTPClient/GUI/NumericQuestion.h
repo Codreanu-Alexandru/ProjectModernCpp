@@ -4,6 +4,7 @@
 #include "ui_NumericQuestion.h"
 #include <cpr/cpr.h>
 #include <crow.h>
+#include "AuthUtils.h"
 
 class NumericQuestion : public QMainWindow
 {

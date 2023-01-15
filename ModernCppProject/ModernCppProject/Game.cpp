@@ -251,10 +251,10 @@ void Game::setInfo(std::vector<Player> players) {
 	}
 }
 
-std::vector<uint8_t> getRanking(std::vector<std::tuple<uint8_t, float, float>> closenessVector)
+std::vector<int> getRanking(std::vector<std::tuple<int, float, float>> closenessVector)
 {
-	std::vector<std::tuple<uint8_t, float, float>> diferences;
-	std::vector<uint8_t> ranking;
+	std::vector<std::tuple<int, float, float>> diferences;
+	std::vector<int> ranking;
 
 	for (const auto& i : closenessVector)
 	{
@@ -291,11 +291,11 @@ std::vector<Player> Game::getPlayers() const
 	return m_players;
 }
 
-std::vector<uint8_t> GetRankingFromQuestion(std::vector<std::tuple<uint8_t, std::string, std::string>> closenessVector,
+std::vector<int> GetRankingFromQuestion(std::vector<std::tuple<int, std::string, std::string>> closenessVector,
 	std::variant<SingleNumericQuestion, MultipleChoiceQuestion> question)
 {
 	bool isNumeric = std::holds_alternative<SingleNumericQuestion>(question);
-	std::vector<std::tuple<uint8_t, float, float>> realClosenessVector;
+	std::vector<std::tuple<int, float, float>> realClosenessVector;
 
 	for (auto& cv : closenessVector)
 	{

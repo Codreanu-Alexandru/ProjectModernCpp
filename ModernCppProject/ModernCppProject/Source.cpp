@@ -38,7 +38,7 @@ int main()
 	Lobby lobby(app);
 	Login login;
 	std::vector<SingleNumericQuestion> questions;
-	std::vector<std::tuple<uint8_t, float, float>> answers;
+	std::vector<std::tuple<int, float, float>> answers;
 
 	CROW_ROUTE(app, "/")([]() {
 		return "Initial starting page for app server.";
@@ -106,10 +106,10 @@ int main()
 	else if (lobby.getPlayerCount() == 4 || (lobby.getTimerSeconds() <= 0 && lobby.getPlayerCount() > 1)) {
 		if (code != 301) {
 			game.setInfo(lobby.getPlayers());
-			questions.emplace_back(SingleNumericQuestion("bau question?", 123, 2));
-			/*questions.emplace_back(game.GetNumericQuestion());
+			//questions.emplace_back(SingleNumericQuestion("bau question?", 123, 2));
 			questions.emplace_back(game.GetNumericQuestion());
-			questions.emplace_back(game.GetNumericQuestion());*/
+			//questions.emplace_back(game.GetNumericQuestion());
+			//questions.emplace_back(game.GetNumericQuestion());
 		}
 		code = 301;
 	}
@@ -140,6 +140,10 @@ int main()
 	}
 	return crow::response(302);
 		});
+
+	/*CROW_ROUTE(app, "/turn")([&game]() {
+		
+		});*/
 
 	CROW_ROUTE(app, "/numericQ/<int>")([&game, &questions](const crow::request& req, crow::response& res, int questionPos) {
 		crow::json::wvalue baseQuestion;

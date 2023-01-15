@@ -27,6 +27,7 @@ public:
 
 	/*Getters*/
 	std::vector<Player> getPlayers() const;
+	uint8_t getTurn() const;
 	Map* GetMap() const;
 	enum class State : uint8_t
 	{
@@ -50,10 +51,11 @@ private:
 
 	uint16_t m_numberOfPlayers;
 	uint16_t m_numberOfRounds;
+	uint8_t m_turn;
 
 	/*Private Function*/
 	void InitQuestions(uint16_t numberOfPlayers);
 };
 
-std::vector<uint8_t> GetRankingFromQuestion(std::vector<std::tuple<uint8_t, std::string, std::string>> closenessVector, std::variant<SingleNumericQuestion, MultipleChoiceQuestion> question);
-std::vector<uint8_t> getRanking(std::vector<std::tuple<uint8_t, float, float>> closenessVector);
+std::vector<int> GetRankingFromQuestion(std::vector<std::tuple<int, std::string, std::string>> closenessVector, std::variant<SingleNumericQuestion, MultipleChoiceQuestion> question);
+std::vector<int> getRanking(std::vector<std::tuple<int, float, float>> closenessVector);

@@ -80,9 +80,10 @@ void Game::generateMap(size_t rows, size_t cols)
 	ui.mapWidget->setLayout(map);
 	ui.mapWidget->show();
 }
+
 void Game::buttonClicked(int row, int col) {
-	QString s = QString::number(row);
-	ui.buttonCoord->setText(s);
+
+
 }
 
 void Game::start()//check state

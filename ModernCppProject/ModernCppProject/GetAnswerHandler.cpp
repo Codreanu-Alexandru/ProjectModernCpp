@@ -1,7 +1,7 @@
 #include "GetAnswerHandler.h"
 
 
-GetAnswerHandler::GetAnswerHandler(std::vector<std::tuple<uint8_t, float, float>>& answers)
+GetAnswerHandler::GetAnswerHandler(std::vector<std::tuple<int, float, float>>& answers)
 {
 	m_answers = &answers;
 }
@@ -12,13 +12,14 @@ void GetAnswerHandler::operator()(const crow::request& req, crow::response& res,
 	auto end = bodyArgs.end();
 	auto answerIter = bodyArgs.find("answer");
 	auto timeIter = bodyArgs.find("time");
+
 	if (answerIter != end && timeIter != end)
 	{
-		float answer = std::stof(answerIter->second);
+		float answer = std::stoi(answerIter->second);
 		float time = std::stof(timeIter->second);
 		std::cout << answer<<std::endl;
 		std::cout << time << std::endl;
-		m_answers->emplace_back(std::tuple<uint8_t, float, float>(userId, answer, time));
+		m_answers->emplace_back(std::tuple<int, float, float>(userId, answer, time));
 		res.code = 200;
 		res.end();
 	}
