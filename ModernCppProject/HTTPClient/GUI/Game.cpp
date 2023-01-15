@@ -48,11 +48,21 @@ Game::Game(QWidget *parent, CurrentUser* currentUser)
 			}
 		}
 	}
-	QTimer::singleShot(5000, this, SLOT(start()));
 }
 
 Game::~Game()
 {}
+
+void Game::showEvent(QShowEvent* ev)
+{
+	QMainWindow::showEvent(ev);
+	showEventHelper();
+}
+
+void Game::showEventHelper()
+{
+	QTimer::singleShot(3000, this, SLOT(start()));
+}
 
 void Game::Display() {
 
@@ -89,26 +99,24 @@ void Game::start()//check state
 {
 	auto stateResponse = cpr::Get(cpr::Url{ "http://localhost:4960/gameState" });
 	auto gameState = crow::json::load(stateResponse.text);
-	if(gameState["State"].i() != 5)
+	while(gameState["State"].i() != 6)
 	{
 		if (gameState["State"].i() == 1)
 		{
 			nQuestionWindow = new NumericQuestion(this, numberOfChoices, orderPlace, loggedUser->getId());
 			nQuestionWindow->show();
+			this->close();
 
-			//opens numeric question window(game)
-			
-			
-			//returns to game
-			//get turn 
-			//if turn = game.orderNumber
-			//while(number of choices > 0)
-			//text label cu select region. show
+			break;
 		}
-		if (gameState["State"].i() == 3)
+		else if (gameState["State"].i() == 2)
 		{
 			
 		}
+
+		stateResponse = cpr::Get(cpr::Url{ "http://localhost:4960/gameState" });
+		gameState = crow::json::load(stateResponse.text);
+		Sleep(1000);
 	}
 }
 

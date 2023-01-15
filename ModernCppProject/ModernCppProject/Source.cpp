@@ -108,8 +108,8 @@ int main()
 			game.setInfo(lobby.getPlayers());
 			//questions.emplace_back(SingleNumericQuestion("bau question?", 123, 2));
 			questions.emplace_back(game.GetNumericQuestion());
-			questions.emplace_back(game.GetNumericQuestion());
-			questions.emplace_back(game.GetNumericQuestion());
+			//questions.emplace_back(game.GetNumericQuestion());
+			//questions.emplace_back(game.GetNumericQuestion());
 		}
 		code = 301;
 	}
@@ -141,9 +141,6 @@ int main()
 	return crow::response(302);
 		});
 
-	/*CROW_ROUTE(app, "/turn")([&game]() {
-		
-		});*/
 
 	CROW_ROUTE(app, "/numericQ/<int>")([&game, &questions](const crow::request& req, crow::response& res, int questionPos) {
 		crow::json::wvalue baseQuestion;
@@ -153,7 +150,7 @@ int main()
 	res.end();
 		});
 
-	GetAnswerHandler getAnswer(answers);
+	GetAnswerHandler getAnswer(answers, game);
 	auto& getAnswerPut = CROW_ROUTE(app, "/numericAnswer/<int>")
 		.methods(crow::HTTPMethod::PUT);
 	getAnswerPut(getAnswer);

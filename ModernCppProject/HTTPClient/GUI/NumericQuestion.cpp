@@ -4,6 +4,7 @@ NumericQuestion::NumericQuestion(QWidget* parent, uint16_t &numberOfChoices, uin
 	: QMainWindow(parent)
 {
 	ui.setupUi(this);
+	parentWindow = parent;
 	m_numberOfChoices = &numberOfChoices;
 	m_orderPlace = &orderPlace;
 	m_userId = userId;
@@ -15,7 +16,8 @@ NumericQuestion::NumericQuestion(QWidget* parent, uint16_t &numberOfChoices, uin
 
 	bool isNumeric = questionJson["isNumeric"].b();
 	if (isNumeric) {
-		ui.questionLabel->setFont(QFont("Arial", 12, Qt::AlignCenter));
+		ui.questionLabel->setAlignment(Qt::AlignCenter);
+		ui.questionLabel->setFont(QFont("Arial", 12));
 		ui.questionLabel->setText(QString::fromUtf8(parsed_args[0].data(), int(parsed_args[0].size())));
 	}
 
@@ -42,5 +44,6 @@ void NumericQuestion::on_SendButton_clicked()
 	if (answerPut.status_code == 200 || answerPut.status_code == 201)
 	{
 		this->close();
+		parentWindow->show();
 	}
 }

@@ -34,9 +34,9 @@ Game::State Game::GetState() const
 	return m_state;
 }
 
-void Game::bSelection()
+void Game::changeState(uint8_t state_index)
 {
-	m_state = State::BSelection;
+	m_state = static_cast<State>((int)state_index);
 }
 
 void Game::InitQuestions(uint16_t numberOfPlayers)

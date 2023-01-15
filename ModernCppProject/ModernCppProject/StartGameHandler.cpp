@@ -22,9 +22,7 @@ crow::response StartGameHandler::operator()(const crow::request& req) const
 	gameData["mapWidth"] = static_cast<int>(game->GetMap()->GetWidth());
 	gameData["mapHeight"] = static_cast<int>(game->GetMap()->GetHeight());
 
-	game->bSelection();
-
-	std::cout << "Started with " << (int)lobby->getPlayerCount() << " players\n";
+	game->changeState(1);
 
 	return crow::response(200, gameData);
 }

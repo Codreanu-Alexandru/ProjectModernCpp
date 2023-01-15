@@ -32,13 +32,14 @@ public:
 	enum class State : uint8_t
 	{
 		None,
+		Question,
 		BSelection,
 		Conquer,
 		Duel,
 		End
 	};
 	State GetState() const;
-	void bSelection();
+	void changeState(uint8_t state_index);
 
 private:
 	/*Private members*/

@@ -11,7 +11,7 @@
 #include "AuthUtils.h"
 #include "NumericQuestion.h"
 #include "MultipleChoiceQuestion.h"
-#include "CurrentUser.h"
+#include <Windows.h>
 #include <qtimer.h>
 
 class Game : public QMainWindow
@@ -28,9 +28,15 @@ public:
 	void setNumberOfChoices(int numberOfChoices);
 	void setOrderPlace(int orderPlace);
 
+protected:
+	void showEvent(QShowEvent* ev);
+
 private slots:
 	void buttonClicked(int row, int col);
 	void start();
+
+private:
+	void showEventHelper();
 
 private:
 	Ui::GameClass ui;

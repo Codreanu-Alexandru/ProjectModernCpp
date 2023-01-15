@@ -19,6 +19,7 @@ private slots:
 
 private:
 	Ui::MultipleChoiceQuestionClass ui;
+	QWidget* parentWindow;
 
 	uint16_t option;
 };
