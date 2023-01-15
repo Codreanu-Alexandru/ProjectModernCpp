@@ -28,6 +28,8 @@ public:
 	void setNumberOfChoices(int numberOfChoices);
 	void setOrderPlace(int orderPlace);
 
+private slots:
+	void buttonClicked(int row, int col);
 
 private:
 	Ui::GameClass ui;
@@ -43,4 +45,6 @@ private:
 
 	uint16_t numberOfChoices;
 	uint16_t orderPlace;
+
+
 };

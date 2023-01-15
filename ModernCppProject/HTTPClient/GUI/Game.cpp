@@ -63,7 +63,7 @@ void Game::generateMap(size_t rows, size_t cols)
 {
 	for (int index_line = 0; index_line < rows; index_line++) {
 		for (int index_col = 0; index_col < cols; index_col++) {
-			QPushButton* button = new QPushButton();
+			QPushButton* button = new QPushButton(QString("(%1, %2)").arg(index_line).arg(index_col));
 			
 			button->setText("100");
 			button->resize(40, 80);
@@ -73,19 +73,17 @@ void Game::generateMap(size_t rows, size_t cols)
 			button->show();
 
 			map->addWidget(button, index_line, index_col);
+			connect(button, &QPushButton::clicked, [=] { buttonClicked(index_line, index_col); });
 		}
 	}
 
 	ui.mapWidget->setLayout(map);
 	ui.mapWidget->show();
 }
-
-//void Game::showMap(size_t kHeight, size_t kWidth)
-//{
-//	QMainWindow *window = new QMainWindow;
-//	this->setCentralWidget(ui.mapWidget);
-//	update();
-//}
+void Game::buttonClicked(int row, int col) {
+	QString s = QString::number(row);
+	ui.buttonCoord->setText(s);
+}
 
 void Game::start()//check state
 {
@@ -102,7 +100,6 @@ void Game::start()//check state
 			
 			
 			//returns to game
-			// 
 			//get turn 
 			//if turn = game.orderNumber
 			//while(number of choices > 0)
