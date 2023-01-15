@@ -137,7 +137,6 @@
     <ClCompile Include="DeleteUserHandler.cpp" />
     <ClCompile Include="ExistingUserHandler.cpp" />
     <ClCompile Include="Game.cpp" />
-    <ClCompile Include="GameInfoHandler.cpp" />
     <ClCompile Include="GetAnswerHandler.cpp" />
     <ClCompile Include="Lobby.cpp" />
     <ClCompile Include="LobbyHandler.cpp" />
@@ -159,7 +158,6 @@
     <ClInclude Include="DeleteUserHandler.h" />
     <ClInclude Include="ExistingUserHandler.h" />
     <ClInclude Include="Game.h" />
-    <ClInclude Include="GameInfoHandler.h" />
     <ClInclude Include="GetAnswerHandler.h" />
     <ClInclude Include="Lobby.h" />
     <ClInclude Include="LobbyHandler.h" />

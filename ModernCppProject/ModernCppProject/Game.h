@@ -27,7 +27,6 @@ public:
 
 	/*Getters*/
 	std::vector<Player> getPlayers() const;
-	uint8_t getTurn() const;
 	Map* GetMap() const;
 	enum class State : uint8_t
 	{
@@ -52,7 +51,6 @@ private:
 
 	uint16_t m_numberOfPlayers;
 	uint16_t m_numberOfRounds;
-	uint8_t m_turn;
 
 	/*Private Function*/
 	void InitQuestions(uint16_t numberOfPlayers);
