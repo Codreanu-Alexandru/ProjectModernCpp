@@ -15,6 +15,7 @@
 #include "Player.h"
 #include "Lobby.h"
 #include "StartGameHandler.h"
+#include "GetAnswerHandler.h"
 
 //to be moved
 crow::response deleteUserData(const crow::request& req)
@@ -173,9 +174,9 @@ int main()
 	}
 	else if (lobby.numberOfPlayers == 4 || (lobby.timerSeconds <= 0 && lobby.numberOfPlayers > 1)) {
 		game.setInfo(lobby.getPlayers());
-		/*questions.emplace_back(game.GetNumericQuestion());
-		questions.emplace_back(game.GetNumericQuestion());
-		questions.emplace_back(game.GetNumericQuestion())*/;
+		questions.emplace_back(SingleNumericQuestion("bau question?",123,2));
+		//questions.emplace_back(game.GetNumericQuestion());
+		/*questions.emplace_back(game.GetNumericQuestion()); */
 
 		code = 301;
 	}
@@ -207,11 +208,18 @@ int main()
 	return crow::response(302);
 		});
 	
-	CROW_ROUTE(app, "/numericQ/<int>")([&game, &questions](int questionPos) {
+	CROW_ROUTE(app, "/numericQ/<int>")([&game, &questions](const crow::request& req, crow::response& res, int questionPos) {
 		crow::json::wvalue baseQuestion;
 	baseQuestion["question"] = questions[questionPos].ToString();
-	return crow::response(200, baseQuestion);
+	res = crow::response(200, baseQuestion);
+	res.end();
 		});
+
+	std::vector<std::tuple<uint8_t, float, float>> answers;
+	GetAnswerHandler getAnswer(answers);
+	auto& getAnswerPut = CROW_ROUTE(app, "/numericAnswer/<int>")
+		.methods(crow::HTTPMethod::PUT);
+	getAnswerPut(getAnswer);
 
 	app.port(4960).multithreaded().run();
 
