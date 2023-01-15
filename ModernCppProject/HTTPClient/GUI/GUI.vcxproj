@@ -105,6 +105,7 @@
   <ItemGroup>
     <ClCompile Include="AuthUtils.cpp" />
     <ClCompile Include="CurrentUser.cpp" />
+    <ClCompile Include="Encoder.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Lobby.cpp" />
     <ClCompile Include="LoggedInMenu.cpp" />
@@ -159,6 +160,7 @@
   <ItemGroup>
     <ClInclude Include="AuthUtils.h" />
     <ClInclude Include="CurrentUser.h" />
+    <ClInclude Include="Encoder.h" />
     <QtMoc Include="MultipleChoiceQuestion.h" />
     <QtMoc Include="NumericQuestion.h" />
     <QtMoc Include="Game.h" />

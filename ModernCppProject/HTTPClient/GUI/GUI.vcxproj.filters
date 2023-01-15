@@ -37,6 +37,9 @@
     <ClCompile Include="MultipleChoiceQuestion.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Encoder.cpp">
+      <Filter>Source Files\Miscellaneous</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AuthUtils.h">
@@ -44,6 +47,9 @@
     </ClInclude>
     <ClInclude Include="CurrentUser.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Encoder.h">
+      <Filter>Header Files\Miscellaneous</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -148,6 +154,12 @@
     </Filter>
     <Filter Include="Resource Files">
       <UniqueIdentifier>{43435359-4a3c-4923-8777-2501841e2787}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Miscellaneous">
+      <UniqueIdentifier>{553a9014-c4c7-4de9-98e5-2f0e492a1001}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Miscellaneous">
+      <UniqueIdentifier>{1f01cbe9-9e9e-4d1a-bc50-69eb9b5d311f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
