@@ -27,5 +27,4 @@ void GetAnswerHandler::operator()(const crow::request& req, crow::response& res,
 		res.code = 500;
 		res.end();
 	}
-
 }
